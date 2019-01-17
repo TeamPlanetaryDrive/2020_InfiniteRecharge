@@ -36,41 +36,6 @@ public class RobotMap {
   public static int 
 		LIFT_CHANNEL = 4;
 
- // initializing the joystick mappings
-  public static int 
-		LEFT_JOYSTICK_PORT = 0,
-    RIGHT_JOYSTICK_PORT = 1;
-
-  public static Joystick
-    leftJoystick, 
-    rightJoystick;
-    
-  public static JoystickButton
-    button2_left,
-		button3_left,
-		button4_left,
-		button5_left,
-		button2_right,
-		button3_right, 
-		button4_right, 
-		button5_right;
-
-  // left and right joysticks being mapped to ports and having their keys mapped (last years code)
-   public static void init(){
-
-   leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
-		button2_left = new JoystickButton(leftJoystick, 2);
-		button3_left = new JoystickButton(leftJoystick, 3);
-		button4_left = new JoystickButton(leftJoystick, 4);
-		button5_left = new JoystickButton(leftJoystick, 5);
-		
-	rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
-		button2_right = new JoystickButton(rightJoystick, 2);
-		button3_right = new JoystickButton(rightJoystick, 3);
-		button4_right = new JoystickButton(rightJoystick, 4);
-		button5_right = new JoystickButton(rightJoystick, 5);
-}
-
 // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.
   // public static int leftMotor = 1;
