@@ -7,6 +7,9 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -14,7 +17,61 @@ package frc.robot;
  * floating around.
  */
 public class RobotMap {
-  // For example to map the left and right motors, you could define the
+ // public static final double PERIODIC_UPDATE_PERIOD = 0.020; //Periodic update period (s)
+
+ //Power Channels
+  public static final int 
+    DRIVE_POWER_LEFT_FRONT = 0,
+		DRIVE_POWER_RIGHT_FRONT = 1,
+		DRIVE_POWER_LEFT_REAR = 2,
+		DRIVE_POWER_RIGHT_REAR = 3,
+		CAMERA_POWER = 4,
+    VRM_POWER = 5;
+    
+  //Digital (0-9, 10-25)
+  public static int 
+     LEFT_MOTOR_CHANNEL = 0,
+     RIGHT_MOTOR_CHANNEL = 1;
+
+  public static int 
+		LIFT_CHANNEL = 4;
+
+ // initializing the joystick mappings
+  public static int 
+		LEFT_JOYSTICK_PORT = 0,
+    RIGHT_JOYSTICK_PORT = 1;
+
+  public static Joystick
+    leftJoystick, 
+    rightJoystick;
+    
+  public static JoystickButton
+    button2_left,
+		button3_left,
+		button4_left,
+		button5_left,
+		button2_right,
+		button3_right, 
+		button4_right, 
+		button5_right;
+
+  // left and right joysticks being mapped to ports and having their keys mapped (last years code)
+   public static void init(){
+
+   leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
+		button2_left = new JoystickButton(leftJoystick, 2);
+		button3_left = new JoystickButton(leftJoystick, 3);
+		button4_left = new JoystickButton(leftJoystick, 4);
+		button5_left = new JoystickButton(leftJoystick, 5);
+		
+	rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
+		button2_right = new JoystickButton(rightJoystick, 2);
+		button3_right = new JoystickButton(rightJoystick, 3);
+		button4_right = new JoystickButton(rightJoystick, 4);
+		button5_right = new JoystickButton(rightJoystick, 5);
+}
+
+// For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.
   // public static int leftMotor = 1;
   // public static int rightMotor = 2;
