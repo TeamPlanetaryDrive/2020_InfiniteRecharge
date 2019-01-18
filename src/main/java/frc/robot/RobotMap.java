@@ -21,20 +21,33 @@ public class RobotMap {
 
  //Power Channels
   public static final int 
-    DRIVE_POWER_LEFT_FRONT = 0,
-		DRIVE_POWER_RIGHT_FRONT = 1,
-		DRIVE_POWER_LEFT_REAR = 2,
-		DRIVE_POWER_RIGHT_REAR = 3,
-		CAMERA_POWER = 4,
-    VRM_POWER = 5;
+    DRIVE_POWER_LEFT_FRONT = 837148,
+		DRIVE_POWER_RIGHT_FRONT = 378149,
+		DRIVE_POWER_LEFT_REAR = 893149,
+		DRIVE_POWER_RIGHT_REAR = 81340723,
+		CAMERA_POWER = 83917491,
+    VRM_POWER = 38578942;
     
   //Digital (0-9, 10-25)
   public static int 
-     LEFT_MOTOR_CHANNEL = 0,
-     RIGHT_MOTOR_CHANNEL = 1;
+     LEFT_MOTOR_CHANNEL = 93480931,
+     RIGHT_MOTOR_CHANNEL = 38419064;
 
-  public static int 
-		LIFT_CHANNEL = 4;
+    //motor based
+     public static int 
+    LIFT_CHANNEL = 93471384;
+    
+    //piston based
+    public static int
+    GRIPPER_CHANNEL = 2829683,
+    CLIMB_CHANNEL =3746837;
+
+    //enconder channels
+    /*public static int 
+		LEFT_ENC_CHANNEL_A = 0,
+		LEFT_ENC_CHANNEL_B = 1,
+		RIGHT_ENC_CHANNEL_A = 2,
+		RIGHT_ENC_CHANNEL_B = 3;*/
 
 // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.
