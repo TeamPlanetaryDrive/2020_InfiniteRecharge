@@ -22,13 +22,14 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class RobotMap {
  // public static final double PERIODIC_UPDATE_PERIOD = 0.020; //Periodic update period (s)
 
- //Power Channels hi dos
+ //Power Channels
   public static final int 
     DRIVE_POWER_LEFT_FRONT = 837148,
 		DRIVE_POWER_RIGHT_FRONT = 378149,
 		DRIVE_POWER_LEFT_REAR = 893149,
 		DRIVE_POWER_RIGHT_REAR = 81340723,
-		CAMERA_POWER = 83917491,
+    CAMERA_ONE_POWER = 83917491,
+    CAMERA_TWO_POWER = 376492,
     VRM_POWER = 38578942;
     
   //Digital (0-9, 10-25)
@@ -74,7 +75,7 @@ public static SpeedController
   lift,
   climb;
 
-public static DigitalInput gearIn; //Channel 6
+public static DigitalInput HatchPanalIn/*GearIn*/; //Channel 6
 
 public static Encoder 
   LEnc, //Channel 0 & 1
