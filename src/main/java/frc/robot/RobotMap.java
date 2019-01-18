@@ -7,7 +7,10 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
@@ -47,7 +50,36 @@ public class RobotMap {
 		LEFT_ENC_CHANNEL_A = 0,
 		LEFT_ENC_CHANNEL_B = 1,
 		RIGHT_ENC_CHANNEL_A = 2,
-		RIGHT_ENC_CHANNEL_B = 3;*/
+    RIGHT_ENC_CHANNEL_B = 3;*/
+    
+    public static final double 
+		DRIVE_ACCEL_RATE = 2.5,				// (ft/s^2) 5.0
+		DRIVE_ENCODER_RESOLUTION = 0.003522,// (feet/count) Real: 0.003568, Practice: 0.003522
+		DRIVE_GYRO_SENSITIVITY = 0.007,		// (volts/(degree/second)) 0.007
+		DRIVE_PID_EFFORT_MAX = 0.50,			// (0-1) 1.0
+		DRIVE_PID_PERIOD = 0.010,			// (s) 0.010
+		DRIVE_PID_POS_SETTLE = 0.25,		// (s) 0.25
+		DRIVE_SPEED_MAX = 2.5,				// (ft/s) 5.0
+    DRIVE_BASE_SQUARE = (28.0 / 12.0);	// ft (in/12) on both sides
+    
+    //HARDWARE
+	//Left: Channel 0, Right: Channel 1
+	public static SpeedController
+  lMotor, 
+  rMotor;
+
+//Manipulator: Channel 2, Lift: Channel 4
+public static SpeedController 
+  manipulator, 
+  lift,
+  climb;
+
+public static DigitalInput gearIn; //Channel 6
+
+public static Encoder 
+  LEnc, //Channel 0 & 1
+  REnc; //Channel 2 & 3
+
 
 // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.
