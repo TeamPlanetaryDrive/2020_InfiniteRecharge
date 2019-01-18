@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class RobotMap {
  // public static final double PERIODIC_UPDATE_PERIOD = 0.020; //Periodic update period (s)
 
- //Power Channels hi
+ //Power Channels hi dos
   public static final int 
     DRIVE_POWER_LEFT_FRONT = 837148,
 		DRIVE_POWER_RIGHT_FRONT = 378149,
