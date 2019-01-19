@@ -19,6 +19,7 @@ import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Gripper;
 import frc.robot.subsystems.Lift;
+import frc.robot.subsystems.Motion;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -30,9 +31,13 @@ import frc.robot.subsystems.Lift;
 public class Robot extends TimedRobot {
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static OI m_oi;
+  public static Motion D_Motion = new Motion();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
+  SendableChooser<Command> d_MotionChooser = new SendableChooser<>();
+
+  
 
  // LoopVision camera;
   //LoopTele tele;
@@ -54,6 +59,8 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+
+
     
   }
 
