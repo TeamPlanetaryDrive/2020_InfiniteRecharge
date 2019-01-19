@@ -9,9 +9,9 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
-//import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
-//import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -81,6 +81,20 @@ public static Encoder
   LEnc, //Channel 0 & 1
   REnc; //Channel 2 & 3
 
+//Left: Port 0, Right: Port 1
+public static Joystick 
+leftJoystick, 
+rightJoystick;
+
+public static JoystickButton 
+  button2_left,
+  button3_left,
+  button4_left,
+  button5_left,
+  button2_right,
+  button3_right, 
+  button4_right, 
+  button5_right;
 
 // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.

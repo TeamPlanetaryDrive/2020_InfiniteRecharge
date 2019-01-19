@@ -10,6 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class PneumaticTest extends Command {
   DoubleSolenoid testSolenoid;
@@ -35,9 +36,12 @@ public class PneumaticTest extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-   /* if(joystick button is pressed again){
+    /* if(joystick button is pressed again){
       return true;
-   }*/
+    }*/
+    //assuming we going for left joystick
+    if(RobotMap.leftJoystick.getTop())
+      return true;
     return false;
   }
 
