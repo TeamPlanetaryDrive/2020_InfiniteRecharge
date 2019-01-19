@@ -51,7 +51,7 @@ public class OI {
 		button4_left = new JoystickButton(leftJoystick, 4);
 		button5_left = new JoystickButton(leftJoystick, 5);
 		
-	rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
+	 rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
 		button2_right = new JoystickButton(rightJoystick, 2);
 		button3_right = new JoystickButton(rightJoystick, 3);
 		button4_right = new JoystickButton(rightJoystick, 4);
