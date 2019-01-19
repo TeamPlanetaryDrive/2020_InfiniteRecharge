@@ -30,13 +30,15 @@ import frc.robot.subsystems.Motion;
  */
 public class Robot extends TimedRobot {
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
-  public static OI m_oi;
-  public static Motion D_Motion = new Motion();
+    public static Motion D_Motion = new Motion();
+    public static Gripper PneumaticsTest = new Gripper();
+    public static OI m_oi;
+
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
   SendableChooser<Command> d_MotionChooser = new SendableChooser<>();
-
+  SendableChooser<Command> PneumaticsTestSend = new SendableChooser<>();
   
 
  // LoopVision camera;
@@ -59,6 +61,7 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+    PneumaticsTest.initDefaultCommand();
 
 
     
