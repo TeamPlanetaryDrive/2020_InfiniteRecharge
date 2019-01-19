@@ -6,7 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
-
+import frc.robot.commands.PneumaticTest;
 import edu.wpi.first.wpilibj.command.Subsystem;
 // use double solenoids
 //use compressor
@@ -21,5 +21,6 @@ public class Gripper extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new PneumaticTest());
   }
 }

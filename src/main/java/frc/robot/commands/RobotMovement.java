@@ -15,7 +15,7 @@ import frc.robot.subsystems.Motion;
 
 public class RobotMovement extends Command {
  int timer; // use as a variable to compare to the time left in the game, if 0 , we stop
- int forceStop; // use a int value like -1 in force stop to stop the bot, not 
+ int forceStop; // use a int value like -1 in force stop to stop the bot, not sure if needed
 
  //these variables are not final and fully subject to change
 

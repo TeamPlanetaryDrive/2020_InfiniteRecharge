@@ -48,7 +48,7 @@ public class Robot extends TimedRobot {
   //Robot Mechanisms
   public DriveTrain driveTrain;
   public Lift lift;
-  public Gripper manipulator;
+  public Gripper gripper;
   public Climb climb;
   public Gyro gyro;
   /**
@@ -61,7 +61,7 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
-    PneumaticsTest.initDefaultCommand();
+    gripper.initDefaultCommand();
 
 
     
