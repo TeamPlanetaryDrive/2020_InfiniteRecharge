@@ -9,6 +9,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.PneumaticTest;
+import frc.robot.subsystems.Gripper;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -40,11 +42,16 @@ public class OI {
 		button2_right,
 		button3_right, 
 		button4_right, 
-		button5_right;
+    button5_right;
+    
 
+    public OI(){
+    button2_left.whenPressed(new PneumaticTest());
+
+
+    }
   // left and right joysticks being mapped to ports and having their keys mapped (last years code)
    public static void init(){
-
    leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
 		button2_left = new JoystickButton(leftJoystick, 2);
 		button3_left = new JoystickButton(leftJoystick, 3);
