@@ -61,8 +61,8 @@ public class RobotMap {
 		DRIVE_PID_PERIOD = 0.010,			// (s) 0.010
 		DRIVE_PID_POS_SETTLE = 0.25,		// (s) 0.25
 		DRIVE_SPEED_MAX = 2.5,				// (ft/s) 5.0
-    DRIVE_BASE_SQUARE = (28.0 / 12.0);	// ft (in/12) on both sides
-    
+    DRIVE_BASE_LENGTH = (28.0 / 12.0),	// ft (in/12)
+    DRIVE_BASE_WIDTH = (25.5/12.0); // ft (in/12)
     //HARDWARE
 	//Left: Channel 0, Right: Channel 1
 	public static SpeedController

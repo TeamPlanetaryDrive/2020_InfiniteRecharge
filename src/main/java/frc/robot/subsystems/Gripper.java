@@ -8,7 +8,8 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-
+// use double solenoids
+//use compressor
 /**
  * Add your docs here.
  */

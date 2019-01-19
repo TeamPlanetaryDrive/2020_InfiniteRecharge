@@ -43,7 +43,7 @@ public class Robot extends TimedRobot {
   public Lift lift;
   public Gripper manipulator;
   public Climb climb;
-  public  Gyro gyro;
+  public Gyro gyro;
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -54,6 +54,7 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+    
   }
 
   /**
