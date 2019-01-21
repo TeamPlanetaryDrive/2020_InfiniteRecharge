@@ -8,7 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-
+//use this for anything on th drivetrain like guiding electricty or something (likely redundent so delete if un needed)
 /**
  * Add your docs here.
  */

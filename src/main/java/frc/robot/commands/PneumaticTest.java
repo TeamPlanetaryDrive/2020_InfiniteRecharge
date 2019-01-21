@@ -7,19 +7,22 @@
 
 package frc.robot.commands;
 
+import frc.robot.OI;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class PneumaticTest extends Command {
   DoubleSolenoid testSolenoid;
-  Boolean position;
+  //Boolean position;
+  int timer;
   public PneumaticTest() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.PneumaticsTest);
     testSolenoid = new DoubleSolenoid(1,2); // 1 & 2 are port numbers, not sure which ports they are going in so change these as needed
-    position = false; //false is the default position where the piston is not extended and true is extended
+   // position = false; //false is the default position where the piston is not extended and true is extended
+    timer= 0;
   }
 
   // Called just before this Command runs the first time
@@ -31,22 +34,23 @@ public class PneumaticTest extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(position == false){
+    //will stay extended for 200 units of time (no idea what that time is) 
+    if(timer <200){
     testSolenoid.set(DoubleSolenoid.Value.kForward);
-    position = true;
-  }
+    timer = timer+1;
+    }
     else{
       testSolenoid.set(DoubleSolenoid.Value.kReverse);
-      position =false;
+      timer = timer+1;
     }
 }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-   /* if(joystick button is pressed(not the one used to execute)){
+    if(timer==205){
       return true;
-   }*/
+    }
     return false;
   }
 

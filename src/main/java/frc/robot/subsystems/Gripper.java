@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 import frc.robot.commands.PneumaticTest;
 import edu.wpi.first.wpilibj.command.Subsystem;
+//use this for opening and closing the gripperws onto the plate and the ball
 // use double solenoids
 //use compressor
 /**

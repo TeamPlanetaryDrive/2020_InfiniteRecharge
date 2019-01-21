@@ -20,6 +20,7 @@ import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Gripper;
 import frc.robot.subsystems.Lift;
 import frc.robot.subsystems.Motion;
+import frc.robot.subsystems.Vision;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,23 +30,31 @@ import frc.robot.subsystems.Motion;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
-    public static Motion D_Motion = new Motion();
-    public static Gripper PneumaticsTest = new Gripper();
+    public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
+    public static Climb Hab_Climb = new Climb(); // hab platform cimbing 
+    public static DriveTrain Drive = new DriveTrain();//could be redundent , if we delete drivetrain get rid of this
+    public static Gripper PneumaticsTest = new Gripper(); // testing pnuematics, change name later
+    public static Lift Elevator = new Lift(); // elevator for gripper
+    public static Motion D_Motion = new Motion(); // D_Motion as in drive motion
+    public static Vision Cameras = new Vision(); //used for the vision class as needed
     public static OI m_oi;
 
 
   Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
-  SendableChooser<Command> d_MotionChooser = new SendableChooser<>();
-  SendableChooser<Command> PneumaticsTestSend = new SendableChooser<>();
-  
+    SendableChooser<Command> m_chooser = new SendableChooser<>();
+    SendableChooser<Command> Hab_Climb_Send = new SendableChooser<>();
+    SendableChooser<Command> Drive_Send = new SendableChooser<>();
+    SendableChooser<Command> PneumaticsTest_Send = new SendableChooser<>();
+    SendableChooser<Command> Elevator_Send = new SendableChooser<>();
+    SendableChooser<Command> d_Motion_Send = new SendableChooser<>();
+    SendableChooser<Command> Cameras_Send = new SendableChooser<>();
 
- // LoopVision camera;
-  //LoopTele tele;
- // LoopAuto auto;
+
+ //LoopVision camera;
+ //LoopTele tele;
+ //LoopAuto auto;
   
-  //Robot Mechanisms
+ //Robot Mechanisms
   public DriveTrain driveTrain;
   public Lift lift;
   public Gripper gripper;
