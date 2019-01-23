@@ -26,13 +26,13 @@ public class PneumaticTest extends Command {
   }
 
   // Called just before this Command runs the first time
-  @Override
+  
   protected void initialize() {
     testSolenoid.set(DoubleSolenoid.Value.kOff);
   }
 
   // Called repeatedly when this Command is scheduled to run
-  @Override
+  
   protected void execute() {
     // Will stay extended for 200 units of time (no idea what that time is) 
     if(timer <400)
@@ -43,7 +43,7 @@ public class PneumaticTest extends Command {
 }
 
   // Make this return true when this Command no longer needs to run execute()
-  @Override
+  
   protected boolean isFinished() {
     if(timer==450)
       return true;
@@ -51,7 +51,7 @@ public class PneumaticTest extends Command {
   }
 
   // Called once after isFinished returns true
-  @Override
+  
   protected void end() {
     testSolenoid.set(DoubleSolenoid.Value.kOff);
   }
