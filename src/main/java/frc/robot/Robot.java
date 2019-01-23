@@ -70,7 +70,7 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
-    gripper.initDefaultCommand();
+    //gripper.initDefaultCommand();
 
 
     
@@ -138,7 +138,7 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
   }
 
-  @Override
+  
   public void teleopInit() {
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
@@ -152,7 +152,7 @@ public class Robot extends TimedRobot {
   /**
    * This function is called periodically during operator control.
    */
-  @Override
+  
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
   }
