@@ -20,7 +20,7 @@ public class PneumaticTest extends Command {
   int timer;
   public PneumaticTest() {
     requires(Robot.PneumaticsTest);
-    testSolenoid = new DoubleSolenoid(1,2); // 1 & 2 are port numbers, not sure which ports they are going in so change these as needed
+    testSolenoid = new DoubleSolenoid(0,1); // 1 & 2 are port numbers, not sure which ports they are going in so change these as needed
     //position = false; // false is the default position where the piston is not extended and true is extended
     timer= 0;
   }

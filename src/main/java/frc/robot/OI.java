@@ -46,7 +46,7 @@ public class OI {
     
 
     public OI(){
-    button2_left.whileHeld(new PneumaticTest());
+    button2_left.whenPressed(new PneumaticTest());
 
 
     }
