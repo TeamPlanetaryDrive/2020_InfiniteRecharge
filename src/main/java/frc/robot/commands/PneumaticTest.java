@@ -21,11 +21,7 @@ public class PneumaticTest extends Command {
   public PneumaticTest() {
     requires(Robot.PneumaticsTest);
     testSolenoid = new DoubleSolenoid(1,2); // 1 & 2 are port numbers, not sure which ports they are going in so change these as needed
-<<<<<<< HEAD
-    //position = false; //false is the default position where the piston is not extended and true is extended
-=======
     //position = false; // false is the default position where the piston is not extended and true is extended
->>>>>>> 0370de2f8e5f868a760e452a20e0aae0b1dfc321
     timer= 0;
   }
 
@@ -39,7 +35,7 @@ public class PneumaticTest extends Command {
   @Override
   protected void execute() {
     // Will stay extended for 200 units of time (no idea what that time is) 
-    if(timer <200)
+    if(timer <400)
       testSolenoid.set(DoubleSolenoid.Value.kForward);
     else
       testSolenoid.set(DoubleSolenoid.Value.kReverse);
@@ -49,7 +45,7 @@ public class PneumaticTest extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(timer==205)
+    if(timer==450)
       return true;
     return false;
   }
