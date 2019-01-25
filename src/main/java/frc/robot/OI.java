@@ -45,24 +45,13 @@ public class OI {
     button5_right;
     
 
-    public OI(){
-    button2_left.whileHeld(new PneumaticTest());
-
-
-    }
+    //public OI(){
+    //button2_left.whenPressed(new PneumaticTest());
+    //button3_left.whenActive(new PneumaticTest());
+    //}
   // left and right joysticks being mapped to ports and having their keys mapped (last years code)
    public static void init(){
-   leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
-		button2_left = new JoystickButton(leftJoystick, 2);
-		button3_left = new JoystickButton(leftJoystick, 3);
-		button4_left = new JoystickButton(leftJoystick, 4);
-		button5_left = new JoystickButton(leftJoystick, 5);
-		
-	 rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
-		button2_right = new JoystickButton(rightJoystick, 2);
-		button3_right = new JoystickButton(rightJoystick, 3);
-		button4_right = new JoystickButton(rightJoystick, 4);
-		button5_right = new JoystickButton(rightJoystick, 5);
+   
 }
 
   // There are a few additional built in buttons you can use. Additionally,
@@ -84,4 +73,19 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
+public OI(){
+  leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
+		button2_left = new JoystickButton(leftJoystick, 2);
+		button3_left = new JoystickButton(leftJoystick, 3);
+		button4_left = new JoystickButton(leftJoystick, 4);
+		button5_left = new JoystickButton(leftJoystick, 5);
+		
+	 rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
+		button2_right = new JoystickButton(rightJoystick, 2);
+		button3_right = new JoystickButton(rightJoystick, 3);
+		button4_right = new JoystickButton(rightJoystick, 4);
+    button5_right = new JoystickButton(rightJoystick, 5);
+ 
+    // button2_left.whenPressed(new PneumaticTest());
+  }
 }
