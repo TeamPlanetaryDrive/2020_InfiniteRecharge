@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -21,6 +22,9 @@ import frc.robot.subsystems.Gripper;
 import frc.robot.subsystems.Lift;
 import frc.robot.subsystems.Motion;
 import frc.robot.subsystems.Vision;
+import frc.robot.OI;
+import frc.robot.commands.*;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -68,6 +72,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
+    OI.leftJoystick=new Joystick(0);
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
     //gripper.initDefaultCommand();
@@ -155,6 +160,8 @@ public class Robot extends TimedRobot {
   
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    if(OI.button2_left.get())
+      new PneumaticTest();
   }
 
   /**

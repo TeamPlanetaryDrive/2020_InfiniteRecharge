@@ -1,9 +1,9 @@
 [
   {
     "name": "2019_DeepSpace",
-    "file": "C:\\Users\\Electronics\\2019_DeepSpace\\build\\libs\\2019_DeepSpace.jar",
+    "file": "C:\\Users\\Josh Dutta\\2019_DeepSpace\\build\\libs\\2019_DeepSpace.jar",
     "extensions": [],
-    "librarydir": "C:\\Users\\Electronics\\2019_DeepSpace\\build\\tmp\\jniExtractDir",
+    "librarydir": "C:\\Users\\Josh Dutta\\2019_DeepSpace\\build\\tmp\\jniExtractDir",
     "mainclass": "frc.robot.Main"
   }
 ]
