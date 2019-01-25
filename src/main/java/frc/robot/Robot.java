@@ -160,8 +160,7 @@ public class Robot extends TimedRobot {
   
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    if(OI.button2_left.get())
-      new PneumaticTest();
+    OI.button2_left.whenPressed(new PneumaticTest());
   }
 
   /**
