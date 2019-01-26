@@ -9,12 +9,13 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.OI;
 
-public class StopPiston extends Command {
-  public StopPiston() {
+public class ExtendClimbPiston extends Command {
+  public ExtendClimbPiston() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.Grip);
+    requires(Robot.Hab_Climb);
   }
 
   // Called just before this Command runs the first time
@@ -23,12 +24,16 @@ public class StopPiston extends Command {
   }
 
   // Called repeatedly when this Command is scheduled to run
+  @Override
   protected void execute() {
-    Robot.Grip.pistonOff();
+    Robot.Hab_Climb.pushPiston();
   }
 
   // Make this return true when this Command no longer needs to run execute()
+  @Override
   protected boolean isFinished() {
+    if(!OI.button3_left.get())
+      return true;
     return false;
   }
 
