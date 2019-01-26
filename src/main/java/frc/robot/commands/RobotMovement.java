@@ -14,37 +14,25 @@ import frc.robot.Robot;
 import frc.robot.subsystems.DriveTrain;;
 
 public class RobotMovement extends Command {
- int timer; // use as a variable to compare to the time left in the game, if 0 , we stop
- SpeedController left;
- SpeedController right;
- //these variables are not final and fully subject to change
 
   public RobotMovement() {
     requires(Robot.Drive);
-    int timer = 9498374; //set this to the timer game timer, subject to change
-    //left = 0;
-   // right = right.set(0.0);;
   }
 
   // Called just before this Command runs the first time
   protected void initialize() {
-      //left = 0;
-      //right = 0;
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     Robot.Drive.getDrive().tankDrive(OI.leftJoystick.getY(), OI.rightJoystick.getY());
-    timer--;
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(timer > 0)
-      return false;
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true
