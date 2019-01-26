@@ -6,9 +6,9 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
-import frc.robot.commands.PneumaticTest;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import frc.robot.commands.*;
 //use this for opening and closing the gripperws onto the plate and the ball
 // use double solenoids
 //use compressor
@@ -23,8 +23,7 @@ public class Gripper extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new PneumaticTest());
-    
+    setDefaultCommand(new RetractPiston());
   }
 
   public void pullPiston(){

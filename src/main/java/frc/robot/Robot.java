@@ -23,8 +23,6 @@ import frc.robot.subsystems.Lift;
 import frc.robot.subsystems.Motion;
 import frc.robot.subsystems.Vision;
 import frc.robot.OI;
-import frc.robot.commands.*;
-
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -37,7 +35,7 @@ public class Robot extends TimedRobot {
     public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
     public static Climb Hab_Climb = new Climb(); // hab platform cimbing 
     public static DriveTrain Drive = new DriveTrain();//could be redundent , if we delete drivetrain get rid of this
-    public static Gripper PneumaticsTest = new Gripper(); // testing pnuematics, change name later
+    public static Gripper Grip = new Gripper(); // testing pnuematics, change name later
     public static Lift Elevator = new Lift(); // elevator for gripper
     public static Motion D_Motion = new Motion(); // D_Motion as in drive motion
     public static Vision Cameras = new Vision(); //used for the vision class as needed
@@ -75,10 +73,7 @@ public class Robot extends TimedRobot {
     OI.leftJoystick=new Joystick(0);
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
-    //gripper.initDefaultCommand();
-
-
-    
+    //gripper.initDefaultCommand();    
   }
 
   /**
@@ -160,7 +155,6 @@ public class Robot extends TimedRobot {
   
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    OI.button2_left.whenPressed(new PneumaticTest());
   }
 
   /**

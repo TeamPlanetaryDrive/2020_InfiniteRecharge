@@ -12,7 +12,7 @@ import frc.robot.Robot;
 
 public class PneumaticTest extends Command {
   public PneumaticTest() {
-    requires(Robot.PneumaticsTest);
+    requires(Robot.Grip);
   }
 
   // Called just before this Command runs the first time
@@ -24,7 +24,7 @@ public class PneumaticTest extends Command {
   
   protected void execute() {
     // Will stay extended for 200 units of time (no idea what that time is) 
-    Robot.PneumaticsTest.pushPiston();
+    Robot.Grip.pushPiston();
   }
 
   // Make this return true when this Command no longer needs to run execute()
