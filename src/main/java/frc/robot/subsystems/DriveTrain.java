@@ -21,8 +21,8 @@ public class DriveTrain extends Subsystem {
   // Put methods for controlling this subsystem here. Call these from Commands.
 
   //Wood Robot Code
-  Jaguar w_left = new Jaguar(0);
-  Jaguar w_right = new Jaguar(1);
+  Jaguar w_left = new Jaguar(1);
+  Jaguar w_right = new Jaguar(0);
 
   DifferentialDrive robotDrive = new DifferentialDrive(w_left, w_right);
 

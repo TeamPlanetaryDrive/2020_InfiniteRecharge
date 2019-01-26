@@ -25,7 +25,7 @@ public class PIDMotor extends PIDSubsystem{
 
 		this.setOutputRange(-0.95, 0.95);
 		this.setAbsoluteTolerance(0.05);
-		this.getPIDController().setContinuous(true);//XXX
+		this.getPIDController().setContinuous(true);
 		multiplier = 1;
 	}
 
