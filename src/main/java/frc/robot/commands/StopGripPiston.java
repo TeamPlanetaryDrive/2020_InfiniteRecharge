@@ -10,8 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class RetractPiston extends Command {
-  public RetractPiston() {
+public class StopGripPiston extends Command {
+  public StopGripPiston() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.Grip);
@@ -24,7 +24,7 @@ public class RetractPiston extends Command {
 
   // Called repeatedly when this Command is scheduled to run
   protected void execute() {
-    Robot.Grip.pullPiston();
+    Robot.Grip.pistonOff();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -35,7 +35,6 @@ public class RetractPiston extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    
   }
 
   // Called when another command which requires one or more of the same

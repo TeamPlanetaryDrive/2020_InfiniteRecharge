@@ -8,17 +8,35 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-//us this to climb onto the Hab plateform
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import frc.robot.commands.*;
+
 /**
  * Add your docs here.
  */
+
+//Use this to climb onto the Hab plateform
 public class Climb extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+  DoubleSolenoid testSolenoid = new DoubleSolenoid(2, 3);
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new RetractClimbPiston());
+  }
+
+  public void pullPiston(){
+    testSolenoid.set(DoubleSolenoid.Value.kReverse);
+  }
+
+  public void pushPiston(){
+    testSolenoid.set(DoubleSolenoid.Value.kForward);
+  }
+
+  public void pistonOff(){
+    testSolenoid.set(DoubleSolenoid.Value.kOff);
   }
 }

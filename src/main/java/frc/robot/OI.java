@@ -41,7 +41,8 @@ public class OI {
   public static JoystickButton button5_right = new JoystickButton(rightJoystick, 5);
   //this is where you put associate commands with all the buttons
   public OI(){
-    button2_left.whileHeld(new ExtendPiston());
+    button2_left.whileHeld(new ExtendGripPiston());
+    button3_left.whileHeld(new ExtendClimbPiston());
   }
   // left and right joysticks being mapped to ports and having their keys mapped (last years code)
    public static void init(){
