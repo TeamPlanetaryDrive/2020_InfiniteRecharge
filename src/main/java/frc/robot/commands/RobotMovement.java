@@ -9,10 +9,9 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.OI;
 import frc.robot.Robot;
-import frc.robot.subsystems.Motion;
-
-
+import frc.robot.subsystems.DriveTrain;;
 
 public class RobotMovement extends Command {
  int timer; // use as a variable to compare to the time left in the game, if 0 , we stop
@@ -21,7 +20,7 @@ public class RobotMovement extends Command {
  //these variables are not final and fully subject to change
 
   public RobotMovement() {
-    requires(Robot.D_Motion);
+    requires(Robot.Drive);
     int timer = 9498374; //set this to the timer game timer, subject to change
     //left = 0;
    // right = right.set(0.0);;
@@ -36,12 +35,16 @@ public class RobotMovement extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.Drive.getDrive().tankDrive(OI.leftJoystick.getY(), OI.rightJoystick.getY());
+    timer--;
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    if(timer > 0)
+      return false;
+    return true;
   }
 
   // Called once after isFinished returns true
