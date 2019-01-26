@@ -70,7 +70,10 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-    OI.leftJoystick=new Joystick(0);
+
+    //Possibly redundant decleration
+    //OI.leftJoystick=new Joystick(0);
+
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
     //gripper.initDefaultCommand();    
