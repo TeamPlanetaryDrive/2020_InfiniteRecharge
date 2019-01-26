@@ -9,8 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.PneumaticTest;
-import frc.robot.subsystems.Gripper;
+import frc.robot.commands.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -24,46 +23,30 @@ public class OI {
   // number it is.
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
-
   // initializing the joystick mappings
   public static int 
 		LEFT_JOYSTICK_PORT = 0,
     RIGHT_JOYSTICK_PORT = 1;
-
-  public static Joystick
-    leftJoystick, 
-    rightJoystick;
-    
-  public static JoystickButton
-    button2_left,
-		button3_left,
-		button4_left,
-		button5_left,
-		button2_right,
-		button3_right, 
-		button4_right, 
-    button5_right;
-    //public OI(){
-    //button2_left.whenPressed(new PneumaticTest());
-    //button3_left.whenActive(new PneumaticTest());
-    //}
-  public OI(){
-   leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
-		button2_left = new JoystickButton(leftJoystick, 2);
-		button3_left = new JoystickButton(leftJoystick, 3);
-		button4_left = new JoystickButton(leftJoystick, 4);
-		button5_left = new JoystickButton(leftJoystick, 5);
+  
+  public static Joystick leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
+	public static JoystickButton button2_left = new JoystickButton(leftJoystick, 2);
+	public static JoystickButton button3_left = new JoystickButton(leftJoystick, 3);
+	public static JoystickButton button4_left = new JoystickButton(leftJoystick, 4);
+	public static JoystickButton button5_left = new JoystickButton(leftJoystick, 5);
 		
-	 rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
-		button2_right = new JoystickButton(rightJoystick, 2);
-		button3_right = new JoystickButton(rightJoystick, 3);
-		button4_right = new JoystickButton(rightJoystick, 4);
-    button5_right = new JoystickButton(rightJoystick, 5);
+	public static Joystick rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
+	public static JoystickButton button2_right = new JoystickButton(rightJoystick, 2);
+	public static JoystickButton button3_right = new JoystickButton(rightJoystick, 3);
+	public static JoystickButton button4_right = new JoystickButton(rightJoystick, 4);
+  public static JoystickButton button5_right = new JoystickButton(rightJoystick, 5);
+  //this is where you put associate commands with all the buttons
+  public OI(){
+    button2_left.whileHeld(new RetractPiston());
   }
   // left and right joysticks being mapped to ports and having their keys mapped (last years code)
    public static void init(){
-   
-}
+
+   }
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
