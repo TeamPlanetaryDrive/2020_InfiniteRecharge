@@ -14,10 +14,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Gripper;
 import frc.robot.subsystems.Lift;
 import frc.robot.subsystems.Motion;
@@ -32,7 +30,6 @@ import frc.robot.OI;
  * project.
  */
 public class Robot extends TimedRobot {
-    public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
     public static Climb Hab_Climb = new Climb(); // hab platform cimbing 
     public static DriveTrain Drive = new DriveTrain();//could be redundent , if we delete drivetrain get rid of this
     public static Gripper Grip = new Gripper(); // testing pnuematics, change name later
@@ -69,7 +66,6 @@ public class Robot extends TimedRobot {
   
   public void robotInit() {
     m_oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
 
     //Possibly redundant decleration
     //OI.leftJoystick=new Joystick(0);

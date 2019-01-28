@@ -32,9 +32,7 @@ public class ExtendClimbPiston extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(!OI.button3_left.get())
-      return true;
-    return false;
+    return !OI.button3_left.get();
   }
 
   // Called once after isFinished returns true
