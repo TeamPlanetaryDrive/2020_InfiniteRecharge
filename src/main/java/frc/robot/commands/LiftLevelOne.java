@@ -16,6 +16,7 @@ public class LiftLevelOne extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.Elevator);
+    requires(Robot.PID);
 
   }
 
@@ -27,6 +28,10 @@ public class LiftLevelOne extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.PID.setSetpoint(19);
+    if(Robot.PID.getPosition()<Robot.PID.getSetPoint()){
+      Robot.Elevator.liftUp(.58);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()

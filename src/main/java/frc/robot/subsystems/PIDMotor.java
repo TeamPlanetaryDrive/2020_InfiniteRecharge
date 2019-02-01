@@ -7,6 +7,8 @@
 
 package frc.robot.subsystems;
 
+import java.awt.geom.Ellipse2D.Double;
+
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
@@ -16,6 +18,7 @@ public class PIDMotor extends PIDSubsystem{
 	public SpeedController motor;
 	public PIDSource src;
 	public double multiplier;
+	public double points;
 
 	/**
 	 * Init needs to be called
@@ -34,6 +37,12 @@ public class PIDMotor extends PIDSubsystem{
 		motor.setInverted(inv);
 
 		src = en;
+	}
+	public void setSetpoint(double point){
+		points = point;
+	}
+	public double getSetPoint(){
+		return points;
 	}
 
 	protected double returnPIDInput() {
