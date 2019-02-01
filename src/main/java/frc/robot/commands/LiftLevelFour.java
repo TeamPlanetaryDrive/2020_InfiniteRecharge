@@ -9,14 +9,14 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
-import frc.robot.subsystems.MoveRevGen;
 
-public class Decel extends Command {
-  public Decel() {
+public class LiftLevelFour extends Command {
+  public LiftLevelFour() {
+    //will lift to 4 ft 7 and 1/2 in for the second level ball port
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.MoveRefGen);
+    requires(Robot.Elevator);
+
   }
 
   // Called just before this Command runs the first time
@@ -27,14 +27,6 @@ public class Decel extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    MoveRevGen.refSpeed -= MoveRevGen.accelRate * RobotMap.PERIODIC_UPDATE_PERIOD;
-    if (MoveRevGen.refSpeed <= 0)
-    {
-      MoveRevGen.refSpeed = 0;
-      MoveRevGen.refDist = MoveRevGen.endDist;
-      MoveRevGen.settleTimer = 0;
-      MoveRevGen.moveState = MoveRevGen.Settle;
-    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
