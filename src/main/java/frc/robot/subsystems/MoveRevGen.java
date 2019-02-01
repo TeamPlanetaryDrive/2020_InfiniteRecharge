@@ -8,7 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-
+import frc.robot.RobotMap;
 /**
  * Add your docs here.
  */
@@ -25,18 +25,18 @@ public class MoveRevGen extends Subsystem {
 	}
 
   // Parameters
-	private double accelRate;
-	private double maxSpeed;
-	private double settleTime;
+	private static double accelRate;
+	private static double maxSpeed;
+	private static double settleTime;
 
 	// States
-	private MoveState moveState;
-	private double decelStart;
-	private double direction;
-	private double endDist;
-	private double refDist;
-	private double refSpeed;
-	private double settleTimer;
+	private static MoveState moveState;
+	private static double decelStart;
+	private static double direction;
+	private static double endDist;
+	private static double refDist;
+	private static double refSpeed;
+	private static double settleTimer;
 
 	public MoveRevGen() {
 		moveState = MoveState.Idle;
