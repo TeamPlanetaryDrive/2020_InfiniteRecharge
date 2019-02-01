@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Trigger;
 import frc.robot.commands.*;
 
 /**
@@ -39,6 +40,7 @@ public class OI {
 	public static JoystickButton button3_right = new JoystickButton(rightJoystick, 3);
 	public static JoystickButton button4_right = new JoystickButton(rightJoystick, 4);
   public static JoystickButton button5_right = new JoystickButton(rightJoystick, 5);
+
   //this is where you put associate commands with all the buttons
   public OI(){
     button2_left.whileHeld(new ExtendGripPiston());
