@@ -29,14 +29,17 @@ public class LiftLevelOne extends Command {
   @Override
   protected void execute() {
     Robot.PID.setSetpoint(19);
-    if(Robot.PID.getPosition()<Robot.PID.getSetPoint()){
+    if(Robot.PID.getPosition()<Robot.PID.getSetPoint())
       Robot.Elevator.liftUp(.58);
-    }
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
+    if(Robot.PID.getPosition()>= Robot.PID.getSetPoint())
+      return true;
+    
     return false;
   }
 
