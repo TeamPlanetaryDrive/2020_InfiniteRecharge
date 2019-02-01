@@ -8,35 +8,49 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import frc.robot.commands.*;
 
 /**
  * Add your docs here.
  */
-
-//Use this to climb onto the Hab plateform
-public class Climb extends Subsystem {
+public class MoveRevGen extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  DoubleSolenoid testSolenoid = new DoubleSolenoid(2, 3);
+ 
+  private static enum MoveState {
+		Idle,
+		Accel,
+		SteadyState,
+		Decel,
+		Settle
+	}
 
+  // Parameters
+	private double accelRate;
+	private double maxSpeed;
+	private double settleTime;
+
+	// States
+	private MoveState moveState;
+	private double decelStart;
+	private double direction;
+	private double endDist;
+	private double refDist;
+	private double refSpeed;
+	private double settleTimer;
+
+	public MoveRevGen() {
+		moveState = MoveState.Idle;
+	}
+
+  public void configure(double accelRate, double maxSpeed, double settleTime) {
+		this.accelRate = accelRate;
+		this.maxSpeed = maxSpeed;
+		this.settleTime = settleTime;
+  }
+  
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new RetractClimbPiston());
-  }
-
-  public void pullPiston(){
-    testSolenoid.set(DoubleSolenoid.Value.kReverse);
-  }
-
-  public void pushPiston(){
-    testSolenoid.set(DoubleSolenoid.Value.kForward);
-  }
-
-  public void pistonOff(){
-    testSolenoid.set(DoubleSolenoid.Value.kOff);
   }
 }

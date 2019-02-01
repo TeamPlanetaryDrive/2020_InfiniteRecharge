@@ -10,38 +10,38 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class PneumaticTest extends Command {
-  public PneumaticTest() {
-    requires(Robot.Grip);
+public class RetractClimbPiston extends Command {
+  public RetractClimbPiston() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
+    requires(Robot.Hab_Climb);
   }
 
   // Called just before this Command runs the first time
-  
+  @Override
   protected void initialize() {
   }
 
   // Called repeatedly when this Command is scheduled to run
-  
+  @Override
   protected void execute() {
-    // Will stay extended for 200 units of time (no idea what that time is) 
-    Robot.Grip.pushPiston();
+    Robot.Hab_Climb.pullPiston();
   }
 
   // Make this return true when this Command no longer needs to run execute()
-  
+  @Override
   protected boolean isFinished() {
     return false;
   }
 
   // Called once after isFinished returns true
-  
+  @Override
   protected void end() {
-    //Robot.PneumaticsTest.pullPiston();
-    //Robot.PneumaticsTest.pistonOff();
   }
 
-  // Called when another command which requires one or more of the same subsystems is scheduled to run
-  
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
+  @Override
   protected void interrupted() {
   }
 }

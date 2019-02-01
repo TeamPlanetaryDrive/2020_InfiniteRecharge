@@ -5,20 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems;
+package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
-//use this to move the robot
+import edu.wpi.first.wpilibj.buttons.Trigger;
+import frc.robot.Robot;
+
 /**
  * Add your docs here.
  */
-public class Motion extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
-
+public class PneumaticTestButton extends Trigger {
   @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+  public boolean get() {
+    return false;
   }
 }

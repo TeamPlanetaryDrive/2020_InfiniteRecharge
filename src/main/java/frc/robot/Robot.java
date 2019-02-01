@@ -7,19 +7,20 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Gripper;
 import frc.robot.subsystems.Lift;
 import frc.robot.subsystems.Motion;
+import frc.robot.subsystems.Vision;
+import frc.robot.OI;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,23 +30,30 @@ import frc.robot.subsystems.Motion;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
-    public static Motion D_Motion = new Motion();
-    public static Gripper PneumaticsTest = new Gripper();
+    public static Climb Hab_Climb = new Climb(); // hab platform cimbing 
+    public static DriveTrain Drive = new DriveTrain();//could be redundent , if we delete drivetrain get rid of this
+    public static Gripper Grip = new Gripper(); // testing pnuematics, change name later
+    public static Lift Elevator = new Lift(); // elevator for gripper
+    public static Motion D_Motion = new Motion(); // D_Motion as in drive motion
+    public static Vision Cameras = new Vision(); //used for the vision class as needed
     public static OI m_oi;
 
 
   Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
-  SendableChooser<Command> d_MotionChooser = new SendableChooser<>();
-  SendableChooser<Command> PneumaticsTestSend = new SendableChooser<>();
-  
+    SendableChooser<Command> m_chooser = new SendableChooser<>();
+    SendableChooser<Command> Hab_Climb_Send = new SendableChooser<>();
+    SendableChooser<Command> Drive_Send = new SendableChooser<>();
+    SendableChooser<Command> PneumaticsTest_Send = new SendableChooser<>();
+    SendableChooser<Command> Elevator_Send = new SendableChooser<>();
+    SendableChooser<Command> d_Motion_Send = new SendableChooser<>();
+    SendableChooser<Command> Cameras_Send = new SendableChooser<>();
 
- // LoopVision camera;
-  //LoopTele tele;
- // LoopAuto auto;
+
+ //LoopVision camera;
+ //LoopTele tele;
+ //LoopAuto auto;
   
-  //Robot Mechanisms
+ //Robot Mechanisms
   public DriveTrain driveTrain;
   public Lift lift;
   public Gripper gripper;
@@ -55,16 +63,16 @@ public class Robot extends TimedRobot {
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
    */
-  @Override
+  
   public void robotInit() {
     m_oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
+
+    //Possibly redundant decleration
+    //OI.leftJoystick=new Joystick(0);
+
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
-    gripper.initDefaultCommand();
-
-
-    
+    //gripper.initDefaultCommand();    
   }
 
   /**
@@ -129,7 +137,7 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
   }
 
-  @Override
+  
   public void teleopInit() {
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
@@ -143,7 +151,7 @@ public class Robot extends TimedRobot {
   /**
    * This function is called periodically during operator control.
    */
-  @Override
+  
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
   }
@@ -153,5 +161,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+    
   }
 }
