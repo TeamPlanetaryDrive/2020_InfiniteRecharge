@@ -16,7 +16,6 @@ import frc.robot.RobotMap;
 public class Lift extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  public byte target;
   public double holeDistance;
   public SpeedController motor;
 	
