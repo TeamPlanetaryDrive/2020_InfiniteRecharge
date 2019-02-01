@@ -42,7 +42,15 @@ public class OI {
   //this is where you put associate commands with all the buttons
   public OI(){
     button2_left.whileHeld(new ExtendGripPiston());
-    button3_left.whileHeld(new ExtendClimbPiston());
+    button2_right.whileHeld(new ExtendClimbPiston());
+
+    //lift controls
+    button4_left.whenPressed(new LiftLevelOne());
+    button3_left.whenPressed(new LiftLevelTwo());
+    button5_left.whenPressed(new LiftLevelThree());
+    button4_right.whenPressed(new LiftLevelFour());
+    button3_right.whenPressed(new LiftLevelFive());
+    button5_right.whenPressed(new LiftLevelSix());
   }
   // left and right joysticks being mapped to ports and having their keys mapped (last years code)
    public static void init(){
