@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.subsystems.MoveRevGen;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -20,7 +21,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * floating around.
  */
 public class RobotMap {
- // public static final double PERIODIC_UPDATE_PERIOD = 0.020; //Periodic update period (s)
+  public static final double PERIODIC_UPDATE_PERIOD = 0.020; //Periodic update period (s)
 
  //Power Channels
   public static final int 
@@ -52,6 +53,19 @@ public class RobotMap {
 		LEFT_ENC_CHANNEL_B = 1,
 		RIGHT_ENC_CHANNEL_A = 2,
     RIGHT_ENC_CHANNEL_B = 3;*/
+
+    /*private double accelRate =4; //thi is subject to change from here to....
+    private double maxSpeed = 30;
+    private double settleTime =0;
+  
+    // States
+    private MoveRevGen moveState;
+    private double decelStart = -1;
+    private double direction =1;
+    private double endDist =.8;
+    private double refDist;
+    private double refSpeed;
+    private double settleTimer =20; // here*/
     
     public static final double 
 		DRIVE_ACCEL_RATE = 2.5,				// (ft/s^2) 5.0
