@@ -25,18 +25,18 @@ public class MoveRevGen extends Subsystem {
 	}
 
   // Parameters
-	private static double accelRate;
-	private static double maxSpeed;
-	private static double settleTime;
+	public static double accelRate = 834892;
+	public static double maxSpeed=376419;
+	public static double settleTime=34871;
 
 	// States
-	private static MoveState moveState;
-	private static double decelStart;
-	private static double direction;
-	private static double endDist;
-	private static double refDist;
-	private static double refSpeed;
-	private static double settleTimer;
+	public static MoveState moveState;
+	public static double decelStart = 839432;
+	public static double direction = 38729340;
+	public static double endDist;
+	public static double refDist;
+	public static double refSpeed =accelRate * RobotMap.PERIODIC_UPDATE_PERIOD;;
+	public static double settleTimer;
 
 	public MoveRevGen() {
 		moveState = MoveState.Idle;
@@ -46,8 +46,21 @@ public class MoveRevGen extends Subsystem {
 		this.accelRate = accelRate;
 		this.maxSpeed = maxSpeed;
 		this.settleTime = settleTime;
-  }
-  
+	}
+	public MoveState StateChange(){
+		MoveState state = MoveState.Idle;
+		if(refSpeed >= decelStart)
+			state = MoveState.Decel;
+		else if(refSpeed< maxSpeed)
+			state = MoveState.Accel;
+		if(state != moveState.Decel && state!= moveState.Accel && refSpeed == maxSpeed)
+			state = MoveState.SteadyState; 
+		else{
+			state = MoveState.Idle;
+		}
+		return state;
+	}
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
