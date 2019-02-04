@@ -57,10 +57,6 @@ public class PIDMotor extends PIDSubsystem{
 		tolerance = percentTolerance;
 
 	}
-	public boolean onTarget(){
-	//	if(getPosition() > getSetPoint()*-(setPercentTolerance(5.0)));
-	}
-
 	//Function is only here because PIDSubsystem requires this method
 	@Deprecated
 	protected void initDefaultCommand() {
