@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.subsystems.MoveRevGen;
+import frc.robot.subsystems.MoveRefGen;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into

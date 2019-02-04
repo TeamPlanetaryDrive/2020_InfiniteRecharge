@@ -9,7 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.subsystems.MoveRevGen;
+import frc.robot.subsystems.MoveRefGen;
 
 public class LiftLevelOne extends Command {
   public LiftLevelOne() {
