@@ -18,6 +18,7 @@ public class LiftLevelOne extends Command {
     // eg. requires(chassis);
     requires(Robot.Elevator);
     requires(Robot.PID);
+    requires(Robot.MoveRefGen);
     
 
   }
@@ -31,12 +32,17 @@ public class LiftLevelOne extends Command {
   @Override
   protected void execute() {
     Robot.PID.setSetpoint(19-(51/8));
+    if(Robot.MoveRefGen.getRefPosition()==0)
+    Robot.MoveRefGen.start(Robot.PID.getSetPoint());
+    while(Robot.MoveRefGen.isActive()==true)
+      Robot.MoveRefGen.update();
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.PID.getPosition()>= Robot.PID.getSetPoint())
+    if(Robot.PID.getPosition()>= Robot.PID.getSetPoint()&& Robot.MoveRefGen.isActive() == true )
       return true;
     
     return false;
