@@ -45,7 +45,7 @@ public class MoveRevGen extends Subsystem {
 	private double refSpeed;
 	private double settleTimer;
 
-	MoveRevGen() {
+	public MoveRevGen() {
 		moveState = MoveState.Idle;
 	}
 	
