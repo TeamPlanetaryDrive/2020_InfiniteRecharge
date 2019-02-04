@@ -27,7 +27,7 @@ public class LiftLevelTwo extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.PIDMotor.setSetpoint(27.5);
+    Robot.PID.setSetpoint(27.5-(51/8));
     
   }
 

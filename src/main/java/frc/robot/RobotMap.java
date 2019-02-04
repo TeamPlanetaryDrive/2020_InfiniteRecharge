@@ -67,6 +67,7 @@ public class RobotMap {
     private double refDist;
     private double refSpeed;
     private double settleTimer =20; // here*/
+    public static double distancePerPulse = 0.003522;
     
     public static final double 
 		DRIVE_ACCEL_RATE = 2.5,				// (ft/s^2) 5.0

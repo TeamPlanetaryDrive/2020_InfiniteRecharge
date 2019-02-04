@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.subsystems.MoveRevGen;
 
 public class LiftLevelOne extends Command {
   public LiftLevelOne() {
@@ -17,6 +18,7 @@ public class LiftLevelOne extends Command {
     // eg. requires(chassis);
     requires(Robot.Elevator);
     requires(Robot.PID);
+    
 
   }
 
@@ -28,10 +30,7 @@ public class LiftLevelOne extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.PID.setSetpoint(19);
-    if(Robot.PID.getPosition()<Robot.getSetPoint()
-      Robot.Elevator.liftUp(.58);
-    
+    Robot.PID.setSetpoint(19-(51/8));
   }
 
   // Make this return true when this Command no longer needs to run execute()
