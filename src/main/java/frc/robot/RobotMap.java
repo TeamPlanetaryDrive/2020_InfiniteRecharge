@@ -48,11 +48,12 @@ public class RobotMap {
     CLIMB_CHANNEL =3746837;
 
     //enconder channels
-    /*public static int 
+    //not final yet
+    public static int 
 		LEFT_ENC_CHANNEL_A = 0,
 		LEFT_ENC_CHANNEL_B = 1,
 		RIGHT_ENC_CHANNEL_A = 2,
-    RIGHT_ENC_CHANNEL_B = 3;*/
+    RIGHT_ENC_CHANNEL_B = 3;
 
     /*private double accelRate =4; //thi is subject to change from here to....
     private double maxSpeed = 30;
