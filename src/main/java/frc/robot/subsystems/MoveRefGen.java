@@ -13,7 +13,7 @@ import frc.robot.RobotMap;
 /**
  * Add your docs here.
  */
-public class MoveRevGen extends Subsystem {
+public class MoveRefGen extends Subsystem {
   // Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	@Override
@@ -45,7 +45,7 @@ public class MoveRevGen extends Subsystem {
 	private double refSpeed;
 	private double settleTimer;
 
-	public MoveRevGen() {
+	public MoveRefGen() {
 		moveState = MoveState.Idle;
 	}
 	
