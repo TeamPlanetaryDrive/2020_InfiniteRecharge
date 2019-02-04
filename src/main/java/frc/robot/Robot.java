@@ -38,7 +38,7 @@ public class Robot extends TimedRobot {
     public static Lift Elevator = new Lift(); // elevator for gripper
     public static Motion D_Motion = new Motion(); // D_Motion as in drive motion
     public static Vision Cameras = new Vision(); //used for the vision class as needed
-   // public static MoveRevGen MoveRefGen = new MoveRevGen();// used to change movestates
+    public static MoveRevGen MoveRefGen = new MoveRevGen();// used to change movestates
     public static PIDMotor PID = new PIDMotor(2, .01, 1);
     public static OI m_oi;
 
