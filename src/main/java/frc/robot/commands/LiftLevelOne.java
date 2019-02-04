@@ -13,7 +13,7 @@ import frc.robot.subsystems.MoveRefGen;
 
 public class LiftLevelOne extends Command {
   public LiftLevelOne() {
-    //will be 1 ft 7 in for the hub zone and the hatch panals for all things
+    // will be 1 ft 7 in for the hub zone and the hatch panals for all things
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.Elevator);
