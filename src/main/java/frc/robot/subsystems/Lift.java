@@ -16,7 +16,7 @@ import frc.robot.RobotMap;
 public class Lift extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  public double holeDistance;
+  // public double holeDistance;
   public SpeedController motor;
 	
 	public void liftUp(double speed){
@@ -31,8 +31,7 @@ public class Lift extends Subsystem {
 		motor.stopMotor();
   }
   public double Distance( double speed){
-    holeDistance =  speed *RobotMap.PERIODIC_UPDATE_PERIOD;
-    return holeDistance;
+    return speed *RobotMap.PERIODIC_UPDATE_PERIOD;
   }
 
 

@@ -5,18 +5,21 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.lift;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+//import frc.robot.subsystems.MoveRefGen;
+import frc.robot.commands.lift.*;
 
-public class LiftLevelFive extends Command {
-  public LiftLevelFive() {
-    //lif to 6 ft 2 in for the 3rd level rocket hatch
+public class LiftLevelOne extends Command {
+  public LiftLevelOne() {
+    //will be 1 ft 7 in for the hub zone and the hatch panals for all things
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.Elevator);
     requires(Robot.PID);
+    
 
   }
 
@@ -28,7 +31,7 @@ public class LiftLevelFive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.PID.setSetpoint(74-(51/8));
+    Robot.PID.setSetpoint(19-(51/8));
   }
 
   // Make this return true when this Command no longer needs to run execute()

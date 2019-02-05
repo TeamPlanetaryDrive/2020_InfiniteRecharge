@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
 import frc.robot.commands.*;
+import frc.robot.commands.lift.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -44,7 +45,7 @@ public class OI {
   //this is where you put associate commands with all the buttons
   public OI(){
     button2_left.whileHeld(new ExtendGripPiston());
-    button2_right.whileHeld(new ExtendClimbPiston());
+    //button2_right.whileHeld(new ExtendClimbPiston());
 
     //lift controls
     button4_left.whenPressed(new LiftLevelOne());

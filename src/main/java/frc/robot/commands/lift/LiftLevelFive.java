@@ -5,16 +5,19 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.lift;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.OI;
 import frc.robot.Robot;
 
-public class Ascend extends Command {
-  public Ascend() {
+public class LiftLevelFive extends Command {
+  public LiftLevelFive() {
+    //lif to 6 ft 2 in for the 3rd level rocket hatch
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.Elevator);
+    requires(Robot.PID);
+
   }
 
   // Called just before this Command runs the first time
@@ -25,19 +28,21 @@ public class Ascend extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Elevator.liftUp(0.58);
+    Robot.PID.setSetpoint(74-(51/8));
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return !OI.rightJoystick.getTrigger();
+    if(Robot.PID.getPosition()>= Robot.PID.getSetpoint())
+      return true;
+    
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-
   }
 
   // Called when another command which requires one or more of the same

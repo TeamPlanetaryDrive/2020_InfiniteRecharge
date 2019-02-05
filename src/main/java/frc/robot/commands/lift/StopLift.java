@@ -5,18 +5,16 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.lift;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class LiftLevelThree extends Command {
-  public LiftLevelThree() {
-    //will be 3 ft 11 in for the second level of hatch panals for the rocket
+public class StopLift extends Command {
+  public StopLift() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.Elevator);
-
   }
 
   // Called just before this Command runs the first time
@@ -27,15 +25,12 @@ public class LiftLevelThree extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.PID.setSetpoint(47-(51/8));
+    Robot.Elevator.liftStop();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.PID.getPosition()>= Robot.PID.getSetpoint())
-      return true;
-    
     return false;
   }
 

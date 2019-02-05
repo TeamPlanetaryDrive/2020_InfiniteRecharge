@@ -5,21 +5,16 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.lift;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.OI;
 import frc.robot.Robot;
-import frc.robot.subsystems.MoveRefGen;
 
-public class LiftLevelOne extends Command {
-  public LiftLevelOne() {
-    //will be 1 ft 7 in for the hub zone and the hatch panals for all things
+public class Ascend extends Command {
+  public Ascend() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.Elevator);
-    requires(Robot.PID);
-    
-
   }
 
   // Called just before this Command runs the first time
@@ -30,21 +25,19 @@ public class LiftLevelOne extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.PID.setSetpoint(19-(51/8));
+    Robot.Elevator.liftUp(0.58);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.PID.getPosition()>= Robot.PID.getSetpoint())
-      return true;
-    
-    return false;
+    return !OI.rightJoystick.getTrigger();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+
   }
 
   // Called when another command which requires one or more of the same
