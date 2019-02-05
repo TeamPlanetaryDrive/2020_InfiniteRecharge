@@ -28,6 +28,8 @@ public class LiftLevelThree extends Command {
   @Override
   protected void execute() {
     Robot.PID.setSetpoint(47-(51/8));
+    while(Robot.MoveRefGen.isActive()==true)
+      Robot.MoveRefGen.update();
   }
 
   // Make this return true when this Command no longer needs to run execute()

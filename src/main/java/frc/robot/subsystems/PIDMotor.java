@@ -53,10 +53,6 @@ public class PIDMotor extends PIDSubsystem{
 	protected void usePIDOutput(double output) {
 		motor.set(output * multiplier);
 	}
-	public void setPercentTolerance(double percentTolerance){
-		tolerance = percentTolerance;
-
-	}
 	//Function is only here because PIDSubsystem requires this method
 	@Deprecated
 	protected void initDefaultCommand() {
