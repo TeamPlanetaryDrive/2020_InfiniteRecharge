@@ -38,6 +38,9 @@ public class DriveTrain extends Subsystem {
 
   public DifferentialDrive getDrive(){return robotDrive;}
 
+  public SpeedController getSPRight(){return w_right;}
+  public SpeedController getSPLeft(){return w_left;}
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
