@@ -7,7 +7,7 @@
 
 package frc.robot.subsystems;
 
-import java.awt.geom.Ellipse2D.Double;
+//import java.awt.geom.Ellipse2D.Double;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
@@ -24,10 +24,10 @@ public class PIDMotor extends PIDSubsystem{
 	/**
 	 * Init needs to be called
 	 */
-	public PIDMotor(double Kp, double Ki, double Kd){
-		super("PIDMotor", Kp, Ki, Kd);
+	public PIDMotor(double Kp, double Ki, double Kd,double kf){
+		super("PIDMotor", Kp, Ki, Kd, kf);
 
-		this.setOutputRange(-0.95, 0.95);
+		this.setOutputRange(-0.20, 0.50);
 		this.setAbsoluteTolerance(0.05);
 		this.getPIDController().setContinuous(true);
 		multiplier = 1;
@@ -36,14 +36,14 @@ public class PIDMotor extends PIDSubsystem{
 	public void init(SpeedController sc, boolean inv, PIDSource en){
 		motor = sc;
 		motor.setInverted(inv);
-
 		src = en;
 	}
 	public void setSetpoint(double point){
 		this.setSetpoint(point);
 	}
-	public double getSetPoint(){
-		return points;
+
+	public void setAbsoluteTolerance(double percent){
+		this.setPercentTolerance(percent);
 	}
 
 	protected double returnPIDInput() {
@@ -51,7 +51,8 @@ public class PIDMotor extends PIDSubsystem{
 	}
 
 	protected void usePIDOutput(double output) {
-		motor.set(output * multiplier);
+		motor.pidWrite(output*multiplier);
+		//motor.set(output * multiplier);
 	}
 	//Function is only here because PIDSubsystem requires this method
 	@Deprecated

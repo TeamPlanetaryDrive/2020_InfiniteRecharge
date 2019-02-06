@@ -5,17 +5,23 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.lift;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.OI;
+//import frc.robot.subsystems.MoveRefGen;
+import frc.robot.commands.lift.*;
 
-public class Descend extends Command {
-  public Descend() {
+public class LiftLevelOne extends Command {
+  public LiftLevelOne() {
+    //will be 1 ft 7 in for the hub zone and the hatch panals for all things
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.Elevator);
+    requires(Robot.PID);
+    requires(Robot.MoveRefGen);
+    
+
   }
 
   // Called just before this Command runs the first time
@@ -26,20 +32,27 @@ public class Descend extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Elevator.liftDown(0.58);
+    Robot.PID.setSetpoint(19-(51/8));
+    Robot.MoveRefGen.start(19-(51/8));
+    Robot.PID.enable();
+    while(Robot.MoveRefGen.isActive()==true)
+      Robot.MoveRefGen.update();
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    //can be rightjoystick too, just make sure to flip it with the joystick associated with ascend
-    return !OI.leftJoystick.getTrigger();
+    if(Robot.PID.getPosition()>= Robot.PID.getSetpoint()){
+      Robot.MoveRefGen.stop();
+      return true;
+    }
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    
   }
 
   // Called when another command which requires one or more of the same

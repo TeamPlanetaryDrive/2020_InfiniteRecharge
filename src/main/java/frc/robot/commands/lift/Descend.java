@@ -5,16 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.lift;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.OI;
 import frc.robot.Robot;
+import frc.robot.OI;
 
-public class Ascend extends Command {
-  public Ascend() {
+public class Descend extends Command {
+  public Descend() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.Elevator);
   }
 
   // Called just before this Command runs the first time
@@ -25,19 +26,20 @@ public class Ascend extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Elevator.liftUp(0.58);
+    Robot.Elevator.liftDown(0.58);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return !OI.rightJoystick.getTrigger();
+    //can be rightjoystick too, just make sure to flip it with the joystick associated with ascend
+    return !OI.leftJoystick.getTrigger();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-
+    
   }
 
   // Called when another command which requires one or more of the same

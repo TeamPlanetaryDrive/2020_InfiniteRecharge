@@ -39,7 +39,7 @@ public class Robot extends TimedRobot {
     public static Motion D_Motion = new Motion(); // D_Motion as in drive motion
     public static Vision Cameras = new Vision(); //used for the vision class as needed
     public static MoveRefGen MoveRefGen = new MoveRefGen();// used to change movestates
-    public static PIDMotor PID = new PIDMotor(2, .01, 1);
+    public static PIDMotor PID = new PIDMotor(2 , .01, 1 , 0);
     public static OI m_oi;
 
 
