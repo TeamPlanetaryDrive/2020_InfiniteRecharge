@@ -33,8 +33,8 @@ public class LiftLevelOne extends Command {
   @Override
   protected void execute() {
     Robot.PID.setSetpoint(19-(51/8));
-    Robot.MoveRefGen.start(19-(51/8));
-    Robot.PID.enable();
+    if(Robot.MoveRefGen.getRefPosition()==0)
+    Robot.MoveRefGen.start(Robot.PID.getSetPoint());
     while(Robot.MoveRefGen.isActive()==true)
       Robot.MoveRefGen.update();
     
@@ -43,10 +43,9 @@ public class LiftLevelOne extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.PID.getPosition()>= Robot.PID.getSetpoint()){
-      Robot.MoveRefGen.stop();
+    if(Robot.PID.getPosition()>= Robot.PID.getSetpoint())
       return true;
-    }
+    
     return false;
   }
 
