@@ -5,16 +5,14 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.CommandGroups;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
 
-public class StopGripPiston extends Command {
-  public StopGripPiston() {
+public class RetrieveCargo extends Command {
+  public RetrieveCargo() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.Grip);
   }
 
   // Called just before this Command runs the first time
@@ -23,11 +21,19 @@ public class StopGripPiston extends Command {
   }
 
   // Called repeatedly when this Command is scheduled to run
+  @Override
   protected void execute() {
-    Robot.Grip.pistonOff();
+    //pseudocode
+    /**(link to the pressing of a button)
+     * ExpandGripPiston
+     * ExtendGripPiston
+     * CloseGripPiston
+     * RetractGripPiston
+     */
   }
 
   // Make this return true when this Command no longer needs to run execute()
+  @Override
   protected boolean isFinished() {
     return false;
   }

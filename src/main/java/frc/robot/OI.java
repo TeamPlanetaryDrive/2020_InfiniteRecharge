@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
 import frc.robot.commands.*;
 import frc.robot.commands.lift.*;
+import frc.robot.commands.grip.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator

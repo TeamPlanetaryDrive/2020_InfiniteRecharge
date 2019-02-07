@@ -9,11 +9,11 @@ package frc.robot.CommandGroups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class PlacePanel extends CommandGroup {
+public class RetrievePanel extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public PlacePanel() {
+  public RetrievePanel() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
@@ -31,7 +31,9 @@ public class PlacePanel extends CommandGroup {
     // a CommandGroup containing them would require both the chassis and the
     // arm.
 
-    //pseudocode
-    //similar to loading cargo except reverse expand and close
+    /**pseudocode
+     * similar to retrievecargo, except switch expanding and closing
+     * so close first, extend, and then expand before finally retracting
+     */
   }
 }
