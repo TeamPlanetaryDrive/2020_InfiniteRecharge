@@ -33,18 +33,7 @@ public class TestPId extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-<<<<<<< HEAD
-    
-    Robot.PID.setSetpoint(19-(51/8));
-    Robot.MoveRefGen.start(19-(51/8));
-    Robot.PID.enable();
-    while(Robot.MoveRefGen.isActive()==true)
-      Robot.MoveRefGen.update();
-      
-
-=======
     Robot.Elevator.setTarget(19-(51/8));  
->>>>>>> d337ca21f7ddc4e29c0b8ca6d3f3c0f241a9a69a
 
   }
 

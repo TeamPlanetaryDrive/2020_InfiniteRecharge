@@ -10,7 +10,7 @@ import edu.wpi.first.hal.EncoderJNI;
 import edu.wpi.first.hal.sim.EncoderSim;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.util.*;
 import frc.robot.RobotMap;
@@ -23,8 +23,10 @@ public class Lift extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   // public double holeDistance;
-  Talon ElevatorMotor = new Talon(RobotMap.lift);
-  Encoder ElevatorEncoder = EncoderSim(RobotMap.REnc);
+  private SpeedController ElevatorMotor;
+  private Encoder ElevatorEncoder;
+  //Jaguar use = new Jaguar(0);
+
   PIDFix pid = new PIDFix(0.025,0,0){
   
     @Override
@@ -43,7 +45,7 @@ public class Lift extends Subsystem {
   }
 
   public double getTarget(){
-    pid.getSetPoint();
+    return pid.getSetPoint();
   }
 
   public void setTarget(double level){
@@ -72,7 +74,6 @@ public class Lift extends Subsystem {
   public double Distance( double speed){
     return speed *RobotMap.PERIODIC_UPDATE_PERIOD;
   }
-
 
   @Override
   public void initDefaultCommand() {
