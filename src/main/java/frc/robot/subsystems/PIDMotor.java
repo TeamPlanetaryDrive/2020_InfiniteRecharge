@@ -46,11 +46,11 @@ public class PIDMotor extends PIDSubsystem{
 		this.setPercentTolerance(percent);
 	}
 
-	protected double returnPIDInput() {
+	public double returnPIDInput() {
 		return src.pidGet();
 	}
 
-	protected void usePIDOutput(double output) {
+	public void usePIDOutput(double output) {
 		motor.pidWrite(output*multiplier);
 		//motor.set(output * multiplier);
 	}

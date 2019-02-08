@@ -7,6 +7,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
@@ -23,6 +24,7 @@ public class TestPId extends Command {
   @Override
   protected void initialize() {
     Robot.PID.init(Robot.Drive.getSPLeft(), false , RobotMap.LEnc);
+    Robot.MoveRefGen.configure(Robot.PID.returnPIDInput(), 0.5, 40.0);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -34,6 +36,7 @@ public class TestPId extends Command {
     Robot.PID.enable();
     while(Robot.MoveRefGen.isActive()==true)
       Robot.MoveRefGen.update();
+      
 
 
   }
