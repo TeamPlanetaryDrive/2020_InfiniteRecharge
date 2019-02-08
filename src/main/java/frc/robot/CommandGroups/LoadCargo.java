@@ -7,6 +7,8 @@
 
 package frc.robot.CommandGroups;
 
+import javax.print.attribute.standard.PrinterStateReasons;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class LoadCargo extends CommandGroup {
@@ -30,5 +32,14 @@ public class LoadCargo extends CommandGroup {
     // e.g. if Command1 requires chassis, and Command2 requires arm,
     // a CommandGroup containing them would require both the chassis and the
     // arm.
+    
+    /**pseudocode
+     *ExtendGripPiston ~ should be gripping the ball
+     *ExpandGripPiston
+     *CloseGripPiston
+     *RetractGripPiston
+     */
+
+    
   }
 }

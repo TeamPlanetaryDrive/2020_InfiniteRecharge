@@ -20,12 +20,13 @@ public class PIDMotor extends PIDSubsystem{
 	public double multiplier;
 	public double points;
 	public double tolerance;
+	public double setPoint;
 
 	/**
 	 * Init needs to be called
 	 */
 	public PIDMotor(double Kp, double Ki, double Kd,double kf){
-		super("PIDMotor", Kp, Ki, Kd, kf);
+		super("PIDMotor", Kp, Ki, Kd);
 
 		this.setOutputRange(-0.20, 0.50);
 		this.setAbsoluteTolerance(0.05);
@@ -39,14 +40,18 @@ public class PIDMotor extends PIDSubsystem{
 		src = en;
 	}
 	public void setSetpoint(double point){
-		this.setSetpoint(point);
+		this.setPoint = point;
 	}
 
 	public void setAbsoluteTolerance(double percent){
 		this.setPercentTolerance(percent);
 	}
+		
+	public boolean isAtTarget() {
+		return Math.abs(this.getSetpoint()-this.getPosition()) < tolerance;
+	  }
 
-	public double returnPIDInput() {
+	  protected double returnPIDInput() {
 		return src.pidGet();
 	}
 
@@ -54,6 +59,7 @@ public class PIDMotor extends PIDSubsystem{
 		motor.pidWrite(output*multiplier);
 		//motor.set(output * multiplier);
 	}
+
 	//Function is only here because PIDSubsystem requires this method
 	@Deprecated
 	protected void initDefaultCommand() {

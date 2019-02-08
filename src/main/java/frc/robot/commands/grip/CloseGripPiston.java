@@ -5,53 +5,30 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.grip;
 
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class TestPId extends Command {
-  public TestPId() {
+public class CloseGripPiston extends Command {
+  public CloseGripPiston() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.Elevator);
-    requires(Robot.PID);
-    requires(Robot.MoveRefGen);
-    
-
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
-  
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-<<<<<<< HEAD
-    
-    Robot.PID.setSetpoint(19-(51/8));
-    Robot.MoveRefGen.start(19-(51/8));
-    Robot.PID.enable();
-    while(Robot.MoveRefGen.isActive()==true)
-      Robot.MoveRefGen.update();
-      
-
-=======
-    Robot.Elevator.setTarget(19-(51/8));  
->>>>>>> d337ca21f7ddc4e29c0b8ca6d3f3c0f241a9a69a
-
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.Elevator.success();
+    return false;
   }
 
   // Called once after isFinished returns true
