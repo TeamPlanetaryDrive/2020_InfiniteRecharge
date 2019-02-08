@@ -15,35 +15,31 @@ public class TestPId extends Command {
   public TestPId() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.Elevator);
     requires(Robot.PID);
-    requires(Robot.Drive);
+    requires(Robot.MoveRefGen);
+    
+
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.PID.init(Robot.Drive.getSPLeft(), false , RobotMap.LEnc);
+
+  
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
-    Robot.PID.setSetpoint(19-(51/8));
-    Robot.MoveRefGen.start(19-(51/8));
-    Robot.PID.enable();
-    while(Robot.MoveRefGen.isActive()==true)
-      Robot.MoveRefGen.update();
-
+    Robot.Elevator.setTarget(19-(51/8));  
 
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.MoveRefGen.getRefPosition() >= Robot.PID.getSetpoint())
-      return true;
-    return false;
+    return Robot.Elevator.success();
   }
 
   // Called once after isFinished returns true
