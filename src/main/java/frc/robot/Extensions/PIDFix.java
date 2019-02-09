@@ -38,44 +38,27 @@ public abstract class PIDFix {
         usePIDOutput(calculate(returnPIDInput()));
     }
 
-     public abstract double returnPIDInput();
+    public abstract double returnPIDInput();
 
-            /**
-             * This method should use the output from the PID function in order to affect
-             * something that affects the feedback sensor that provides
-             * {@link SimplePID#returnPIDInput returnPIDInput}.
-             * 
-             * @param output the output fed from the PID function.
-             */
     public abstract void usePIDOutput(double output);
           
-            /** Stops the internal Timer. */
     public void disable() {
         active= false;
         }
-          
-            /** Starts the internal Timer. */
+        
     public void Activate() {
         active = true;
         }
-          
-            /**
-             * Returns true if the last error was tolerable.
-             * 
-             * @return whether the last error was tolerable.
-             */
     public boolean isAtTarget() {
         return Math.abs(Error) <= Tolerance;
      }
-          
-            /**
-             * Sets the target setpoint.
-             * 
-             * @param setpoint the setpoint to set
-             */
+        
     public void setSetpoint(double setpoint) {
           this.setPoint = setpoint;
-    }
+    } 
+    public double getSetPoint(){
+    return setPoint;
+   }
 
     public void setTolerance(double tolerance) {
           this.Tolerance = tolerance;
@@ -106,9 +89,7 @@ public abstract class PIDFix {
     
         return -(p + i - d);
       }
-    public double getSetPoint(){
-        return setPoint;
-    }
+
 
     
 }

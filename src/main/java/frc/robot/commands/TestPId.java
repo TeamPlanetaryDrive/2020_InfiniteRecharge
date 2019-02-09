@@ -11,16 +11,21 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.Extensions.PIDFix;
 
 public class TestPId extends Command {
   public TestPId() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.Elevator);
-    requires(Robot.PID);
+    //requires(Robot.PID);
     requires(Robot.MoveRefGen);
+<<<<<<< HEAD
+  
+=======
     
     System.out.println("hey");
+>>>>>>> 9bc393391766b650c6d6c6a4d0897ee298cddc30
 
   }
 
@@ -35,7 +40,16 @@ public class TestPId extends Command {
   @Override
   protected void execute() {
     Robot.Elevator.setTarget(19-(51/8));  
-
+   if(Robot.Elevator.encoderGetDistLeft()<Robot.Elevator.getTarget()){
+    if(Robot.Elevator.encoderGetDistLeft() <= 0){
+      Robot.Elevator. liftUp(.50);
+    }
+    if(Robot.Elevator.encoderGetDistLeft() > Robot.Elevator.getTarget()*.7)
+      Robot.Elevator.liftUp(.2);
+  }
+    if(Robot.Elevator.encoderGetDistLeft() > Robot.Elevator.getTarget()*.9){
+      Robot.Elevator.liftUp(.1);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()

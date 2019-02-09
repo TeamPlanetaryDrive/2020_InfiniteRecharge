@@ -44,12 +44,15 @@ public class OI {
 	public static JoystickButton button4_right = new JoystickButton(rightJoystick, 4);
   public static JoystickButton button5_right = new JoystickButton(rightJoystick, 5);
 
-  //this is where you put associate commands with all the buttons
+  //This is where you put associate commands with all the buttons
   public OI(){
+    //Gripper controls
     button2_left.whileHeld(new ExtendGripPiston());
+
+    //Climb controls (delete if not made)
     //button2_right.whileHeld(new ExtendClimbPiston());
 
-    //lift controls
+    //Lift controls
     button4_left.whenPressed(new LiftLevelOne());
     button3_left.whenPressed(new LiftLevelTwo());
     button5_left.whenPressed(new LiftLevelThree());
@@ -57,7 +60,7 @@ public class OI {
     button3_right.whenPressed(new LiftLevelFive());
     button5_right.whenPressed(new LiftLevelSix());
 
-    button2_right.whenPressed(new OtherCode(ElevatorPosition.Bottom));
+    button2_right.whenPressed(new TestPId());
   }
 
   // left and right joysticks being mapped to ports and having their keys mapped (last years code)

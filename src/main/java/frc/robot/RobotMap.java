@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -46,6 +47,16 @@ public class RobotMap {
     public static int
     GRIPPER_CHANNEL = 2829683,
     CLIMB_CHANNEL =3746837;
+
+    
+	// Drive system PID Parameters
+	public static final double
+		DRIVE_PID_POSITION_KP = 2.00,		// 2.00
+		DRIVE_PID_POSITION_KI = 0.01,		// 0.01
+		DRIVE_PID_POSITION_KD = 1.00,		// 1.00
+		DRIVE_PID_ANGLE_KP = 0.02,
+		DRIVE_PID_ANGLE_KI = 0.001,
+		DRIVE_PID_ANGLE_KD = 0.0;
 
     //enconder channels
     //not final yet
@@ -100,8 +111,8 @@ public static Encoder
 
 //Left: Port 0, Right: Port 1
 public static Joystick 
-leftJoystick, 
-rightJoystick;
+  leftJoystick, 
+  rightJoystick;
 
 public static JoystickButton 
   button2_left,
@@ -122,4 +133,11 @@ public static JoystickButton
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
+  public void init(){
+    LEnc = new Encoder(0, 1);
+    REnc = new Encoder(2,3);
+
+    lMotor = new Jaguar(0);
+    rMotor = new Jaguar(1);
+  }
 }
