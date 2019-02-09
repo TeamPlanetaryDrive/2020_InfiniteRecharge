@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
 import frc.robot.commands.*;
+import frc.robot.commands.OtherCode.ElevatorPosition;
 import frc.robot.commands.lift.*;
 import frc.robot.commands.grip.*;
 
@@ -56,10 +57,9 @@ public class OI {
     button3_right.whenPressed(new LiftLevelFive());
     button5_right.whenPressed(new LiftLevelSix());
 
-    button2_right.whenPressed(new TestPId());
-
-    
+    button2_right.whenPressed(new OtherCode(ElevatorPosition.Bottom));
   }
+
   // left and right joysticks being mapped to ports and having their keys mapped (last years code)
    public static void init(){
 
@@ -85,4 +85,5 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
 
-}
+  }
+
