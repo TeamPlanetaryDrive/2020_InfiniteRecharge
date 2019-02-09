@@ -35,7 +35,7 @@ public abstract class PIDFix {
     public final void Run(){
         if(!active)
             return;
-
+        usePIDOutput(calculate(returnPIDInput()));
     }
 
      public abstract double returnPIDInput();
@@ -83,6 +83,13 @@ public abstract class PIDFix {
         
     private final double calculate(double measured) {
         var error = setPoint - measured;
+
+        if (error > 180) {
+            error -= 360;
+          } else if (error < -180) {
+            error += 360;
+          }
+      
        
         if (Math.abs(error) <= Tolerance) {
           ErrorCycle = 0;

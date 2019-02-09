@@ -23,8 +23,8 @@ public class Lift extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   // public double holeDistance;
-  Talon ElevatorMotor = new Talon(RobotMap.lift);
-  Encoder ElevatorEncoder = EncoderSim(RobotMap.REnc);
+  private SpeedController ElevatorMotor;
+  private Encoder ElevatorEncoder;
   PIDFix pid = new PIDFix(0.025,0,0){
   
     @Override
@@ -43,7 +43,7 @@ public class Lift extends Subsystem {
   }
 
   public double getTarget(){
-    pid.getSetPoint();
+    return pid.getSetPoint();
   }
 
   public void setTarget(double level){

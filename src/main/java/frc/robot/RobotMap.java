@@ -40,7 +40,7 @@ public class RobotMap {
 
     //motor based
      public static int 
-    LIFT_CHANNEL = 93471384;
+    LIFT_CHANNEL = 0;
     
     //piston based
     public static int
@@ -87,10 +87,10 @@ public class RobotMap {
   rMotor;
 
 //Manipulator: Channel 2, Lift: Channel 4
-public static SpeedController 
-  manipulator, 
-  lift,
-  climb;
+// public static SpeedController 
+//   manipulator, 
+//   lift,
+//   climb;
 
 public static DigitalInput HatchPanalIn/*GearIn*/; //Channel 6
 
