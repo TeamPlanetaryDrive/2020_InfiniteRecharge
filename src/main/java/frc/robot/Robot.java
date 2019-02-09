@@ -69,7 +69,7 @@ public class Robot extends TimedRobot {
   
   public void robotInit() {
     m_oi = new OI();
-    PID.init();
+    //PID.init();  // Init needs additional parameters
     //Possibly redundant decleration
     //OI.leftJoystick=new Joystick(0);
 
