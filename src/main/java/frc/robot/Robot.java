@@ -42,7 +42,6 @@ public class Robot extends TimedRobot {
     public static PIDMotor PID = new PIDMotor(2 , .01, 1 , 0);
     public static OI m_oi;
 
-
   Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();
     SendableChooser<Command> Hab_Climb_Send = new SendableChooser<>();
@@ -70,7 +69,7 @@ public class Robot extends TimedRobot {
   
   public void robotInit() {
     m_oi = new OI();
-
+    PID.init();
     //Possibly redundant decleration
     //OI.leftJoystick=new Joystick(0);
 
