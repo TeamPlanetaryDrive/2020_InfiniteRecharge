@@ -20,6 +20,7 @@ public class TestPId extends Command {
     requires(Robot.PID);
     requires(Robot.MoveRefGen);
     
+    System.out.println("hey");
 
   }
 
