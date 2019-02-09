@@ -9,8 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-//import frc.robot.commands.*;
-import frc.robot.commands.grip.RetractGripPiston;
+import frc.robot.commands.grip.*;
 
 // use double solenoids
 //use compressor
