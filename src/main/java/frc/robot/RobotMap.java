@@ -86,7 +86,11 @@ public class RobotMap {
   lMotor, 
   rMotor;
 
+<<<<<<< HEAD
 //Manipulator: Channel 2, Lift: Channel 4
+=======
+// //Manipulator: Channel 2, Lift: Channel 4
+>>>>>>> c1b1afd51cebd83db5dcfae4add242010d2bbe63
 // public static SpeedController 
 //   manipulator, 
 //   lift,

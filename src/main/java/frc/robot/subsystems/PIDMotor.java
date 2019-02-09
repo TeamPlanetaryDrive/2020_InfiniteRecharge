@@ -30,7 +30,7 @@ public class PIDMotor extends PIDSubsystem{
 
 		this.setOutputRange(-0.20, 0.50);
 		this.setAbsoluteTolerance(0.05);
-		this.getPIDController().setContinuous(true);
+		this.getPIDController().setContinuous(false);
 		multiplier = 1;
 	}
 
@@ -55,7 +55,7 @@ public class PIDMotor extends PIDSubsystem{
 		return src.pidGet();
 	}
 
-	protected void usePIDOutput(double output) {
+	public void usePIDOutput(double output) {
 		motor.pidWrite(output*multiplier);
 		//motor.set(output * multiplier);
 	}

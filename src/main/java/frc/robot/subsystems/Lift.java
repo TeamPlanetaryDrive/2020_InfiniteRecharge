@@ -10,7 +10,7 @@ import edu.wpi.first.hal.EncoderJNI;
 import edu.wpi.first.hal.sim.EncoderSim;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.util.*;
 import frc.robot.RobotMap;
@@ -25,6 +25,11 @@ public class Lift extends Subsystem {
   // public double holeDistance;
   private SpeedController ElevatorMotor;
   private Encoder ElevatorEncoder;
+<<<<<<< HEAD
+=======
+  //Jaguar use = new Jaguar(0);
+
+>>>>>>> c1b1afd51cebd83db5dcfae4add242010d2bbe63
   PIDFix pid = new PIDFix(0.025,0,0){
   
     @Override
@@ -72,7 +77,6 @@ public class Lift extends Subsystem {
   public double Distance( double speed){
     return speed *RobotMap.PERIODIC_UPDATE_PERIOD;
   }
-
 
   @Override
   public void initDefaultCommand() {
