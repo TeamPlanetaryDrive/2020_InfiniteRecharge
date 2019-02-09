@@ -60,7 +60,7 @@ public class OI {
     button3_right.whenPressed(new LiftLevelFive());
     button5_right.whenPressed(new LiftLevelSix());
 
-    button2_right.whenPressed(new TestPId());
+    button2_right.whenPressed(new TestPID());
   }
 
   // left and right joysticks being mapped to ports and having their keys mapped (last years code)

@@ -13,8 +13,8 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.Extensions.PIDFix;
 
-public class TestPId extends Command {
-  public TestPId() {
+public class TestPID extends Command {
+  public TestPID() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.Elevator);
