@@ -57,14 +57,9 @@ public class OI {
     button3_right.whenPressed(new LiftLevelFive());
     button5_right.whenPressed(new LiftLevelSix());
 
-<<<<<<< HEAD
     button2_right.whenPressed(new OtherCode(ElevatorPosition.Bottom));
-=======
-    button2_right.whenPressed(new TestPId());
-
-    
->>>>>>> c1b1afd51cebd83db5dcfae4add242010d2bbe63
   }
+
   // left and right joysticks being mapped to ports and having their keys mapped (last years code)
    public static void init(){
 
@@ -90,4 +85,5 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
 
-}
+  }
+

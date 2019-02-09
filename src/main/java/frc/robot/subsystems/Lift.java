@@ -25,11 +25,8 @@ public class Lift extends Subsystem {
   // public double holeDistance;
   private SpeedController ElevatorMotor;
   private Encoder ElevatorEncoder;
-<<<<<<< HEAD
-=======
   //Jaguar use = new Jaguar(0);
 
->>>>>>> c1b1afd51cebd83db5dcfae4add242010d2bbe63
   PIDFix pid = new PIDFix(0.025,0,0){
   
     @Override
