@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.util.*;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.Extensions.*;
   //use to move the grippers up and down on the elevator
@@ -20,25 +21,32 @@ import frc.robot.Extensions.*;
  * Add your docs here.
  */
 public class Lift extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
   // public double holeDistance;
   private SpeedController ElevatorMotor;
-  private Encoder ElevatorEncoder;
+  //private SpeedController ElevatorMotor2;
+  private Encoder elevatorEncoder ;
+  //private Encoder elevatorEncoder2 ;
   //Jaguar use = new Jaguar(0);
 
   PIDFix pid = new PIDFix(0.025,0,0){
   
     @Override
     public void usePIDOutput(double output) {
-      ElevatorMotor.set(output);
+        
     }
   
     @Override
     public double returnPIDInput() {
-      return ElevatorEncoder.getDistance();
+      return 0;
     }
   };
+
+  public double encoderGetDistLeft() {
+		return RobotMap.LEnc.getDistance();
+	}
+	public double encoderGetRateLeft() {
+		return RobotMap.LEnc.getRate();
+	}
   
   public Lift(){
     pid.Activate();
@@ -69,10 +77,16 @@ public class Lift extends Subsystem {
   }
 	
 	public void liftStop(){
-    pid.setSetpoint(ElevatorEncoder.getDistance());
+    pid.setSetpoint(elevatorEncoder.getDistance());
   }
   public double Distance( double speed){
     return speed *RobotMap.PERIODIC_UPDATE_PERIOD;
+  }
+
+  public void moveStart(double distance){
+    double accelRate;
+		double maxSpeed;
+		double Kp, Ki, Kd;
   }
 
   @Override
