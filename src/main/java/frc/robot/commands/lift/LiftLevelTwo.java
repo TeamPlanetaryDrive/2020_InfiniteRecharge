@@ -12,17 +12,15 @@ import frc.robot.Robot;
 
 public class LiftLevelTwo extends Command {
   public LiftLevelTwo() {
-    //will be 2 ft 3 and 1/2 in to get to the port for the balls
+    //Will be 2 ft 3 and 1/2 in to get to the port for the balls
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.Elevator);
-
   }
 
   // Called just before this Command runs the first time
   @Override
-  protected void initialize() {
-  }
+  protected void initialize() {}
 
   // Called repeatedly when this Command is scheduled to run
   @Override
@@ -43,12 +41,10 @@ public class LiftLevelTwo extends Command {
 
   // Called once after isFinished returns true
   @Override
-  protected void end() {
-  }
+  protected void end() {}
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
-  protected void interrupted() {
-  }
+  protected void interrupted() {}
 }
