@@ -20,12 +20,8 @@ public class TestPId extends Command {
     requires(Robot.Elevator);
     //requires(Robot.PID);
     requires(Robot.MoveRefGen);
-<<<<<<< HEAD
-  
-=======
-    
+
     System.out.println("hey");
->>>>>>> 9bc393391766b650c6d6c6a4d0897ee298cddc30
 
   }
 
