@@ -28,18 +28,18 @@ public class Lift extends Subsystem {
   //private Encoder elevatorEncoder2 ;
   //Jaguar use = new Jaguar(0);
 
-  PIDFix pid = new PIDFix(0.025,0,0){
+  // PIDFix pid = new PIDFix(0.025,0,0){
   
-    @Override
-    public void usePIDOutput(double output) {
+  //   @Override
+  //   public void usePIDOutput(double output) {
         
-    }
+  //   }
   
-    @Override
-    public double returnPIDInput() {
-      return 0;
-    }
-  };
+  //   @Override
+  //   public double returnPIDInput() {
+  //     return 0;
+  //   }
+  // };
 
   public double encoderGetDistLeft() {
 		return RobotMap.LEnc.getDistance();
@@ -49,19 +49,19 @@ public class Lift extends Subsystem {
 	}
   
   public Lift(){
-    pid.Activate();
+    Robot.PID.enable();
   }
 
   public double getTarget(){
-    return pid.getSetPoint();
+    return Robot.PID.getSetpoint();
   }
 
   public void setTarget(double level){
-    pid.setSetpoint(level);
+   Robot.PID.setSetpoint(level);
   }
 
   public boolean success(){
-    return pid.isAtTarget();
+    return Robot.PID.isAtTarget();
   }
 
 	public void liftUp(double speed){
@@ -77,17 +77,17 @@ public class Lift extends Subsystem {
   }
 	
 	public void liftStop(){
-    pid.setSetpoint(elevatorEncoder.getDistance());
+    Robot.PID.setSetpoint(elevatorEncoder.getDistance());
   }
   public double Distance( double speed){
     return speed *RobotMap.PERIODIC_UPDATE_PERIOD;
   }
 
-  public void moveStart(double distance){
-    double accelRate;
-		double maxSpeed;
-		double Kp, Ki, Kd;
-  }
+  // public void moveStart(double distance){
+  //   double accelRate;
+	// 	double maxSpeed;
+	// 	double Kp, Ki, Kd;
+  // }
 
   @Override
   public void initDefaultCommand() {
