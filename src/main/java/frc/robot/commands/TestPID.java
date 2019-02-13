@@ -20,9 +20,6 @@ public class TestPID extends Command {
     requires(Robot.Elevator);
     //requires(Robot.PID);
     requires(Robot.MoveRefGen);
-
-    System.out.println("hey");
-
   }
 
   // Called just before this Command runs the first time
@@ -35,7 +32,6 @@ public class TestPID extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    System.out.println("Hello world");
     Robot.Elevator.setTarget(19-(51/8));  
    if(Robot.Elevator.encoderGetDistLeft()<Robot.Elevator.getTarget()){
     if(Robot.Elevator.encoderGetDistLeft() <= 0){

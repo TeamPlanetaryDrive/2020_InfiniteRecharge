@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.robot.RobotMap;
 import frc.robot.commands.*;
 //use this for anything on th drivetrain like guiding electricty or something (likely redundent so delete if un needed)
 /**
@@ -21,6 +22,7 @@ import frc.robot.commands.*;
 public class DriveTrain extends Subsystem {
   // Put methods for controlling this subsystem here. Call these from Commands.
 
+  
   /*
   //Wood Robot Code
   Jaguar w_left = new Jaguar(0);
@@ -30,19 +32,16 @@ public class DriveTrain extends Subsystem {
   */
 
   //Metal Robot Code
+  DifferentialDrive robotDrive = new DifferentialDrive(RobotMap.lMotor, RobotMap.rMotor);
   
-  Spark m_left = new Spark(0);
-  Spark m_right = new Spark(1);
+  //public Drive(){
 
-  DifferentialDrive robotDrive = new DifferentialDrive(m_left, m_right);
-  
-
-  //New Metal Robot Code
+  //}
 
   public DifferentialDrive getDrive(){return robotDrive;}
 
-  public SpeedController getSPRight(){return m_right;}
-  public SpeedController getSPLeft(){return m_left;}
+  public SpeedController getSPRight(){return RobotMap.rMotor;}
+  public SpeedController getSPLeft(){return RobotMap.lMotor;}
 
   @Override
   public void initDefaultCommand() {
