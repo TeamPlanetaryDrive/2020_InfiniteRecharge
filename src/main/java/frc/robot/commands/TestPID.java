@@ -36,14 +36,15 @@ public class TestPID extends Command {
   @Override
   protected void execute() {
     System.out.println("Hello world");
-    Robot.Elevator.setTarget(19-(51/8));  
-   if(Robot.Elevator.encoderGetDistLeft()<Robot.Elevator.getTarget()){
-    if(Robot.Elevator.encoderGetDistLeft() <= 0){
-      Robot.Elevator. liftUp(.50);
+    Robot.Elevator.setTarget(19-(51/8));  //12.625
+    if(Robot.Elevator.encoderGetDistLeft() < Robot.Elevator.getTarget()){
+      if(Robot.Elevator.encoderGetDistLeft() <= 0){
+        Robot.Elevator.liftUp(.50);
+      }
+      if(Robot.Elevator.encoderGetDistLeft() > Robot.Elevator.getTarget()*.7){
+        Robot.Elevator.liftUp(.2);
+      }
     }
-    if(Robot.Elevator.encoderGetDistLeft() > Robot.Elevator.getTarget()*.7)
-      Robot.Elevator.liftUp(.2);
-  }
     if(Robot.Elevator.encoderGetDistLeft() > Robot.Elevator.getTarget()*.9){
       Robot.Elevator.liftUp(.1);
     }
