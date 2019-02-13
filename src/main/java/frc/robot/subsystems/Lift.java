@@ -22,7 +22,7 @@ import frc.robot.Extensions.*;
  */
 public class Lift extends Subsystem {
   // public double holeDistance;
-  private SpeedController ElevatorMotor;
+  //private SpeedController ElevatorMotor;
   //private SpeedController ElevatorMotor2;
   private Encoder elevatorEncoder ;
   //private Encoder elevatorEncoder2 ;
@@ -49,7 +49,7 @@ public class Lift extends Subsystem {
 	}
   
   public Lift(){
-    Robot.PID.enable();
+    
   }
 
   public double getTarget(){
@@ -65,15 +65,15 @@ public class Lift extends Subsystem {
   }
 
 	public void liftUp(double speed){
-		ElevatorMotor.set(speed);
+		RobotMap.lift.set(speed);
 	} 
 		
 	public void liftDown(double speed){
-		ElevatorMotor.set(-speed);
+		RobotMap.lift.set(-speed);
   }
   
   public void setSpeed(double effort){
-    ElevatorMotor.set(effort);
+    RobotMap.lift.set(effort);
   }
 	
 	public void liftStop(){

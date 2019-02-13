@@ -50,6 +50,7 @@ public class Robot extends TimedRobot {
     SendableChooser<Command> Elevator_Send = new SendableChooser<>();
     SendableChooser<Command> d_Motion_Send = new SendableChooser<>();
     SendableChooser<Command> Cameras_Send = new SendableChooser<>();
+    SendableChooser<Command> PID_Send = new SendableChooser<>();
 
 
  //LoopVision camera;
@@ -57,11 +58,11 @@ public class Robot extends TimedRobot {
  //LoopAuto auto;
   
  //Robot Mechanisms
-  public DriveTrain driveTrain;
+  /*public DriveTrain driveTrain;
   public Lift lift;
   public Gripper gripper;
   public Climb climb;
-  public Gyro gyro;
+  public Gyro gyro;*/
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -69,7 +70,9 @@ public class Robot extends TimedRobot {
   
   public void robotInit() {
     m_oi = new OI();
-    //PID.init();  // Init needs additional parameters
+    //RobotMap.init();
+
+    //PID.init(RobotMap.lift, false, RobotMap.LEnc);
     //Possibly redundant decleration
     //OI.leftJoystick=new Joystick(0);
 

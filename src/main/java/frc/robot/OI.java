@@ -29,8 +29,8 @@ public class OI {
   // Button button = new JoystickButton(stick, buttonNumber);
   // initializing the joystick mappings
   public static int 
-		LEFT_JOYSTICK_PORT = 1,
-    RIGHT_JOYSTICK_PORT = 0;
+		LEFT_JOYSTICK_PORT = 0,
+    RIGHT_JOYSTICK_PORT = 1;
   
   public static Joystick leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
 	public static JoystickButton button2_left = new JoystickButton(leftJoystick, 2);

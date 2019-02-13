@@ -41,7 +41,7 @@ public class RobotMap {
 
     //motor based
      public static int 
-    LIFT_CHANNEL = 0;
+    LIFT_CHANNEL = 1;
     
     //piston based
     public static int
@@ -97,11 +97,8 @@ public class RobotMap {
   lMotor, 
   rMotor;
 
-// //Manipulator: Channel 2, Lift: Channel 4
-// public static SpeedController 
-//   manipulator, 
-//   lift,
-//   climb;
+//Manipulator: Channel 2, Lift: Channel 4
+public static SpeedController  lift = new Jaguar(LIFT_CHANNEL);
 
 public static DigitalInput HatchPanalIn/*GearIn*/; //Channel 6
 
@@ -133,11 +130,11 @@ public static JoystickButton
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
-  public void init(){
+  public static void init(){
     LEnc = new Encoder(0, 1);
     REnc = new Encoder(2,3);
 
-    lMotor = new Jaguar(0);
-    rMotor = new Jaguar(1);
+    /*lMotor = new Jaguar(0);
+    rMotor = new Jaguar(1);*/
   }
 }
