@@ -20,11 +20,20 @@ import frc.robot.Extensions.*;
 /**
  * Add your docs here.
  */
-public class Lift extends Subsystem {
+public class Lift extends PIDSubsystem {
   // public double holeDistance;
   //private SpeedController ElevatorMotor;
   //private SpeedController ElevatorMotor2;
-  private Encoder elevatorEncoder ;
+
+  //PIDController ...
+	public SpeedController motor;
+	public PIDSource src;
+	//public double multiplier;
+	public double points;
+	public double tolerance;
+  public double setPoint;
+  public Encoder elevatorEncoder;
+  
   //private Encoder elevatorEncoder2 ;
   //Jaguar use = new Jaguar(0);
 
@@ -40,17 +49,50 @@ public class Lift extends Subsystem {
   //     return 0;
   //   }
   // };
-
-  public double encoderGetDistLeft() {
-		return RobotMap.LEnc.getDistance();
-	}
-	public double encoderGetRateLeft() {
-		return RobotMap.LEnc.getRate();
-	}
   
   public Lift(){
-    
+    super("Lift", 2, 0.01, 0);
+
+    this.setOutputRange(-0.20, 0.50);
+    this.setAbsoluteTolerance(0.05);
+    this.getPIDController().setContinuous(false);
+
   }
+
+  public void init(SpeedController sc, boolean inv, PIDSource en){
+    motor = sc;
+    motor.setInverted(inv);
+    src = en;
+    
+    elevatorEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
+	}
+
+  // public void moveStart(double distance){
+  //   double accelRate;
+	// 	double maxSpeed;
+	// 	double Kp, Ki, Kd;
+  // }
+
+  @Override
+  public void initDefaultCommand() {
+    // Set the default command for a subsystem here.
+    // setDefaultCommand(new MySpecialCommand());
+  }
+  
+  public double Distance(double speed){
+    return speed * RobotMap.PERIODIC_UPDATE_PERIOD;
+  }
+
+  //inherited methods
+  protected double returnPIDInput() {
+    return src.pidGet(); // returns the sensor value that is providing the feedback for the system
+  }
+
+  protected void usePIDOutput(double output) {
+    motor.pidWrite(output); // this is where the computed output value fromthe PIDController is applied to the motor
+  }
+
+  /** extra methods
 
   public double getTarget(){
     return Robot.PID.getSetpoint();
@@ -79,19 +121,15 @@ public class Lift extends Subsystem {
 	public void liftStop(){
     Robot.PID.setSetpoint(elevatorEncoder.getDistance());
   }
-  public double Distance( double speed){
-    return speed *RobotMap.PERIODIC_UPDATE_PERIOD;
-  }
 
-  // public void moveStart(double distance){
-  //   double accelRate;
-	// 	double maxSpeed;
-	// 	double Kp, Ki, Kd;
-  // }
-
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+  public double encoderGetDistLeft() {
+		return RobotMap.LEnc.getDistance();
   }
+  
+	public double encoderGetRateLeft() {
+		return RobotMap.LEnc.getRate();
+	}
+   * 
+   */
+
 }

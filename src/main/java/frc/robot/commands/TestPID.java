@@ -28,15 +28,13 @@ public class TestPID extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
-  
+    System.out.println("initialize called");
+    Robot.Elevator.setTarget(12.625);  //12.625 a test value
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    System.out.println("Hello world");
-    Robot.Elevator.setTarget(19-(51/8));  //12.625
     if(Robot.Elevator.encoderGetDistLeft() < Robot.Elevator.getTarget()){
       if(Robot.Elevator.encoderGetDistLeft() <= 0){
         Robot.Elevator.liftUp(.50);
