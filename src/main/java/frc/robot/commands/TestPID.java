@@ -20,9 +20,6 @@ public class TestPID extends Command {
     requires(Robot.Elevator);
     //requires(Robot.PID);
     requires(Robot.MoveRefGen);
-
-    System.out.println("hey");
-
   }
 
   // Called just before this Command runs the first time

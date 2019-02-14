@@ -32,14 +32,14 @@ import frc.robot.OI;
  * project.
  */
 public class Robot extends TimedRobot {
-    public static Climb Hab_Climb = new Climb(); // hab platform cimbing 
-    public static DriveTrain Drive = new DriveTrain();//could be redundent , if we delete drivetrain get rid of this
-    public static Gripper Grip = new Gripper(); // testing pnuematics, change name later
-    public static Lift Elevator = new Lift(); // elevator for gripper
-    public static Motion D_Motion = new Motion(); // D_Motion as in drive motion
-    public static Vision Cameras = new Vision(); //used for the vision class as needed
-    public static MoveRefGen MoveRefGen = new MoveRefGen();// used to change movestates
-    public static PIDMotor PID = new PIDMotor(2 , .01, 1 , 0);
+    public static Climb Hab_Climb; // hab platform cimbing 
+    public static DriveTrain Drive;//could be redundent , if we delete drivetrain get rid of this
+    public static Gripper Grip; // testing pnuematics, change name later
+    public static Lift Elevator; // elevator for gripper
+    public static Motion D_Motion; // D_Motion as in drive motion
+    public static Vision Cameras; //used for the vision class as needed
+    public static MoveRefGen MoveRefGen;// used to change movestates
+    public static PIDMotor PID;
     public static OI m_oi;
 
   Command m_autonomousCommand;
@@ -69,10 +69,20 @@ public class Robot extends TimedRobot {
    */
   
   public void robotInit() {
+    RobotMap.init();
+    System.out.println("hey");
+    Hab_Climb = new Climb();
+    Drive = new DriveTrain();
+    Grip = new Gripper(); // testing pnuematics, change name later
+    Elevator = new Lift(); // elevator for gripper
+    //D_Motion = new Motion(); // D_Motion as in drive motion
+    Cameras = new Vision(); //used for the vision class as needed
+    MoveRefGen = new MoveRefGen();// used to change movestates
+    PID = new PIDMotor(2 , .01, 1 , 0);
     m_oi = new OI();
-    //RobotMap.init();
 
-    //PID.init(RobotMap.lift, false, RobotMap.LEnc);
+    PID.init(RobotMap.lift, false, RobotMap.LEnc);
+
     //Possibly redundant decleration
     //OI.leftJoystick=new Joystick(0);
 

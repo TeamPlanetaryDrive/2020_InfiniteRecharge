@@ -47,10 +47,10 @@ public class OI {
   //This is where you put associate commands with all the buttons
   public OI(){
     //Gripper controls
-    button2_left.whileHeld(new ExtendGripPiston());
-
-    //Climb controls (delete if not made)
-    //button2_right.whileHeld(new ExtendClimbPiston());
+    button2_left.whenPressed(new ExtendGripPiston());
+    if(leftJoystick.getTrigger()){
+      new RetractGripPiston();
+    }
 
     //Lift controls
     button4_left.whenPressed(new LiftLevelOne());
@@ -60,6 +60,7 @@ public class OI {
     button3_right.whenPressed(new LiftLevelFive());
     button5_right.whenPressed(new LiftLevelSix());
 
+    //testing PID
     button2_right.whenPressed(new TestPID());
   }
 
