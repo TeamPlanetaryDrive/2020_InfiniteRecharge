@@ -21,25 +21,9 @@ import frc.robot.Extensions.*;
  * Add your docs here.
  */
 public class Lift extends Subsystem {
-  // public double holeDistance;
   private SpeedController ElevatorMotor;
-  //private SpeedController ElevatorMotor2;
   private Encoder elevatorEncoder ;
-  //private Encoder elevatorEncoder2 ;
-  //Jaguar use = new Jaguar(0);
-
-  // PIDFix pid = new PIDFix(0.025,0,0){
   
-  //   @Override
-  //   public void usePIDOutput(double output) {
-        
-  //   }
-  
-  //   @Override
-  //   public double returnPIDInput() {
-  //     return 0;
-  //   }
-  // };
 
   public double encoderGetDistLeft() {
 		return RobotMap.LEnc.getDistance();
@@ -49,9 +33,9 @@ public class Lift extends Subsystem {
 	}
   
   public Lift(){
-    Robot.PID.enable();
+ 
   }
-
+  
   public double getTarget(){
     return Robot.PID.getSetpoint();
   }
@@ -93,5 +77,6 @@ public class Lift extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    
   }
 }

@@ -41,6 +41,7 @@ public class Robot extends TimedRobot {
     public static MoveRefGen MoveRefGen = new MoveRefGen();// used to change movestates
     public static PIDMotor PID = new PIDMotor(2 , .01, 1 , 0);
     public static OI m_oi;
+    public static RobotMap map = new RobotMap();
 
   Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -50,18 +51,12 @@ public class Robot extends TimedRobot {
     SendableChooser<Command> Elevator_Send = new SendableChooser<>();
     SendableChooser<Command> d_Motion_Send = new SendableChooser<>();
     SendableChooser<Command> Cameras_Send = new SendableChooser<>();
-
+    SendableChooser<Command> PID_Send = new SendableChooser<>();
 
  //LoopVision camera;
  //LoopTele tele;
  //LoopAuto auto;
-  
- //Robot Mechanisms
-  public DriveTrain driveTrain;
-  public Lift lift;
-  public Gripper gripper;
-  public Climb climb;
-  public Gyro gyro;
+
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -69,7 +64,8 @@ public class Robot extends TimedRobot {
   
   public void robotInit() {
     m_oi = new OI();
-    //PID.init();  // Init needs additional parameters
+    PID.init(lift.getSpeedController(),false,RobotMap.LEnc);  // Init needs additional parameters
+    map.init();
     //Possibly redundant decleration
     //OI.leftJoystick=new Joystick(0);
 

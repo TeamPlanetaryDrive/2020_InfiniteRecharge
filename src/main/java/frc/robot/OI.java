@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
 import frc.robot.commands.*;
-import frc.robot.commands.OtherCode.ElevatorPosition;
 import frc.robot.commands.lift.*;
 import frc.robot.commands.grip.*;
 
