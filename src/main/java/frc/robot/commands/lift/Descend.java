@@ -25,14 +25,14 @@ public class Descend extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Elevator.liftDown(0.58);
+    //Robot.Elevator.liftDown(0.58);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     //can be rightjoystick too, just make sure to flip it with the joystick associated with ascend
-    return !OI.leftJoystick.getTrigger();
+    return !Robot.m_oi.getRightJoyStick().getTrigger();
   }
 
   // Called once after isFinished returns true

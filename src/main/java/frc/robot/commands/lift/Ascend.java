@@ -24,13 +24,13 @@ public class Ascend extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Elevator.liftUp(0.58);
+    //Robot.Elevator.liftUp(0.58);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return !OI.rightJoystick.getTrigger();
+    return !Robot.m_oi.getLeftJoystick().getTrigger();
   }
 
   // Called once after isFinished returns true

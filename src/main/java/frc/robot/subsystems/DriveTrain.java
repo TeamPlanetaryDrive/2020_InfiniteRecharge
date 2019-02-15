@@ -35,9 +35,6 @@ public class DriveTrain extends Subsystem {
   DifferentialDrive robotDrive = new DifferentialDrive(RobotMap.lMotor, RobotMap.rMotor);
   
   public DriveTrain(){
-<<<<<<< HEAD
-
-=======
     //calls the subsystem to let it know that it needs to be called as a subsystem
     super(); 
 
@@ -47,7 +44,6 @@ public class DriveTrain extends Subsystem {
 
   public void drive(double left, double right) {
     robotDrive.tankDrive(left, right);
->>>>>>> 7a29ec846bb4ddf25568c5ea07580b1e7a31d518
   }
 
   public DifferentialDrive getDrive(){return robotDrive;}
