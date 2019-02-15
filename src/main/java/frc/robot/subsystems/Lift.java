@@ -79,6 +79,12 @@ public class Lift extends PIDSubsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
   
+<<<<<<< HEAD
+  public Lift(){
+ 
+  }
+  
+=======
   public double Distance(double speed){
     return speed * RobotMap.PERIODIC_UPDATE_PERIOD;
   }
@@ -94,6 +100,7 @@ public class Lift extends PIDSubsystem {
 
   /** extra methods
 
+>>>>>>> 9b4fdc0e491ef94a0f4e5c51a848dbfb026c4ec9
   public double getTarget(){
     return Robot.PID.getSetpoint();
   }
@@ -122,8 +129,16 @@ public class Lift extends PIDSubsystem {
     Robot.PID.setSetpoint(elevatorEncoder.getDistance());
   }
 
+<<<<<<< HEAD
+  @Override
+  public void initDefaultCommand() {
+    // Set the default command for a subsystem here.
+    // setDefaultCommand(new MySpecialCommand());
+    
+=======
   public double encoderGetDistLeft() {
 		return RobotMap.LEnc.getDistance();
+>>>>>>> 9b4fdc0e491ef94a0f4e5c51a848dbfb026c4ec9
   }
   
 	public double encoderGetRateLeft() {

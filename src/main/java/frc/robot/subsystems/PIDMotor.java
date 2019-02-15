@@ -28,7 +28,7 @@ public class PIDMotor extends PIDSubsystem{
 	 * Init needs to be called
 	 */
 	public PIDMotor(double Kp, double Ki, double Kd,double kf){
-		super("PIDMotor", Kp, Ki, Kd);
+		super("PIDMotor", Kp, Ki, Kd, kf);
 
 		this.setOutputRange(-0.20, 0.50);
 		this.setAbsoluteTolerance(0.05);

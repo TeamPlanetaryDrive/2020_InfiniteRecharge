@@ -41,6 +41,7 @@ public class Robot extends TimedRobot {
     public static MoveRefGen MoveRefGen;// used to change movestates
     public static PIDMotor PID;
     public static OI m_oi;
+    public static RobotMap map = new RobotMap();
 
   Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -51,7 +52,6 @@ public class Robot extends TimedRobot {
     SendableChooser<Command> d_Motion_Send = new SendableChooser<>();
     SendableChooser<Command> Cameras_Send = new SendableChooser<>();
     SendableChooser<Command> PID_Send = new SendableChooser<>();
-
 
  //LoopVision camera;
  //LoopTele tele;
