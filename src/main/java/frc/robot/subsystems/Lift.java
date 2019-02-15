@@ -20,12 +20,6 @@ import frc.robot.Extensions.*;
 /**
  * Add your docs here.
  */
-<<<<<<< HEAD
-public class Lift extends Subsystem {
-  private SpeedController ElevatorMotor;
-  private Encoder elevatorEncoder ;
-  
-=======
 public class Lift extends PIDSubsystem {
   // public double holeDistance;
   //private SpeedController ElevatorMotor;
@@ -58,7 +52,6 @@ public class Lift extends PIDSubsystem {
   
   public Lift(){
     super("Lift", 2, 0.01, 0);
->>>>>>> 9b4fdc0e491ef94a0f4e5c51a848dbfb026c4ec9
 
     this.setOutputRange(-0.20, 0.50);
     this.setAbsoluteTolerance(0.05);
