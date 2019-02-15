@@ -9,7 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.buttons.Trigger;
+//import edu.wpi.first.wpilibj.buttons.Trigger;
 import frc.robot.commands.*;
 import frc.robot.commands.lift.*;
 import frc.robot.commands.grip.*;
@@ -19,31 +19,43 @@ import frc.robot.commands.grip.*;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+  //joystick variables
   public static int 
-		LEFT_JOYSTICK_PORT = 0,
+    LEFT_JOYSTICK_PORT = 0,
     RIGHT_JOYSTICK_PORT = 1;
-  
-    final Joystick leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
-    final Joystick rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
-   
-   public OI(){
-     
-    final JoystickButton button2_left = new JoystickButton(leftJoystick, 2);
-    final JoystickButton button3_left = new JoystickButton(leftJoystick, 3);
-    final JoystickButton button4_left = new JoystickButton(leftJoystick, 4);
-    final JoystickButton button5_left = new JoystickButton(leftJoystick, 5);
-		
-   
-    final JoystickButton button2_right = new JoystickButton(rightJoystick, 2);
-    final JoystickButton button3_right = new JoystickButton(rightJoystick, 3);
-    final JoystickButton button4_right = new JoystickButton(rightJoystick, 4);
-    final JoystickButton button5_right = new JoystickButton(rightJoystick, 5);
 
-  //This is where you put associate commands with all the buttons
+  final Joystick leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
+  final Joystick rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
+
+  public static JoystickButton 
+    button2_left,
+    button3_left,
+    button4_left,
+    button5_left;
+
+  public static JoystickButton
+    button2_right,
+    button3_right,
+    button4_right,
+    button5_right;
+   
+  public OI(){
+    //instantiating buttons
+    button2_left = new JoystickButton(leftJoystick, 2);
+    button3_left = new JoystickButton(leftJoystick, 3);
+    button4_left = new JoystickButton(leftJoystick, 4);
+    button5_left = new JoystickButton(leftJoystick, 5);
+    
+    button2_right = new JoystickButton(rightJoystick, 2);
+    button3_right = new JoystickButton(rightJoystick, 3);
+    button4_right = new JoystickButton(rightJoystick, 4);
+    button5_right = new JoystickButton(rightJoystick, 5);
+
+    //This is where you put associate commands with all the buttons
     //Gripper controls
     button2_left.whenPressed(new ExtendGripPiston());
     button2_left.whenReleased(new RetractGripPiston());
-  
+
     //Lift controls
     button4_left.whenPressed(new LiftLevelOne());
     button3_left.whenPressed(new LiftLevelTwo());
@@ -54,15 +66,13 @@ public class OI {
 
     //testing PID
     button2_right.whenPressed(new TestPID());
-    
-    }
-
-    public Joystick getRightJoyStick(){
-      return rightJoystick;
-    }
-    public Joystick getLeftJoystick(){
-      return leftJoystick;
-    }
-    
   }
 
+  public Joystick getRightJoyStick(){
+    return rightJoystick;
+  }
+  public Joystick getLeftJoystick(){
+    return leftJoystick;
+  }
+
+}
