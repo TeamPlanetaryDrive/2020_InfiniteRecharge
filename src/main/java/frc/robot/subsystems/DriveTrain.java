@@ -34,9 +34,17 @@ public class DriveTrain extends Subsystem {
   //Metal Robot Code
   DifferentialDrive robotDrive = new DifferentialDrive(RobotMap.lMotor, RobotMap.rMotor);
   
-  //public Drive(){
+  public DriveTrain(){
+    //calls the subsystem to let it know that it needs to be called as a subsystem
+    super(); 
 
-  //}
+    RobotMap.LEnc.setDistancePerPulse(RobotMap.distancePerPulse);
+    RobotMap.REnc.setDistancePerPulse(RobotMap.distancePerPulse);
+  }
+
+  public void drive(double left, double right) {
+    robotDrive.tankDrive(left, right);
+  }
 
   public DifferentialDrive getDrive(){return robotDrive;}
 
