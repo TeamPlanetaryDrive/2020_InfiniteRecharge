@@ -96,7 +96,7 @@ public class RobotMap {
     DRIVE_BASE_WIDTH = (25.5/12.0); // ft (in/12)
     //HARDWARE
 	//Left: Channel 0, Right: Channel 1
-	public static SpeedController
+	public static Spark 
   lMotor, 
   rMotor;
 
@@ -141,7 +141,7 @@ public static JoystickButton
     lift = new Talon(LIFT_CHANNEL);
 
     //LEnc.setPIDSourceType(PIDSourceType.kDisplacement);
-    lMotor = new Spark(LEFT_MOTOR_CHANNEL);
-    rMotor = new Spark(RIGHT_MOTOR_CHANNEL);
+    //lMotor = new Spark(LEFT_MOTOR_CHANNEL);
+    //rMotor = new Spark(RIGHT_MOTOR_CHANNEL);
   }
 }

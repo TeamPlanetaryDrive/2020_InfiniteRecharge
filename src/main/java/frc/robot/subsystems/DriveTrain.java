@@ -32,7 +32,10 @@ public class DriveTrain extends Subsystem {
   */
 
   //Metal Robot Code
-  DifferentialDrive robotDrive = new DifferentialDrive(RobotMap.lMotor, RobotMap.rMotor);
+  Spark w_Left = new Spark(1);
+  Spark w_Right = new Spark(2);
+  DifferentialDrive robotDrive = new DifferentialDrive(w_Left, w_Right);
+  //DifferentialDrive robotDrive = new DifferentialDrive(RobotMap.lMotor, RobotMap.rMotor);
   
   public DriveTrain(){
     //calls the subsystem to let it know that it needs to be called as a subsystem
@@ -43,6 +46,7 @@ public class DriveTrain extends Subsystem {
   }
 
   public void drive(double left, double right) {
+    System.out.println("drive function");
     robotDrive.tankDrive(left, right);
   }
 

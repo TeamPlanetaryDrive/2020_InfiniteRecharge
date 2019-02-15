@@ -69,7 +69,7 @@ public class Robot extends TimedRobot {
   
   public void robotInit() {
     RobotMap.init();
-    System.out.println("hey");
+    System.out.println("robotinit called");
     Drive = new DriveTrain();
     Grip = new Gripper(); // testing pnuematics, change name later
     Elevator = new Lift(); // elevator for gripper
@@ -79,7 +79,7 @@ public class Robot extends TimedRobot {
     m_oi = new OI();
 
     PID.init(RobotMap.lift, false, RobotMap.LEnc);
-
+    
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
     //gripper.initDefaultCommand();    
