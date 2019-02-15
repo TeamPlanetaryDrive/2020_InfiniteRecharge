@@ -26,7 +26,7 @@ public class RobotMovement extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Drive.getDrive().tankDrive(OI.leftJoystick.getY(), OI.rightJoystick.getY());
+    Robot.Drive.getDrive().tankDrive(Robot.m_oi.getLeftJoystick().getY(), Robot.m_oi.getRightJoyStick().getY());
     //System.out.println("Left: "+OI.leftJoystick.getY()+" Right: "+OI.rightJoystick.getY());
   }
 

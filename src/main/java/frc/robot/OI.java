@@ -22,16 +22,19 @@ public class OI {
   public static int 
 		LEFT_JOYSTICK_PORT = 0,
     RIGHT_JOYSTICK_PORT = 1;
+  
+    final Joystick leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
+    final Joystick rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
    
    public OI(){
 
-    final Joystick leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
+    
     final JoystickButton button2_left = new JoystickButton(leftJoystick, 2);
     final JoystickButton button3_left = new JoystickButton(leftJoystick, 3);
     final JoystickButton button4_left = new JoystickButton(leftJoystick, 4);
     final JoystickButton button5_left = new JoystickButton(leftJoystick, 5);
 		
-    final Joystick rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
+   
     final JoystickButton button2_right = new JoystickButton(rightJoystick, 2);
     final JoystickButton button3_right = new JoystickButton(rightJoystick, 3);
     final JoystickButton button4_right = new JoystickButton(rightJoystick, 4);
@@ -54,6 +57,13 @@ public class OI {
     //testing PID
     button2_right.whenPressed(new TestPID());
     
+    }
+
+    public Joystick getRightJoyStick(){
+      return rightJoystick;
+    }
+    public Joystick getLeftJoystick(){
+      return leftJoystick;
     }
   }
 

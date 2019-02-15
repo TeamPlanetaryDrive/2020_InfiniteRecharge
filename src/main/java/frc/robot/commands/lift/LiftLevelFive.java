@@ -26,18 +26,15 @@ public class LiftLevelFive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.PID.setSetpoint(74-(51/8));
-    while(Robot.MoveRefGen.isActive()==true)
-      Robot.MoveRefGen.update();
+    Robot.Elevator.enable();
+    Robot.Elevator.setSetpoint(74-(51/8));
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.PID.getPosition()>= Robot.PID.getSetpoint())
-      return true;
-    
-    return false;
+    return Robot.Elevator.onTarget();
   }
 
   // Called once after isFinished returns true

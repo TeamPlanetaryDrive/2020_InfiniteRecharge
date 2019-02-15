@@ -6,49 +6,31 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
-import edu.wpi.first.hal.EncoderJNI;
-import edu.wpi.first.hal.sim.EncoderSim;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Jaguar;
-import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.util.*;
-import frc.robot.Robot;
-import frc.robot.RobotMap;
-import frc.robot.Extensions.*;
+import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.PIDSourceType;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
+
+
   //use to move the grippers up and down on the elevator
 /**
  * Add your docs here.
  */
 public class Lift extends PIDSubsystem {
-  // public double holeDistance;
+  //public double holeDistance;
   //private SpeedController ElevatorMotor;
   //private SpeedController ElevatorMotor2;
 
   //PIDController ...
 	public SpeedController motor;
 	public PIDSource src;
-	//public double multiplier;
 	public double points;
 	public double tolerance;
   public double setPoint;
   public Encoder elevatorEncoder;
-  
-  //private Encoder elevatorEncoder2 ;
-  //Jaguar use = new Jaguar(0);
-
-  // PIDFix pid = new PIDFix(0.025,0,0){
-  
-  //   @Override
-  //   public void usePIDOutput(double output) {
-        
-  //   }
-  
-  //   @Override
-  //   public double returnPIDInput() {
-  //     return 0;
-  //   }
-  // };
+  //public double multiplier;
   
   public Lift(){
     super("Lift", 2, 0.01, 0);
@@ -67,40 +49,28 @@ public class Lift extends PIDSubsystem {
     elevatorEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
 	}
 
-  // public void moveStart(double distance){
-  //   double accelRate;
-	// 	double maxSpeed;
-	// 	double Kp, Ki, Kd;
-  // }
-
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+  
   }
   
-<<<<<<< HEAD
-  public Lift(){
- 
-  }
-  
-=======
-  public double Distance(double speed){
-    return speed * RobotMap.PERIODIC_UPDATE_PERIOD;
-  }
-
   //inherited methods
   protected double returnPIDInput() {
     return src.pidGet(); // returns the sensor value that is providing the feedback for the system
   }
 
   protected void usePIDOutput(double output) {
-    motor.pidWrite(output); // this is where the computed output value fromthe PIDController is applied to the motor
+    motor.set(output); // this is where the computed output value fromthe PIDController is applied to the motor
   }
 
+  // public void moveStart(double distance){
+  //   double accelRate;
+	// 	double maxSpeed;
+	// 	double Kp, Ki, Kd;
+  // }
+  
   /** extra methods
 
->>>>>>> 9b4fdc0e491ef94a0f4e5c51a848dbfb026c4ec9
   public double getTarget(){
     return Robot.PID.getSetpoint();
   }
@@ -129,21 +99,17 @@ public class Lift extends PIDSubsystem {
     Robot.PID.setSetpoint(elevatorEncoder.getDistance());
   }
 
-<<<<<<< HEAD
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-    
-=======
   public double encoderGetDistLeft() {
 		return RobotMap.LEnc.getDistance();
->>>>>>> 9b4fdc0e491ef94a0f4e5c51a848dbfb026c4ec9
   }
   
 	public double encoderGetRateLeft() {
 		return RobotMap.LEnc.getRate();
-	}
+  } 
+  
+  public double Distance(double speed){
+    return speed * RobotMap.PERIODIC_UPDATE_PERIOD;
+  }
    * 
    */
 

@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Gripper;
 import frc.robot.subsystems.Lift;
@@ -32,7 +31,7 @@ import frc.robot.OI;
  * project.
  */
 public class Robot extends TimedRobot {
-    public static Climb Hab_Climb; // hab platform cimbing 
+   
     public static DriveTrain Drive;//could be redundent , if we delete drivetrain get rid of this
     public static Gripper Grip; // testing pnuematics, change name later
     public static Lift Elevator; // elevator for gripper
@@ -71,20 +70,15 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     RobotMap.init();
     System.out.println("hey");
-    Hab_Climb = new Climb();
     Drive = new DriveTrain();
     Grip = new Gripper(); // testing pnuematics, change name later
     Elevator = new Lift(); // elevator for gripper
-    //D_Motion = new Motion(); // D_Motion as in drive motion
     Cameras = new Vision(); //used for the vision class as needed
     MoveRefGen = new MoveRefGen();// used to change movestates
     PID = new PIDMotor(2 , .01, 1 , 0);
     m_oi = new OI();
 
     PID.init(RobotMap.lift, false, RobotMap.LEnc);
-
-    //Possibly redundant decleration
-    //OI.leftJoystick=new Joystick(0);
 
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);

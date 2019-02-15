@@ -34,9 +34,9 @@ public class DriveTrain extends Subsystem {
   //Metal Robot Code
   DifferentialDrive robotDrive = new DifferentialDrive(RobotMap.lMotor, RobotMap.rMotor);
   
-  //public Drive(){
+  public DriveTrain(){
 
-  //}
+  }
 
   public DifferentialDrive getDrive(){return robotDrive;}
 
