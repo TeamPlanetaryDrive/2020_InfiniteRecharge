@@ -32,14 +32,14 @@ import frc.robot.OI;
  * project.
  */
 public class Robot extends TimedRobot {
-    public static Climb Hab_Climb = new Climb(); // hab platform cimbing 
-    public static DriveTrain Drive = new DriveTrain();//could be redundent , if we delete drivetrain get rid of this
-    public static Gripper Grip = new Gripper(); // testing pnuematics, change name later
-    public static Lift Elevator = new Lift(); // elevator for gripper
-    public static Motion D_Motion = new Motion(); // D_Motion as in drive motion
-    public static Vision Cameras = new Vision(); //used for the vision class as needed
-    public static MoveRefGen MoveRefGen = new MoveRefGen();// used to change movestates
-    public static PIDMotor PID = new PIDMotor(2 , .01, 1 , 0);
+    public static Climb Hab_Climb; // hab platform cimbing 
+    public static DriveTrain Drive;//could be redundent , if we delete drivetrain get rid of this
+    public static Gripper Grip; // testing pnuematics, change name later
+    public static Lift Elevator; // elevator for gripper
+    public static Motion D_Motion; // D_Motion as in drive motion
+    public static Vision Cameras; //used for the vision class as needed
+    public static MoveRefGen MoveRefGen;// used to change movestates
+    public static PIDMotor PID;
     public static OI m_oi;
     public static RobotMap map = new RobotMap();
 
@@ -52,20 +52,50 @@ public class Robot extends TimedRobot {
     SendableChooser<Command> d_Motion_Send = new SendableChooser<>();
     SendableChooser<Command> Cameras_Send = new SendableChooser<>();
     SendableChooser<Command> PID_Send = new SendableChooser<>();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9b4fdc0e491ef94a0f4e5c51a848dbfb026c4ec9
 
  //LoopVision camera;
  //LoopTele tele;
  //LoopAuto auto;
+<<<<<<< HEAD
 
+=======
+  
+ //Robot Mechanisms
+  /*public DriveTrain driveTrain;
+  public Lift lift;
+  public Gripper gripper;
+  public Climb climb;
+  public Gyro gyro;*/
+>>>>>>> 9b4fdc0e491ef94a0f4e5c51a848dbfb026c4ec9
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
    */
   
   public void robotInit() {
+    RobotMap.init();
+    System.out.println("hey");
+    Hab_Climb = new Climb();
+    Drive = new DriveTrain();
+    Grip = new Gripper(); // testing pnuematics, change name later
+    Elevator = new Lift(); // elevator for gripper
+    //D_Motion = new Motion(); // D_Motion as in drive motion
+    Cameras = new Vision(); //used for the vision class as needed
+    MoveRefGen = new MoveRefGen();// used to change movestates
+    PID = new PIDMotor(2 , .01, 1 , 0);
     m_oi = new OI();
+<<<<<<< HEAD
     PID.init(lift.getSpeedController(),false,RobotMap.LEnc);  // Init needs additional parameters
     map.init();
+=======
+
+    PID.init(RobotMap.lift, false, RobotMap.LEnc);
+
+>>>>>>> 9b4fdc0e491ef94a0f4e5c51a848dbfb026c4ec9
     //Possibly redundant decleration
     //OI.leftJoystick=new Joystick(0);
 

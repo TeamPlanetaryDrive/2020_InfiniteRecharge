@@ -27,6 +27,7 @@ public class RobotMovement extends Command {
   @Override
   protected void execute() {
     Robot.Drive.getDrive().tankDrive(OI.leftJoystick.getY(), OI.rightJoystick.getY());
+    //System.out.println("Left: "+OI.leftJoystick.getY()+" Right: "+OI.rightJoystick.getY());
   }
 
   // Make this return true when this Command no longer needs to run execute()

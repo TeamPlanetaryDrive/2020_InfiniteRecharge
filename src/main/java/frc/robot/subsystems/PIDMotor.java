@@ -40,7 +40,6 @@ public class PIDMotor extends PIDSubsystem{
 		motor = sc;
 		motor.setInverted(inv);
 		src = en;
-		throw new RuntimeException("init not called");
 	}
 	public void setSetpoint(double point){
 		this.setPoint = point;
@@ -52,11 +51,9 @@ public class PIDMotor extends PIDSubsystem{
 		
 	public boolean isAtTarget() {
 		return Math.abs(this.getSetpoint()-this.getPosition()) < tolerance;
-	  }
+	}
 
 	  protected double returnPIDInput() {
-		if(true)
-		throw new RuntimeException("returnPIDInput called");
 		return src.pidGet();
 	}
 

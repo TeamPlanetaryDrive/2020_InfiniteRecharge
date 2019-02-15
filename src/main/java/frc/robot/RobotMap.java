@@ -11,7 +11,10 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.subsystems.MoveRefGen;
 
@@ -36,8 +39,8 @@ public class RobotMap {
     
   //Digital (0-9, 10-25)
   public static int 
-     LEFT_MOTOR_CHANNEL = 93480931,
-     RIGHT_MOTOR_CHANNEL = 38419064;
+     LEFT_MOTOR_CHANNEL = 1,
+     RIGHT_MOTOR_CHANNEL = 2;
 
     //motor based
      public static int 
@@ -97,11 +100,8 @@ public class RobotMap {
   lMotor, 
   rMotor;
 
-// //Manipulator: Channel 2, Lift: Channel 4
-// public static SpeedController 
-//   manipulator, 
-//   lift,
-//   climb;
+//Manipulator: Channel 2, Lift: Channel 4
+public static SpeedController  lift;
 
 public static DigitalInput HatchPanalIn/*GearIn*/; //Channel 6
 
@@ -133,11 +133,15 @@ public static JoystickButton
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
-  public void init(){
-    LEnc = new Encoder(0, 1);
-    REnc = new Encoder(2,3);
+  public static void init(){
+    LEnc = new Encoder(LEFT_ENC_CHANNEL_A, LEFT_ENC_CHANNEL_B);
+    REnc = new Encoder(RIGHT_ENC_CHANNEL_A, RIGHT_ENC_CHANNEL_B);
 
-    lMotor = new Jaguar(0);
-    rMotor = new Jaguar(1);
+    //instantiating variables
+    lift = new Talon(LIFT_CHANNEL);
+
+    //LEnc.setPIDSourceType(PIDSourceType.kDisplacement);
+    lMotor = new Spark(LEFT_MOTOR_CHANNEL);
+    rMotor = new Spark(RIGHT_MOTOR_CHANNEL);
   }
 }

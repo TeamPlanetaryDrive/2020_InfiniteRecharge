@@ -28,8 +28,8 @@ public class OI {
   // Button button = new JoystickButton(stick, buttonNumber);
   // initializing the joystick mappings
   public static int 
-		LEFT_JOYSTICK_PORT = 1,
-    RIGHT_JOYSTICK_PORT = 0;
+		LEFT_JOYSTICK_PORT = 0,
+    RIGHT_JOYSTICK_PORT = 1;
   
   public static Joystick leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
 	public static JoystickButton button2_left = new JoystickButton(leftJoystick, 2);
@@ -46,10 +46,10 @@ public class OI {
   //This is where you put associate commands with all the buttons
   public OI(){
     //Gripper controls
-    button2_left.whileHeld(new ExtendGripPiston());
-
-    //Climb controls (delete if not made)
-    //button2_right.whileHeld(new ExtendClimbPiston());
+    button2_left.whenPressed(new ExtendGripPiston());
+    if(leftJoystick.getTrigger()){
+      new RetractGripPiston();
+    }
 
     //Lift controls
     button4_left.whenPressed(new LiftLevelOne());
@@ -59,6 +59,7 @@ public class OI {
     button3_right.whenPressed(new LiftLevelFive());
     button5_right.whenPressed(new LiftLevelSix());
 
+    //testing PID
     button2_right.whenPressed(new TestPID());
   }
 
