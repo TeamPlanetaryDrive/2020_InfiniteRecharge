@@ -27,8 +27,7 @@ public class OI {
     final Joystick rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
    
    public OI(){
-
-    
+     
     final JoystickButton button2_left = new JoystickButton(leftJoystick, 2);
     final JoystickButton button3_left = new JoystickButton(leftJoystick, 3);
     final JoystickButton button4_left = new JoystickButton(leftJoystick, 4);
@@ -43,9 +42,8 @@ public class OI {
   //This is where you put associate commands with all the buttons
     //Gripper controls
     button2_left.whenPressed(new ExtendGripPiston());
-    if(leftJoystick.getTrigger())
-      new RetractGripPiston();
-
+    button2_left.whenReleased(new RetractGripPiston());
+  
     //Lift controls
     button4_left.whenPressed(new LiftLevelOne());
     button3_left.whenPressed(new LiftLevelTwo());
@@ -65,5 +63,6 @@ public class OI {
     public Joystick getLeftJoystick(){
       return leftJoystick;
     }
+    
   }
 
