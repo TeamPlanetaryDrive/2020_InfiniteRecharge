@@ -18,8 +18,6 @@ public class TestPID extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.Elevator);
-    //requires(Robot.PID);
-    requires(Robot.MoveRefGen);
   }
 
   // Called just before this Command runs the first time

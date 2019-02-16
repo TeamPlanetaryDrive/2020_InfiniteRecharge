@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import frc.robot.RobotMap;
+import frc.robot.commands.lift.ManualLiftMove;
 
 
   //use to move the grippers up and down on the elevator
@@ -29,15 +31,15 @@ public class Lift extends PIDSubsystem {
 	public double points;
 	public double tolerance;
   public double setPoint;
-  public Encoder elevatorEncoder;
   //public double multiplier;
   
   public Lift(){
-    super("Lift", 2, 0.01, 0);
+    super("Lift", 0.025, 0, 0);
 
     this.setOutputRange(-0.20, 0.50);
     this.setAbsoluteTolerance(0.05);
     this.getPIDController().setContinuous(false);
+    RobotMap.liftEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
 
   }
 
@@ -45,23 +47,32 @@ public class Lift extends PIDSubsystem {
     motor = sc;
     motor.setInverted(inv);
     src = en;
-    
-    elevatorEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
 	}
 
-  @Override
   public void initDefaultCommand() {
-  
+    setDefaultCommand(new ManualLiftMove());
   }
   
   //inherited methods
   protected double returnPIDInput() {
-    return src.pidGet(); // returns the sensor value that is providing the feedback for the system
+    return 0.11; // returns the sensor value that is providing the feedback for the system
   }
 
   protected void usePIDOutput(double output) {
     motor.set(output); // this is where the computed output value fromthe PIDController is applied to the motor
   }
+
+  // public void liftUp(double speed){
+	// 	RobotMap.lift.set(speed);
+	// } 
+		
+	// public void liftDown(double speed){
+	// 	RobotMap.lift.set(-speed);
+  // }
+  
+public void liftMove(double speed){
+  RobotMap.lift.set(speed);
+}
 
   // public void moveStart(double distance){
   //   double accelRate;
@@ -81,14 +92,6 @@ public class Lift extends PIDSubsystem {
 
   public boolean success(){
     return Robot.PID.isAtTarget();
-  }
-
-	public void liftUp(double speed){
-		RobotMap.lift.set(speed);
-	} 
-		
-	public void liftDown(double speed){
-		RobotMap.lift.set(-speed);
   }
   
   public void setSpeed(double effort){

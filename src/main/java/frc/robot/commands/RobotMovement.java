@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 import frc.robot.subsystems.DriveTrain;;
 
 public class RobotMovement extends Command {
@@ -26,9 +27,8 @@ public class RobotMovement extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    System.out.println("hello");
-    Robot.Drive.drive(OI.leftJoystick.getY(),OI.rightJoystick.getY());
-    System.out.println("Left: "+OI.leftJoystick.getY()+" Right: "+OI.rightJoystick.getY());
+      Robot.Drive.drive(OI.leftJoystick.getY(),OI.rightJoystick.getY());
+  //  System.out.println("Left: "+OI.leftJoystick.getY()+" Right: "+OI.rightJoystick.getY());
   }
 
   // Make this return true when this Command no longer needs to run execute()

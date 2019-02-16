@@ -22,7 +22,8 @@ import frc.robot.subsystems.MoveRefGen;
 import frc.robot.subsystems.PIDMotor;
 import frc.robot.subsystems.Vision;
 import frc.robot.OI;
-
+import frc.robot.commands.*;
+import frc.robot.commands.lift.LiftLevelOne;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -69,20 +70,20 @@ public class Robot extends TimedRobot {
   
   public void robotInit() {
     RobotMap.init();
-    System.out.println("robotinit called");
     Drive = new DriveTrain();
     Grip = new Gripper(); // testing pnuematics, change name later
     Elevator = new Lift(); // elevator for gripper
     Cameras = new Vision(); //used for the vision class as needed
-    MoveRefGen = new MoveRefGen();// used to change movestates
-    PID = new PIDMotor(2 , .01, 1 , 0);
+    //MoveRefGen = new MoveRefGen();// used to change movestates
+    //PID = new PIDMotor(0.825, 0, 0 , 0);
     m_oi = new OI();
 
-    PID.init(RobotMap.lift, false, RobotMap.LEnc);
+    // PID.init(RobotMap.lift, false, RobotMap.LEnc);
     
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
-    //gripper.initDefaultCommand();    
+
+    //gripper.initDefaultCommand();
   }
 
   /**
@@ -95,6 +96,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    if(OI.leftJoystick.getTrigger())
+      RobotMap.liftStart = true;
+    //if not supposed to be lift, switch to drive and then stop the lift motor
+    else{
+      RobotMap.liftStart = false;
+      RobotMap.lift.set(0);
+    }
   }
 
   /**
@@ -153,6 +161,7 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
+    SmartDashboard.putData("Encoder", m_chooser);
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }

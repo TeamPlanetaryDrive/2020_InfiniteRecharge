@@ -10,11 +10,13 @@ package frc.robot.commands.lift;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
-public class Ascend extends Command {
-  public Ascend() {
+public class ManualLiftMove extends Command {
+  public ManualLiftMove() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.Elevator);
   }
 
   // Called just before this Command runs the first time
@@ -24,7 +26,10 @@ public class Ascend extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //Robot.Elevator.liftUp(0.58);
+    System.out.println(RobotMap.liftStart);
+    if(RobotMap.liftStart){
+      Robot.Elevator.liftMove(-Robot.m_oi.getRightJoyStick().getZ());
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()

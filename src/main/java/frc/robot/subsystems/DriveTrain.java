@@ -32,8 +32,8 @@ public class DriveTrain extends Subsystem {
   */
 
   //Metal Robot Code
-  Spark w_Left = new Spark(1);
-  Spark w_Right = new Spark(2);
+  Spark w_Left = new Spark(RobotMap.LEFT_MOTOR_CHANNEL);
+  Spark w_Right = new Spark(RobotMap.RIGHT_MOTOR_CHANNEL);
   DifferentialDrive robotDrive = new DifferentialDrive(w_Left, w_Right);
   //DifferentialDrive robotDrive = new DifferentialDrive(RobotMap.lMotor, RobotMap.rMotor);
   
@@ -41,8 +41,8 @@ public class DriveTrain extends Subsystem {
     //calls the subsystem to let it know that it needs to be called as a subsystem
     super(); 
 
-    RobotMap.LEnc.setDistancePerPulse(RobotMap.distancePerPulse);
-    RobotMap.REnc.setDistancePerPulse(RobotMap.distancePerPulse);
+    //RobotMap.LEnc.setDistancePerPulse(RobotMap.distancePerPulse);
+    //RobotMap.REnc.setDistancePerPulse(RobotMap.distancePerPulse);
   }
 
   public void drive(double left, double right) {
@@ -60,6 +60,6 @@ public class DriveTrain extends Subsystem {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
     //setDefaultCommand(new Motion());
-    setDefaultCommand(new RobotMovement());
+    //setDefaultCommand(new RobotMovement());
   }
 }

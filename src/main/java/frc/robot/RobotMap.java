@@ -39,12 +39,12 @@ public class RobotMap {
     
   //Digital (0-9, 10-25)
   public static int 
-     LEFT_MOTOR_CHANNEL = 1,
-     RIGHT_MOTOR_CHANNEL = 2;
+     LEFT_MOTOR_CHANNEL = 0,
+     RIGHT_MOTOR_CHANNEL = 1;
 
     //motor based
      public static int 
-    LIFT_CHANNEL = 0;
+    LIFT_CHANNEL = 2;
     
     //piston based
     public static int
@@ -64,10 +64,12 @@ public class RobotMap {
     //enconder channels
     //not final yet
     public static int 
-		LEFT_ENC_CHANNEL_A = 0,
-		LEFT_ENC_CHANNEL_B = 1,
-		RIGHT_ENC_CHANNEL_A = 2,
-    RIGHT_ENC_CHANNEL_B = 3;
+    LIFT_ENC_CHANNEL_A = 0,
+    LIFT_ENC_CHANNEL_B = 1;
+		// LEFT_ENC_CHANNEL_A = 0,
+		// LEFT_ENC_CHANNEL_B = 1,
+		// RIGHT_ENC_CHANNEL_A = 2,
+    // RIGHT_ENC_CHANNEL_B = 3;
 
     /*private double accelRate =4; //thi is subject to change from here to....
     private double maxSpeed = 30;
@@ -86,7 +88,7 @@ public class RobotMap {
     
     public static final double 
 		DRIVE_ACCEL_RATE = 2.5,				// (ft/s^2) 5.0
-		DRIVE_ENCODER_RESOLUTION = 0.003522,// (feet/count) Real: 0.003568, Practice: 0.003522
+		DRIVE_ENCODER_RESOLUTION = 1.0,// (feet/count) Real: 0.003568, Practice: 0.003522
 		DRIVE_GYRO_SENSITIVITY = 0.007,		// (volts/(degree/second)) 0.007
 		DRIVE_PID_EFFORT_MAX = 0.50,			// (0-1) 1.0
 		DRIVE_PID_PERIOD = 0.010,			// (s) 0.010
@@ -102,12 +104,14 @@ public class RobotMap {
 
 //Manipulator: Channel 2, Lift: Channel 4
 public static SpeedController  lift;
+public static boolean liftStart;
 
 public static DigitalInput HatchPanalIn/*GearIn*/; //Channel 6
 
 public static Encoder 
   LEnc, //Channel 0 & 1
-  REnc; //Channel 2 & 3
+  REnc,
+  liftEncoder; //Channel 2 & 3
 
 //Left: Port 0, Right: Port 1
 public static Joystick 
@@ -134,11 +138,13 @@ public static JoystickButton
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
   public static void init(){
-    LEnc = new Encoder(LEFT_ENC_CHANNEL_A, LEFT_ENC_CHANNEL_B);
-    REnc = new Encoder(RIGHT_ENC_CHANNEL_A, RIGHT_ENC_CHANNEL_B);
+    //LEnc = new Encoder(LEFT_ENC_CHANNEL_A, LEFT_ENC_CHANNEL_B);
+    //REnc = new Encoder(RIGHT_ENC_CHANNEL_A, RIGHT_ENC_CHANNEL_B);
+    liftEncoder = new Encoder(LIFT_ENC_CHANNEL_A, LIFT_ENC_CHANNEL_B);
 
     //instantiating variables
     lift = new Talon(LIFT_CHANNEL);
+    liftStart = false;
 
     //LEnc.setPIDSourceType(PIDSourceType.kDisplacement);
     //lMotor = new Spark(LEFT_MOTOR_CHANNEL);
