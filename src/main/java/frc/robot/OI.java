@@ -4,13 +4,11 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-//test
+
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-//import edu.wpi.first.wpilibj.buttons.Trigger;
-import frc.robot.commands.*;
 import frc.robot.commands.lift.*;
 import frc.robot.commands.grip.*;
 
@@ -71,5 +69,4 @@ public class OI {
   public Joystick getLeftJoystick(){
     return leftJoystick;
   }
-
 }

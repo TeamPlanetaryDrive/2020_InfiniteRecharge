@@ -6,20 +6,12 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
-import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Jaguar;
-import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.lift.ManualLiftMove;
 
-
-  //use to move the grippers up and down on the elevator
-/**
- * Add your docs here.
- */
+//use to move the grippers up and down on the elevator
 public class Lift extends PIDSubsystem {
  
   public Lift(){
@@ -30,10 +22,6 @@ public class Lift extends PIDSubsystem {
     getPIDController().setContinuous(false);
     RobotMap.liftEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
   }
-
-  public void init(SpeedController sc, boolean inv, PIDSource en){
-  
-	}
 
   public void initDefaultCommand() {
     setDefaultCommand(new ManualLiftMove());
@@ -51,54 +39,4 @@ public class Lift extends PIDSubsystem {
   public void liftMove(double speed){
     RobotMap.lift.set(speed);
   }
-
-  // public void moveStart(double distance){
-  //   double accelRate;
-	// 	double maxSpeed;
-	// 	double Kp, Ki, Kd;
-  // }
-  
-  /** extra methods
-
-   // public void liftUp(double speed){
-	// 	RobotMap.lift.set(speed);
-	// } 
-		
-	// public void liftDown(double speed){
-	// 	RobotMap.lift.set(-speed);
-  // }
-  public double getTarget(){
-    return Robot.PID.getSetpoint();
-  }
-
-  public void setTarget(double level){
-   Robot.PID.setSetpoint(level);
-  }
-
-  public boolean success(){
-    return Robot.PID.isAtTarget();
-  }
-  
-  public void setSpeed(double effort){
-    RobotMap.lift.set(effort);
-  }
-	
-	public void liftStop(){
-    Robot.PID.setSetpoint(elevatorEncoder.getDistance());
-  }
-
-  public double encoderGetDistLeft() {
-		return RobotMap.LEnc.getDistance();
-  }
-  
-	public double encoderGetRateLeft() {
-		return RobotMap.LEnc.getRate();
-  } 
-  
-  public double Distance(double speed){
-    return speed * RobotMap.PERIODIC_UPDATE_PERIOD;
-  }
-   * 
-   */
-
 }

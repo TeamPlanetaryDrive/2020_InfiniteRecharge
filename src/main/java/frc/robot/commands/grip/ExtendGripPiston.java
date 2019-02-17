@@ -13,8 +13,6 @@ import frc.robot.OI;
 
 public class ExtendGripPiston extends Command {
   public ExtendGripPiston() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.Grip);
   }
 

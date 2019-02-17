@@ -7,11 +7,9 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveTrain;
@@ -61,9 +59,6 @@ public class Robot extends TimedRobot {
     Cameras = new Vision(); //used for the vision class as needed
     m_oi = new OI();
     SmartDashboard.putData("Auto mode", m_chooser);
-    
-
-    //gripper.initDefaultCommand();
   }
 
   /**
@@ -75,9 +70,7 @@ public class Robot extends TimedRobot {
    * LiveWindow and SmartDashboard integrated updating.
    */
   @Override
-  public void robotPeriodic() {
-  
-  }
+  public void robotPeriodic() {}
 
   /**
    * This function is called once each time the robot enters Disabled mode.
@@ -85,8 +78,7 @@ public class Robot extends TimedRobot {
    * the robot is disabled.
    */
   @Override
-  public void disabledInit() {
-  }
+  public void disabledInit() {}
 
   @Override
   public void disabledPeriodic() {
@@ -129,7 +121,6 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
   }
 
-  
   public void teleopInit() {
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
@@ -153,7 +144,5 @@ public class Robot extends TimedRobot {
    * This function is called periodically during test mode.
    */
   @Override
-  public void testPeriodic() {
-    
-  }
+  public void testPeriodic() {}
 }

@@ -13,8 +13,6 @@ import frc.robot.Robot;
 public class LiftLevelFive extends Command {
   public LiftLevelFive() {
     //lif to 6 ft 2 in for the 3rd level rocket hatch
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.Elevator);
   }
 
@@ -27,7 +25,6 @@ public class LiftLevelFive extends Command {
   protected void execute() {
     Robot.Elevator.enable();
     Robot.Elevator.setSetpoint(74-(51/8));
-    
   }
 
   // Make this return true when this Command no longer needs to run execute()

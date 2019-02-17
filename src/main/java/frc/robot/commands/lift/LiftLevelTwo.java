@@ -13,8 +13,6 @@ import frc.robot.Robot;
 public class LiftLevelTwo extends Command {
   public LiftLevelTwo() {
     //Will be 2 ft 3 and 1/2 in to get to the port for the balls
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.Elevator);
   }
 
@@ -27,7 +25,6 @@ public class LiftLevelTwo extends Command {
   protected void execute() {
     Robot.Elevator.enable();
     Robot.Elevator.setSetpoint((27.5-(51/8)));
-    
   }
 
   // Make this return true when this Command no longer needs to run execute()
