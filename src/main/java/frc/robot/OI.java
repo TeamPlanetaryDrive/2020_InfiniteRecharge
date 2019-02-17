@@ -52,12 +52,9 @@ public class OI {
     button5_right = new JoystickButton(rightJoystick, 5);
 
     //This is where you put associate commands with all the buttons
-    //Gripper controls
     button2_left.whenPressed(new ExtendGripPiston());
-    if(!button2_left.get()){
-      new RetractGripPiston();
-    }
-
+    button2_left.whenReleased(new RetractGripPiston());
+    
     //Lift controls
     button4_left.whenPressed(new LiftLevelOne());
     button3_left.whenPressed(new LiftLevelTwo());
@@ -66,8 +63,6 @@ public class OI {
     button3_right.whenPressed(new LiftLevelFive());
     button5_right.whenPressed(new LiftLevelSix());
 
-    //testing PID
-    button2_right.whenPressed(new TestPID());
   }
 
   public Joystick getRightJoyStick(){

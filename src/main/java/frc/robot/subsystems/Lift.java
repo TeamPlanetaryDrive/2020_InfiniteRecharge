@@ -21,32 +21,18 @@ import frc.robot.commands.lift.ManualLiftMove;
  * Add your docs here.
  */
 public class Lift extends PIDSubsystem {
-  //public double holeDistance;
-  //private SpeedController ElevatorMotor;
-  //private SpeedController ElevatorMotor2;
-
-  //PIDController ...
-	public SpeedController motor;
-	public PIDSource src;
-	public double points;
-	public double tolerance;
-  public double setPoint;
-  //public double multiplier;
-  
+ 
   public Lift(){
     super("Lift", 0.025, 0, 0);
 
-    this.setOutputRange(-0.20, 0.50);
-    this.setAbsoluteTolerance(0.05);
-    this.getPIDController().setContinuous(false);
+    setOutputRange(-0.20, 0.2);
+    setAbsoluteTolerance(0.05);
+    getPIDController().setContinuous(false);
     RobotMap.liftEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
-
   }
 
   public void init(SpeedController sc, boolean inv, PIDSource en){
-    motor = sc;
-    motor.setInverted(inv);
-    src = en;
+  
 	}
 
   public void initDefaultCommand() {
@@ -55,24 +41,16 @@ public class Lift extends PIDSubsystem {
   
   //inherited methods
   protected double returnPIDInput() {
-    return 0.11; // returns the sensor value that is providing the feedback for the system
+    return RobotMap.liftEncoder.getDistance(); // returns the sensor value that is providing the feedback for the system
   }
 
   protected void usePIDOutput(double output) {
-    motor.set(output); // this is where the computed output value fromthe PIDController is applied to the motor
+    liftMove(output); // this is where the computed output value from the PIDController is applied to the motor
   }
-
-  // public void liftUp(double speed){
-	// 	RobotMap.lift.set(speed);
-	// } 
-		
-	// public void liftDown(double speed){
-	// 	RobotMap.lift.set(-speed);
-  // }
   
-public void liftMove(double speed){
-  RobotMap.lift.set(speed);
-}
+  public void liftMove(double speed){
+    RobotMap.lift.set(speed);
+  }
 
   // public void moveStart(double distance){
   //   double accelRate;
@@ -82,6 +60,13 @@ public void liftMove(double speed){
   
   /** extra methods
 
+   // public void liftUp(double speed){
+	// 	RobotMap.lift.set(speed);
+	// } 
+		
+	// public void liftDown(double speed){
+	// 	RobotMap.lift.set(-speed);
+  // }
   public double getTarget(){
     return Robot.PID.getSetpoint();
   }

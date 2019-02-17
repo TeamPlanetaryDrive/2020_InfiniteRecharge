@@ -10,13 +10,11 @@ package frc.robot.commands.lift;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.commands.lift.*;
 
 public class LiftLevelOne extends Command {
   public LiftLevelOne() {
     //Will be 1 ft 7 in for the hub zone and the hatch panals for all things
     requires(Robot.Elevator);
-
   }
 
   // Called just before this Command runs the first time
@@ -25,13 +23,11 @@ public class LiftLevelOne extends Command {
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() {
-
-    //Robot.Elevator.enable();
+  protected void execute(){
+    Robot.Elevator.enable();
     //Robot.Elevator.setSetpoint(19-(51/8));
-    Robot.Elevator.setSetpoint(100);
-    Robot.Elevator.liftMove(.35);
-    System.out.println(Robot.Elevator.getPosition());
+    Robot.Elevator.setSetpoint(9.9573*1.58);
+    System.out.println(RobotMap.liftEncoder.getDistance());
   }
 
   // Make this return true when this Command no longer needs to run execute()

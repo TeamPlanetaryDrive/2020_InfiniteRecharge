@@ -13,29 +13,37 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class ManualLiftMove extends Command {
+  double setPoint;
   public ManualLiftMove() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.Elevator);
+    
   }
 
   // Called just before this Command runs the first time
   @Override
-  protected void initialize() {}
+  protected void initialize() {
+    setPoint = 0;
+  }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    System.out.println(RobotMap.liftStart);
-    if(RobotMap.liftStart){
-      Robot.Elevator.liftMove(-Robot.m_oi.getRightJoyStick().getZ());
+    if(OI.leftJoystick.getTrigger()){
+      setPoint += (-Robot.m_oi.getRightJoyStick().getZ()+1)/2;
+      Robot.Elevator.setSetpoint(setPoint);
     }
-  }
+    if(OI.rightJoystick.getTrigger()){
+      setPoint += (Robot.m_oi.getRightJoyStick().getZ()+1)/2;
+      Robot.Elevator.setSetpoint(setPoint);  
+    }
+}
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return !Robot.m_oi.getLeftJoystick().getTrigger();
+    return !Robot.m_oi.getLeftJoystick().getTrigger() || !!Robot.m_oi.getRightJoyStick().getTrigger() ;
   }
 
   // Called once after isFinished returns true

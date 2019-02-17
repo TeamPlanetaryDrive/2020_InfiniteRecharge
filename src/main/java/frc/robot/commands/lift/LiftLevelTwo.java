@@ -26,7 +26,7 @@ public class LiftLevelTwo extends Command {
   @Override
   protected void execute() {
     Robot.Elevator.enable();
-    Robot.Elevator.setSetpoint(27.5-(51/8));
+    Robot.Elevator.setSetpoint((27.5-(51/8)));
     
   }
 

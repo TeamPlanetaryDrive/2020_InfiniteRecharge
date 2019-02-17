@@ -16,8 +16,6 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.subsystems.MoveRefGen;
-
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -48,8 +46,8 @@ public class RobotMap {
     
     //piston based
     public static int
-    GRIPPER_CHANNEL = 2829683,
-    CLIMB_CHANNEL =3746837;
+    GRIPPER_CHANNEL_A = 0,
+    GRIPPER_CHANNEL_B = 1;
 
     
 	// Drive system PID Parameters
@@ -103,7 +101,7 @@ public class RobotMap {
   rMotor;
 
 //Manipulator: Channel 2, Lift: Channel 4
-public static SpeedController  lift;
+public static SpeedController lift;
 public static boolean liftStart;
 
 public static DigitalInput HatchPanalIn/*GearIn*/; //Channel 6
@@ -141,7 +139,9 @@ public static JoystickButton
     //LEnc = new Encoder(LEFT_ENC_CHANNEL_A, LEFT_ENC_CHANNEL_B);
     //REnc = new Encoder(RIGHT_ENC_CHANNEL_A, RIGHT_ENC_CHANNEL_B);
     liftEncoder = new Encoder(LIFT_ENC_CHANNEL_A, LIFT_ENC_CHANNEL_B);
-
+    liftEncoder.setDistancePerPulse(distancePerPulse);
+    liftEncoder.reset();
+    liftEncoder.setReverseDirection(true);
     //instantiating variables
     lift = new Talon(LIFT_CHANNEL);
     liftStart = false;

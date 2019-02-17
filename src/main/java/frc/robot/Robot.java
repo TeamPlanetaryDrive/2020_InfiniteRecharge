@@ -18,12 +18,8 @@ import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Gripper;
 import frc.robot.subsystems.Lift;
 import frc.robot.subsystems.Motion;
-import frc.robot.subsystems.MoveRefGen;
-import frc.robot.subsystems.PIDMotor;
 import frc.robot.subsystems.Vision;
 import frc.robot.OI;
-import frc.robot.commands.*;
-import frc.robot.commands.lift.LiftLevelOne;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -38,8 +34,6 @@ public class Robot extends TimedRobot {
     public static Lift Elevator; // elevator for gripper
     public static Motion D_Motion; // D_Motion as in drive motion
     public static Vision Cameras; //used for the vision class as needed
-    public static MoveRefGen MoveRefGen;// used to change movestates
-    public static PIDMotor PID;
     public static OI m_oi;
     public static RobotMap map = new RobotMap();
 
@@ -52,17 +46,8 @@ public class Robot extends TimedRobot {
     SendableChooser<Command> d_Motion_Send = new SendableChooser<>();
     SendableChooser<Command> Cameras_Send = new SendableChooser<>();
     SendableChooser<Command> PID_Send = new SendableChooser<>();
+    SendableChooser <Command> RobotM = new SendableChooser<>();
 
- //LoopVision camera;
- //LoopTele tele;
- //LoopAuto auto;
-  
- //Robot Mechanisms
-  /*public DriveTrain driveTrain;
-  public Lift lift;
-  public Gripper gripper;
-  public Climb climb;
-  public Gyro gyro;*/
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -74,14 +59,9 @@ public class Robot extends TimedRobot {
     Grip = new Gripper(); // testing pnuematics, change name later
     Elevator = new Lift(); // elevator for gripper
     Cameras = new Vision(); //used for the vision class as needed
-    //MoveRefGen = new MoveRefGen();// used to change movestates
-    //PID = new PIDMotor(0.825, 0, 0 , 0);
     m_oi = new OI();
-
-    // PID.init(RobotMap.lift, false, RobotMap.LEnc);
-    
-    // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+    
 
     //gripper.initDefaultCommand();
   }
@@ -96,13 +76,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    if(OI.leftJoystick.getTrigger())
-      RobotMap.liftStart = true;
-    //if not supposed to be lift, switch to drive and then stop the lift motor
-    else{
-      RobotMap.liftStart = false;
-      RobotMap.lift.set(0);
-    }
+  
   }
 
   /**

@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import frc.robot.RobotMap;
 import frc.robot.commands.grip.*;
 
 // use double solenoids
@@ -17,11 +18,11 @@ import frc.robot.commands.grip.*;
  * Add your docs here.
  */
 
- //Use this for opening and closing the gripperws onto the plate and the ball
+ //Use this for opening and closing the grippers onto the plate and the ball
 public class Gripper extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  DoubleSolenoid testSolenoid = new DoubleSolenoid(0, 1);
+  DoubleSolenoid testSolenoid = new DoubleSolenoid(RobotMap.GRIPPER_CHANNEL_A, RobotMap.GRIPPER_CHANNEL_B);
   
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
