@@ -12,8 +12,6 @@ import frc.robot.Robot;
 
 public class StopLift extends Command {
   public StopLift() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.Elevator);
   }
 

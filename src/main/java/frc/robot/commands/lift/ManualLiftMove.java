@@ -10,15 +10,11 @@ package frc.robot.commands.lift;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
 public class ManualLiftMove extends Command {
   double setPoint;
   public ManualLiftMove() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.Elevator);
-    
   }
 
   // Called just before this Command runs the first time

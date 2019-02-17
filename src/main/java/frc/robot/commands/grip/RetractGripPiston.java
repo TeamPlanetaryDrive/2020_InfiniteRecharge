@@ -12,8 +12,6 @@ import frc.robot.Robot;
 
 public class RetractGripPiston extends Command {
   public RetractGripPiston() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.Grip);
   }
 

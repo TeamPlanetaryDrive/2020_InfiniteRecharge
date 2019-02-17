@@ -25,6 +25,7 @@ public class LiftLevelOne extends Command {
   @Override
   protected void execute(){
     Robot.Elevator.enable();
+    
     //Robot.Elevator.setSetpoint(19-(51/8));
     Robot.Elevator.setSetpoint(9.9573*1.58);
     System.out.println(RobotMap.liftEncoder.getDistance());
