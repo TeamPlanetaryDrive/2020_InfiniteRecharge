@@ -96,7 +96,7 @@ public class RobotMap {
     DRIVE_BASE_WIDTH = (25.5/12.0); // ft (in/12)
     //HARDWARE
 	//Left: Channel 0, Right: Channel 1
-	public static Spark 
+	public static Talon 
   lMotor, 
   rMotor;
 
@@ -143,7 +143,7 @@ public static JoystickButton
     liftEncoder.reset();
     liftEncoder.setReverseDirection(true);
     //instantiating variables
-    lift = new Talon(LIFT_CHANNEL);
+    lift = new Spark(LIFT_CHANNEL);
     liftStart = false;
 
     //LEnc.setPIDSourceType(PIDSourceType.kDisplacement);

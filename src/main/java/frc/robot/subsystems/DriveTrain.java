@@ -32,9 +32,9 @@ public class DriveTrain extends Subsystem {
   */
 
   //Metal Robot Code
-  Spark w_Left = new Spark(RobotMap.LEFT_MOTOR_CHANNEL);
-  Spark w_Right = new Spark(RobotMap.RIGHT_MOTOR_CHANNEL);
-  DifferentialDrive robotDrive = new DifferentialDrive(w_Left, w_Right);
+  Talon leftMotor = new Talon(RobotMap.LEFT_MOTOR_CHANNEL);
+  Talon rightMotor = new Talon(RobotMap.RIGHT_MOTOR_CHANNEL);
+  DifferentialDrive robotDrive = new DifferentialDrive(leftMotor, rightMotor);
   //DifferentialDrive robotDrive = new DifferentialDrive(RobotMap.lMotor, RobotMap.rMotor);
   
   public DriveTrain(){
