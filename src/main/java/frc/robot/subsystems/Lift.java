@@ -26,8 +26,8 @@ public class Lift extends PIDSubsystem {
     super("Lift", 0.025, 0, 0);
 
     setOutputRange(-0.20, 0.2);
-    setAbsoluteTolerance(0.05);
-    getPIDController().setContinuous(false);
+    setAbsoluteTolerance(0.01);
+    getPIDController().setContinuous(true);
     RobotMap.liftEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
   }
 
