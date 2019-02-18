@@ -18,6 +18,7 @@ import frc.robot.subsystems.Lift;
 import frc.robot.subsystems.Motion;
 import frc.robot.subsystems.Vision;
 import frc.robot.OI;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -26,59 +27,62 @@ import frc.robot.OI;
  * project.
  */
 public class Robot extends TimedRobot {
-   
-    public static DriveTrain Drive;//could be redundent , if we delete drivetrain get rid of this
-    public static Gripper Grip; // testing pnuematics, change name later
-    public static Lift Elevator; // elevator for gripper
-    public static Motion D_Motion; // D_Motion as in drive motion
-    public static Vision Cameras; //used for the vision class as needed
-    public static OI m_oi;
-    public static RobotMap map = new RobotMap();
+
+  public static DriveTrain Drive;// could be redundent , if we delete drivetrain get rid of this
+  public static Gripper Grip; // testing pnuematics, change name later
+  public static Lift Elevator; // elevator for gripper
+  public static Motion D_Motion; // D_Motion as in drive motion
+  public static Vision Cameras; // used for the vision class as needed
+  public static OI m_oi;
+  public static RobotMap map = new RobotMap();
 
   Command m_autonomousCommand;
-    SendableChooser<Command> m_chooser = new SendableChooser<>();
-    SendableChooser<Command> Hab_Climb_Send = new SendableChooser<>();
-    SendableChooser<Command> Drive_Send = new SendableChooser<>();
-    SendableChooser<Command> PneumaticsTest_Send = new SendableChooser<>();
-    SendableChooser<Command> Elevator_Send = new SendableChooser<>();
-    SendableChooser<Command> d_Motion_Send = new SendableChooser<>();
-    SendableChooser<Command> Cameras_Send = new SendableChooser<>();
-    SendableChooser<Command> PID_Send = new SendableChooser<>();
-    SendableChooser <Command> RobotM = new SendableChooser<>();
+  SendableChooser<Command> m_chooser = new SendableChooser<>();
+  SendableChooser<Command> Hab_Climb_Send = new SendableChooser<>();
+  SendableChooser<Command> Drive_Send = new SendableChooser<>();
+  SendableChooser<Command> PneumaticsTest_Send = new SendableChooser<>();
+  SendableChooser<Command> Elevator_Send = new SendableChooser<>();
+  SendableChooser<Command> d_Motion_Send = new SendableChooser<>();
+  SendableChooser<Command> Cameras_Send = new SendableChooser<>();
+  SendableChooser<Command> PID_Send = new SendableChooser<>();
+  SendableChooser<Command> RobotM = new SendableChooser<>();
 
   /**
-   * This function is run when the robot is first started up and should be
-   * used for any initialization code.
+   * This function is run when the robot is first started up and should be used
+   * for any initialization code.
    */
-  
+
   public void robotInit() {
     RobotMap.init();
     Drive = new DriveTrain();
     Grip = new Gripper(); // testing pnuematics, change name later
     Elevator = new Lift(); // elevator for gripper
-    Cameras = new Vision(); //used for the vision class as needed
+    Cameras = new Vision(); // used for the vision class as needed
     m_oi = new OI();
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 
   /**
-   * This function is called every robot packet, no matter the mode. Use
-   * this for items like diagnostics that you want ran during disabled,
-   * autonomous, teleoperated and test.
+   * This function is called every robot packet, no matter the mode. Use this for
+   * items like diagnostics that you want ran during disabled, autonomous,
+   * teleoperated and test.
    *
-   * <p>This runs after the mode specific periodic functions, but before
-   * LiveWindow and SmartDashboard integrated updating.
+   * <p>
+   * This runs after the mode specific periodic functions, but before LiveWindow
+   * and SmartDashboard integrated updating.
    */
   @Override
-  public void robotPeriodic() {}
+  public void robotPeriodic() {
+  }
 
   /**
-   * This function is called once each time the robot enters Disabled mode.
-   * You can use it to reset any subsystem information you want to clear when
-   * the robot is disabled.
+   * This function is called once each time the robot enters Disabled mode. You
+   * can use it to reset any subsystem information you want to clear when the
+   * robot is disabled.
    */
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+  }
 
   @Override
   public void disabledPeriodic() {
@@ -87,24 +91,25 @@ public class Robot extends TimedRobot {
 
   /**
    * This autonomous (along with the chooser code above) shows how to select
-   * between different autonomous modes using the dashboard. The sendable
-   * chooser code works with the Java SmartDashboard. If you prefer the
-   * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-   * getString code to get the auto name from the text box below the Gyro
+   * between different autonomous modes using the dashboard. The sendable chooser
+   * code works with the Java SmartDashboard. If you prefer the LabVIEW Dashboard,
+   * remove all of the chooser code and uncomment the getString code to get the
+   * auto name from the text box below the Gyro
    *
-   * <p>You can add additional auto modes by adding additional commands to the
-   * chooser code above (like the commented example) or additional comparisons
-   * to the switch structure below with additional strings & commands.
+   * <p>
+   * You can add additional auto modes by adding additional commands to the
+   * chooser code above (like the commented example) or additional comparisons to
+   * the switch structure below with additional strings & commands.
    */
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
 
     /*
-     * String autoSelected = SmartDashboard.getString("Auto Selector",
-     * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-     * = new MyAutoCommand(); break; case "Default Auto": default:
-     * autonomousCommand = new ExampleCommand(); break; }
+     * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
+     * switch(autoSelected) { case "My Auto": autonomousCommand = new
+     * MyAutoCommand(); break; case "Default Auto": default: autonomousCommand = new
+     * ExampleCommand(); break; }
      */
 
     // schedule the autonomous command (example)
@@ -135,7 +140,7 @@ public class Robot extends TimedRobot {
   /**
    * This function is called periodically during operator control.
    */
-  
+
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
   }
@@ -144,5 +149,6 @@ public class Robot extends TimedRobot {
    * This function is called periodically during test mode.
    */
   @Override
-  public void testPeriodic() {}
+  public void testPeriodic() {
+  }
 }

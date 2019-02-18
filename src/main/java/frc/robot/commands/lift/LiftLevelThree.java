@@ -12,19 +12,20 @@ import frc.robot.Robot;
 
 public class LiftLevelThree extends Command {
   public LiftLevelThree() {
-    //Will be 3 ft 11 in for the second level of hatch panals for the rocket
+    // Will be 3 ft 11 in for the second level of hatch panals for the rocket
     requires(Robot.Elevator);
   }
 
   // Called just before this Command runs the first time
   @Override
-  protected void initialize() {}
+  protected void initialize() {
+  }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     Robot.Elevator.enable();
-    Robot.Elevator.setSetpoint(47-(51/8));
+    Robot.Elevator.setSetpoint(47 - (51 / 8));
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -35,10 +36,12 @@ public class LiftLevelThree extends Command {
 
   // Called once after isFinished returns true
   @Override
-  protected void end() {}
+  protected void end() {
+  }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
-  protected void interrupted() {}
+  protected void interrupted() {
+  }
 }

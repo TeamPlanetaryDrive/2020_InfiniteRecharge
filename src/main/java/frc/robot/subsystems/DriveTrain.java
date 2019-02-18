@@ -18,20 +18,19 @@ public class DriveTrain extends Subsystem {
   // Put methods for controlling this subsystem here. Call these from Commands.
 
   /*
-  //Wood Robot Code
-  Jaguar w_left = new Jaguar(0);
-  Jaguar w_right = new Jaguar(1);
+   * //Wood Robot Code Jaguar w_left = new Jaguar(0); Jaguar w_right = new
+   * Jaguar(1);
+   * 
+   * DifferentialDrive robotDrive = new DifferentialDrive(w_left, w_right);
+   */
 
-  DifferentialDrive robotDrive = new DifferentialDrive(w_left, w_right);
-  */
-
-  //Metal Robot Code
+  // Metal Robot Code
   Talon leftMotor = new Talon(RobotMap.LEFT_MOTOR_CHANNEL);
   Talon rightMotor = new Talon(RobotMap.RIGHT_MOTOR_CHANNEL);
   DifferentialDrive robotDrive = new DifferentialDrive(leftMotor, rightMotor);
-  
-  public DriveTrain(){
-    //calls the subsystem to let it know that it needs to be called as a subsystem
+
+  public DriveTrain() {
+    // calls the subsystem to let it know that it needs to be called as a subsystem
     super();
   }
 
@@ -40,11 +39,19 @@ public class DriveTrain extends Subsystem {
     robotDrive.tankDrive(left, right);
   }
 
-  public DifferentialDrive getDrive(){return robotDrive;}
+  public DifferentialDrive getDrive() {
+    return robotDrive;
+  }
 
-  public SpeedController getSPRight(){return RobotMap.rMotor;}
-  public SpeedController getSPLeft(){return RobotMap.lMotor;}
+  public SpeedController getSPRight() {
+    return RobotMap.rMotor;
+  }
+
+  public SpeedController getSPLeft() {
+    return RobotMap.lMotor;
+  }
 
   @Override
-  public void initDefaultCommand() {}
+  public void initDefaultCommand() {
+  }
 }

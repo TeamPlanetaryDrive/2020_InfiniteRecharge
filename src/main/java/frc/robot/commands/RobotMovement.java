@@ -18,12 +18,13 @@ public class RobotMovement extends Command {
   }
 
   // Called just before this Command runs the first time
-  protected void initialize() {}
+  protected void initialize() {
+  }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Drive.drive(OI.leftJoystick.getY(),OI.rightJoystick.getY());
+    Robot.Drive.drive(OI.leftJoystick.getY(), OI.rightJoystick.getY());
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -34,10 +35,12 @@ public class RobotMovement extends Command {
 
   // Called once after isFinished returns true
   @Override
-  protected void end() {}
+  protected void end() {
+  }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
-  protected void interrupted() {}
+  protected void interrupted() {
+  }
 }

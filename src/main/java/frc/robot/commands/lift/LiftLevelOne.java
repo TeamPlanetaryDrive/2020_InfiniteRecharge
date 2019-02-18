@@ -13,21 +13,22 @@ import frc.robot.RobotMap;
 
 public class LiftLevelOne extends Command {
   public LiftLevelOne() {
-    //Will be 1 ft 7 in for the hub zone and the hatch panals for all things
+    // Will be 1 ft 7 in for the hub zone and the hatch panals for all things
     requires(Robot.Elevator);
   }
 
   // Called just before this Command runs the first time
   @Override
-  protected void initialize() {}
+  protected void initialize() {
+  }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute(){
+  protected void execute() {
     Robot.Elevator.enable();
-    
-    //Robot.Elevator.setSetpoint(19-(51/8));
-    Robot.Elevator.setSetpoint(9.9573*1.58);
+
+    // Robot.Elevator.setSetpoint(19-(51/8));
+    Robot.Elevator.setSetpoint(9.9573 * 1.58);
     System.out.println(RobotMap.liftEncoder.getDistance());
   }
 
@@ -39,10 +40,12 @@ public class LiftLevelOne extends Command {
 
   // Called once after isFinished returns true
   @Override
-  protected void end() {}
+  protected void end() {
+  }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
-  protected void interrupted() {}
+  protected void interrupted() {
+  }
 }

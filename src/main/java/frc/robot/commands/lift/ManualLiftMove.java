@@ -13,6 +13,7 @@ import frc.robot.Robot;
 
 public class ManualLiftMove extends Command {
   double setPoint;
+
   public ManualLiftMove() {
     requires(Robot.Elevator);
   }
@@ -26,28 +27,30 @@ public class ManualLiftMove extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(OI.leftJoystick.getTrigger()){
-      setPoint += (-Robot.m_oi.getRightJoyStick().getZ()+1)/2;
+    if (OI.leftJoystick.getTrigger()) {
+      setPoint += (-Robot.m_oi.getRightJoyStick().getZ() + 1) / 2;
       Robot.Elevator.setSetpoint(setPoint);
     }
-    if(OI.rightJoystick.getTrigger()){
-      setPoint += (Robot.m_oi.getRightJoyStick().getZ()+1)/2;
-      Robot.Elevator.setSetpoint(setPoint);  
+    if (OI.rightJoystick.getTrigger()) {
+      setPoint += (Robot.m_oi.getRightJoyStick().getZ() + 1) / 2;
+      Robot.Elevator.setSetpoint(setPoint);
     }
-}
+  }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return !Robot.m_oi.getLeftJoystick().getTrigger() || !!Robot.m_oi.getRightJoyStick().getTrigger() ;
+    return !Robot.m_oi.getLeftJoystick().getTrigger() || !!Robot.m_oi.getRightJoyStick().getTrigger();
   }
 
   // Called once after isFinished returns true
   @Override
-  protected void end() {}
+  protected void end() {
+  }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
-  protected void interrupted() {}
+  protected void interrupted() {
+  }
 }

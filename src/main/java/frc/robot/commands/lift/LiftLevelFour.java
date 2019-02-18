@@ -12,19 +12,20 @@ import frc.robot.Robot;
 
 public class LiftLevelFour extends Command {
   public LiftLevelFour() {
-    //Will lift to 4 ft 7 and 1/2 in for the second level ball port
+    // Will lift to 4 ft 7 and 1/2 in for the second level ball port
     requires(Robot.Elevator);
   }
 
   // Called just before this Command runs the first time
   @Override
-  protected void initialize() {}
+  protected void initialize() {
+  }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     Robot.Elevator.enable();
-    Robot.Elevator.setSetpoint(55.5-(51/8));
+    Robot.Elevator.setSetpoint(55.5 - (51 / 8));
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -35,10 +36,12 @@ public class LiftLevelFour extends Command {
 
   // Called once after isFinished returns true
   @Override
-  protected void end() {}
+  protected void end() {
+  }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
-  protected void interrupted() {}
+  protected void interrupted() {
+  }
 }
