@@ -5,15 +5,16 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.lift;
+package frc.robot.commands.grip;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class LiftLevelThree extends Command {
-  public LiftLevelThree() {
-    // Will be 3 ft 11 in for the second level of hatch panals for the rocket
-    requires(Robot.Elevator);
+public class MoveGripPiston extends Command {
+  private boolean state;
+  public MoveGripPiston(boolean piston_state) {
+    requires(Robot.Grip);
+    state = piston_state;
   }
 
   // Called just before this Command runs the first time
@@ -24,14 +25,14 @@ public class LiftLevelThree extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Elevator.enable();
-    Robot.Elevator.setSetpoint(47 - (51 / 8));
+    Robot.Grip.setState(state);
+    Robot.Grip.update();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.Elevator.onTarget();
+    return false;
   }
 
   // Called once after isFinished returns true

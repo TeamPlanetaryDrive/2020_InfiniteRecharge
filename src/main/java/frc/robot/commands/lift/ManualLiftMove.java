@@ -28,10 +28,12 @@ public class ManualLiftMove extends Command {
   @Override
   protected void execute() {
     if (OI.leftJoystick.getTrigger()) {
+      Robot.Elevator.enable();
       setPoint += (-Robot.m_oi.getRightJoyStick().getZ() + 1) / 2;
       Robot.Elevator.setSetpoint(setPoint);
     }
     if (OI.rightJoystick.getTrigger()) {
+      Robot.Elevator.enable();
       setPoint += (Robot.m_oi.getRightJoyStick().getZ() + 1) / 2;
       Robot.Elevator.setSetpoint(setPoint);
     }

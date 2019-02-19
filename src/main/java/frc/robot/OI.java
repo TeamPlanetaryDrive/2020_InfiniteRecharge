@@ -40,16 +40,28 @@ public class OI {
     button5_right = new JoystickButton(rightJoystick, 5);
 
     // This is where you put associate commands with all the buttons
-    button2_left.whenPressed(new ExtendGripPiston());
-    button2_left.whenReleased(new RetractGripPiston());
+    button2_left.whenPressed(new MoveGripPiston(RobotMap.GRIPPER_EXTEND));
+    button2_left.whenReleased(new MoveGripPiston(RobotMap.GRIPPER_RETRACT));
+    
+    // button2_left.whenPressed(new ExtendGripPiston());
+    // button2_left.whenReleased(new RetractGripPiston());
+    
 
     // Lift controls
-    button4_left.whenPressed(new LiftLevelOne());
-    button3_left.whenPressed(new LiftLevelTwo());
-    button5_left.whenPressed(new LiftLevelThree());
-    button4_right.whenPressed(new LiftLevelFour());
-    button3_right.whenPressed(new LiftLevelFive());
-    button5_right.whenPressed(new LiftLevelSix());
+
+    button3_left.whenPressed(new LiftToLevel(0));
+    button4_left.whenPressed(new LiftToLevel(1));
+    button5_left.whenPressed(new LiftToLevel(2));
+    button4_right.whenPressed(new LiftToLevel(3));
+    button3_right.whenPressed(new LiftToLevel(4));
+    button5_right.whenPressed(new LiftToLevel(5));
+
+    // button4_left.whenPressed(new LiftLevelOne());
+    // button3_left.whenPressed(new LiftLevelTwo());
+    // button5_left.whenPressed(new LiftLevelThree());
+    // button4_right.whenPressed(new LiftLevelFour());
+    // button3_right.whenPressed(new LiftLevelFive());
+    // button5_right.whenPressed(new LiftLevelSix());
 
   }
 

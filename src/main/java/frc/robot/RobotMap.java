@@ -36,7 +36,7 @@ public class RobotMap {
   public static int LIFT_CHANNEL = 2;
 
   // piston based
-  public static int GRIPPER_CHANNEL_A = 0, GRIPPER_CHANNEL_B = 1;
+  public static int GRIPPER_CHANNEL_A = 0, GRIPPER_CHANNEL_B = 2;
 
   // Drive system PID Parameters
   public static final double DRIVE_PID_POSITION_KP = 2.00, // 2.00
@@ -63,6 +63,9 @@ public class RobotMap {
   public static double distancePerPulse = 0.003522; // test for this, we do this by setting the set point to a certain
                                                     // disance
                                                     // then we simply see how far it actually goes, then do a ratio.
+public static final boolean 
+    GRIPPER_EXTEND = true,
+    GRIPPER_RETRACT = false;    
 
   public static final double DRIVE_ACCEL_RATE = 2.5, // (ft/s^2) 5.0
       DRIVE_ENCODER_RESOLUTION = 1.0, // (feet/count) Real: 0.003568, Practice: 0.003522
