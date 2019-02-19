@@ -41,10 +41,10 @@ public class OI {
 
     // This is where you put associate commands with all the buttons
     button2_left.whenPressed(new MoveGripPiston(RobotMap.GRIPPER_EXTEND));
-    button2_left.whenReleased(new MoveGripPiston(RobotMap.GRIPPER_RETRACT));
+    button2_right.whenReleased(new MoveGripPiston(RobotMap.GRIPPER_RETRACT));
     
     // button2_left.whenPressed(new ExtendGripPiston());
-    // button2_left.whenReleased(new RetractGripPiston());
+    // button2_right.whenReleased(new RetractGripPiston());
     
 
     // Lift controls
