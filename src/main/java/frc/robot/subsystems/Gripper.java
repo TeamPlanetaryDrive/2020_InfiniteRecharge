@@ -29,7 +29,7 @@ public class Gripper extends Subsystem {
     state = newState;
   }
   public void update(){
-    if(state = RobotMap.GRIPPER_EXTEND){
+    if(state == RobotMap.GRIPPER_EXTEND){
       pullPiston();
     }else{
       pushPiston();
