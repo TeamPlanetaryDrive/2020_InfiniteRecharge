@@ -12,7 +12,7 @@ import frc.robot.OI;
 import frc.robot.Robot;
 
 public class ManualLiftMove extends Command {
-  double setPoint;
+  public double setPoint;
 
   public ManualLiftMove() {
     requires(Robot.Elevator);
@@ -42,7 +42,7 @@ public class ManualLiftMove extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return !Robot.m_oi.getLeftJoystick().getTrigger() || !!Robot.m_oi.getRightJoyStick().getTrigger();
+    return !Robot.m_oi.getLeftJoystick().getTrigger() || !Robot.m_oi.getRightJoyStick().getTrigger();
   }
 
   // Called once after isFinished returns true

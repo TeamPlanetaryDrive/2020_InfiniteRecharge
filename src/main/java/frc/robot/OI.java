@@ -49,8 +49,8 @@ public class OI {
 
     // Lift controls
 
-    button3_left.whenPressed(new LiftToLevel(0));
-    button4_left.whenPressed(new LiftToLevel(1));
+    button4_left.whenPressed(new LiftToLevel(0));
+    button3_left.whenPressed(new LiftToLevel(1));
     button5_left.whenPressed(new LiftToLevel(2));
     button4_right.whenPressed(new LiftToLevel(3));
     button3_right.whenPressed(new LiftToLevel(4));

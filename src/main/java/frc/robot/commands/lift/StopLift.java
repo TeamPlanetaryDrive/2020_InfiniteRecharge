@@ -24,7 +24,6 @@ public class StopLift extends Command {
   @Override
   protected void execute() {
     Robot.Elevator.setSetpoint(Robot.Elevator.getPosition());
-    ;
   }
 
   // Make this return true when this Command no longer needs to run execute()

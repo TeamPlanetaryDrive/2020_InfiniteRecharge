@@ -26,8 +26,8 @@ public class RobotMap {
 
   // Power Channels
   public static final int DRIVE_POWER_LEFT_FRONT = 837148, DRIVE_POWER_RIGHT_FRONT = 378149,
-      DRIVE_POWER_LEFT_REAR = 893149, DRIVE_POWER_RIGHT_REAR = 81340723, CAMERA_ONE_POWER = 83917491,
-      CAMERA_TWO_POWER = 376492, VRM_POWER = 38578942;
+      DRIVE_POWER_LEFT_REAR = 893149, DRIVE_POWER_RIGHT_REAR = 81340723, CAMERA_ONE_POWER = 0,
+      CAMERA_TWO_POWER = 1, VRM_POWER = 38578942;
 
   // Digital (0-9, 10-25)
   public static int LEFT_MOTOR_CHANNEL = 0, RIGHT_MOTOR_CHANNEL = 1;
@@ -107,13 +107,14 @@ public static final boolean
   public static void init() {
     // LEnc = new Encoder(LEFT_ENC_CHANNEL_A, LEFT_ENC_CHANNEL_B);
     // REnc = new Encoder(RIGHT_ENC_CHANNEL_A, RIGHT_ENC_CHANNEL_B);
+    
+
     liftEncoder = new Encoder(LIFT_ENC_CHANNEL_A, LIFT_ENC_CHANNEL_B);
     liftEncoder.setDistancePerPulse(distancePerPulse);
     liftEncoder.reset();
     liftEncoder.setReverseDirection(true);
     // instantiating variables
     lift = new Spark(LIFT_CHANNEL);
-    liftStart = false;
 
     // LEnc.setPIDSourceType(PIDSourceType.kDisplacement);
     // lMotor = new Spark(LEFT_MOTOR_CHANNEL);
