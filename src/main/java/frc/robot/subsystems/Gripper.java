@@ -19,23 +19,24 @@ import frc.robot.commands.grip.*;
 public class Gripper extends Subsystem {
   DoubleSolenoid testSolenoid = new DoubleSolenoid(RobotMap.GRIPPER_CHANNEL_A, RobotMap.GRIPPER_CHANNEL_B);
   private boolean state;
+ 
 
   public void initDefaultCommand() {
     // todo: use new system
-    setDefaultCommand(new MoveGripPiston(RobotMap.GRIPPER_RETRACT));
+    // setDefaultCommand(new MoveGripPiston(RobotMap.GRIPPER_RETRACT));
     state = true;
   }
   public void setState(boolean newState){
     state = newState;
   }
   public void update(){
-    if(state == RobotMap.GRIPPER_EXTEND){
+    if(state == RobotMap.GRIPPER_EXTEND && RobotMap.pneumaticsStart){
       pullPiston();
     }else{
       pushPiston();
     }
+   // DoubleSolenoid.Value.kReverse.
   }
-
   public void pullPiston() {
     testSolenoid.set(DoubleSolenoid.Value.kReverse);
   }

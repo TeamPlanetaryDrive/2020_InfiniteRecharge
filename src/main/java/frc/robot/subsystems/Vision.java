@@ -7,10 +7,27 @@
 
 package frc.robot.subsystems;
 
+
+import edu.wpi.first.cameraserver.*;
+import edu.wpi.cscore.AxisCamera;
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 
 //use for the guidence through the camera
 public class Vision extends Subsystem {
+
+  public void init(){
+    // // Axis camera (fixed IP)
+    // AxisCamera aCamera = CameraServer.getInstance().addAxisCamera("10.28.56.10");
+		// aCamera.setFPS(15);
+		// aCamera.setResolution(RobotMap.CAMERA_RESOLUTION_WIDTH, RobotMap.CAMERA_RESOLUTION_HEIGHT);
+
+		// USB camera (default = 0)
+		UsbCamera uCamera = CameraServer.getInstance().startAutomaticCapture();
+		uCamera.setFPS(15);
+		uCamera.setResolution(320, 240);
+  }
 
   @Override
   public void initDefaultCommand() {

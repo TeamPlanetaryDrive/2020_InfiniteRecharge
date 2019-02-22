@@ -5,41 +5,46 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.CommandGroups;
+package frc.robot.commands.lift;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.OI;
+import frc.robot.Robot;
 
-public class RetrieveCargo extends Command {
-  public RetrieveCargo() {}
+public class manualMotorLift extends Command {
+  public manualMotorLift() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
+    requires(Robot.Elevator);
+  }
 
   // Called just before this Command runs the first time
   @Override
-  protected void initialize() {}
+  protected void initialize() {
+  }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //pseudocode
-    /**(link to the pressing of a button)
-     * ExpandGripPiston
-     * ExtendGripPiston
-     * CloseGripPiston
-     * RetractGripPiston
-     */
+    Robot.Elevator.disable();
+    Robot.Elevator.liftMove(OI.leftJoystick.getZ()/2);
+    System.out.println(OI.leftJoystick.getZ()/2);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return !OI.button9_left.get();
   }
 
   // Called once after isFinished returns true
   @Override
-  protected void end() {}
+  protected void end() {
+  }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
-  protected void interrupted() {}
+  protected void interrupted() {
+  }
 }

@@ -9,16 +9,19 @@ package frc.robot.commands.lift;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class LiftToLevel extends Command {
   // this array represents all the levels that we can lift to.
+  // quantified in "encoder values", not inches
   private static final double[] LIFT_PRESETS = new double[]{
-    9.9573 * 1.58,
-    27.5 - (51 / 8),
-    47 - (51 / 8),
-    55.5 - (51 / 8),
-    74 - (51 / 8),
-    83.5 - (51 / 8)
+    0,
+    5.05,
+    8.45,
+    16.25,
+    19.65,
+    27.05,
+    30.85
   };
   
   private int level_preset;
@@ -39,6 +42,7 @@ public class LiftToLevel extends Command {
   protected void execute() {
     Robot.Elevator.enable();
     Robot.Elevator.setSetpoint(LIFT_PRESETS[level_preset]);
+    System.out.print(RobotMap.liftEncoder.getDistance());
   }
 
   // Make this return true when this Command no longer needs to run execute()

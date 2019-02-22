@@ -16,12 +16,19 @@ import frc.robot.commands.lift.ManualLiftMove;
 public class Lift extends PIDSubsystem {
 
   public Lift() {
-    super("Lift", 0.025, 0, 0);
+    // super("Lift", 0.25, 0.01, 0);
+    super("Lift", 5.75, 0.000001, 0);
 
-    setOutputRange(-0.20, 0.2);
+    setOutputRange(-0.2,0.5);
     setAbsoluteTolerance(0.01);
     getPIDController().setContinuous(false);
     RobotMap.liftEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
+    setInputRange(0, 34);
+  }
+
+  public double inchesToSetpoint(double inches){
+    double setpoint = inches;
+    return setpoint;
   }
 
   public void initDefaultCommand() {
@@ -41,4 +48,5 @@ public class Lift extends PIDSubsystem {
   public void liftMove(double speed) {
     RobotMap.lift.set(speed);
   }
+
 }

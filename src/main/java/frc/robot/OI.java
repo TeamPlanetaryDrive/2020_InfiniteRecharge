@@ -23,9 +23,9 @@ public class OI {
   public static Joystick leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
   public static Joystick rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
 
-  public static JoystickButton button2_left, button3_left, button4_left, button5_left;
+  public static JoystickButton button2_left, button3_left, button4_left, button5_left, button8_left, button9_left;
 
-  public static JoystickButton button2_right, button3_right, button4_right, button5_right;
+  public static JoystickButton button2_right, button3_right, button4_right, button5_right, button8_right;
 
   public OI() {
     // instantiating buttons
@@ -33,11 +33,14 @@ public class OI {
     button3_left = new JoystickButton(leftJoystick, 3);
     button4_left = new JoystickButton(leftJoystick, 4);
     button5_left = new JoystickButton(leftJoystick, 5);
+    button8_left = new JoystickButton(leftJoystick, 8);
+    button9_left = new JoystickButton(leftJoystick, 9);
 
     button2_right = new JoystickButton(rightJoystick, 2);
     button3_right = new JoystickButton(rightJoystick, 3);
     button4_right = new JoystickButton(rightJoystick, 4);
     button5_right = new JoystickButton(rightJoystick, 5);
+    button8_right = new JoystickButton(rightJoystick, 8);
 
     // This is where you put associate commands with all the buttons
     button2_left.whenPressed(new MoveGripPiston(RobotMap.GRIPPER_EXTEND));
@@ -48,13 +51,16 @@ public class OI {
     
 
     // Lift controls
+    button8_right.whenPressed(new PartialPneumaticClose());
+    button9_left.whileHeld(new manualMotorLift());
+    button8_left.whenPressed(new LiftToLevel(0));
+    button4_left.whenPressed(new LiftToLevel(1));
+    button3_left.whenPressed(new LiftToLevel(2));
+    button5_left.whenPressed(new LiftToLevel(3));
+    button4_right.whenPressed(new LiftToLevel(4));
+    button3_right.whenPressed(new LiftToLevel(5));
+    button5_right.whenPressed(new LiftToLevel(6));
 
-    button4_left.whenPressed(new LiftToLevel(0));
-    button3_left.whenPressed(new LiftToLevel(1));
-    button5_left.whenPressed(new LiftToLevel(2));
-    button4_right.whenPressed(new LiftToLevel(3));
-    button3_right.whenPressed(new LiftToLevel(4));
-    button5_right.whenPressed(new LiftToLevel(5));
 
     // button4_left.whenPressed(new LiftLevelOne());
     // button3_left.whenPressed(new LiftLevelTwo());

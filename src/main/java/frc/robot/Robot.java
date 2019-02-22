@@ -59,6 +59,8 @@ public class Robot extends TimedRobot {
     Elevator = new Lift(); // elevator for gripper
     Cameras = new Vision(); // used for the vision class as needed
     m_oi = new OI();
+    Cameras.init();
+    Grip.pistonOff();
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 

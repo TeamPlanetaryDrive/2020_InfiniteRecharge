@@ -39,7 +39,6 @@ public class DriveTrain extends Subsystem {
   
 
   public void drive(double left, double right) {
-    System.out.println("drive function");
     robotDrive.tankDrive(left, right);
   }
 
