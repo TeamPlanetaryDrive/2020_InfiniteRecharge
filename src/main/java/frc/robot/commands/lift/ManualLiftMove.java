@@ -30,17 +30,17 @@ public class ManualLiftMove extends Command {
   @Override
   protected void execute() {
     System.out.println(RobotMap.liftEncoder.getDistance() + "Encoder");
-    if (OI.leftJoystick.getTrigger()) {
+    if (RobotMap.leftJoystick.getTrigger()) {
       Robot.Elevator.enable();
       System.out.println("leftTrigger reached");
-      setPoint += ((-Robot.m_oi.getRightJoyStick().getZ())-1) / 200;
+      setPoint += ((-RobotMap.rightJoystick.getZ())-1) / 200;
       Robot.Elevator.setSetpoint(setPoint);
       System.out.println(setPoint);
     }
-    if (OI.rightJoystick.getTrigger()) {
+    if (RobotMap.rightJoystick.getTrigger()) {
       Robot.Elevator.enable();
       System.out.println("RightTrigger reached");
-      setPoint += ((Robot.m_oi.getRightJoyStick().getZ() + 1)) / 200;
+      setPoint += ((RobotMap.rightJoystick.getZ() + 1)) / 200;
       Robot.Elevator.setSetpoint(setPoint);
       System.out.println(setPoint);
      
@@ -50,7 +50,7 @@ public class ManualLiftMove extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return !Robot.m_oi.getLeftJoystick().getTrigger() || !Robot.m_oi.getRightJoyStick().getTrigger();
+    return !RobotMap.leftJoystick.getTrigger() || !RobotMap.rightJoystick.getTrigger();
   }
 
   // Called once after isFinished returns true

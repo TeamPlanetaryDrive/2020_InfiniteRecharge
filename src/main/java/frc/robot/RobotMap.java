@@ -14,6 +14,10 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.grip.MoveGripPiston;
+import frc.robot.commands.grip.PartialPneumaticClose;
+import frc.robot.commands.lift.LiftToLevel;
+import frc.robot.commands.lift.manualMotorLift;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -93,6 +97,15 @@ public class RobotMap {
         public static Encoder LEnc, // Channel 0 & 1
                         REnc, liftEncoder; // Channel 2 & 3
 
+        // joystick variables
+        public static int LEFT_JOYSTICK_PORT = 0, RIGHT_JOYSTICK_PORT = 1;
+
+        public static Joystick leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
+        public static Joystick rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
+        public static JoystickButton button2_left, button3_left, button4_left, button5_left, button8_left, button9_left;
+
+        public static JoystickButton button2_right, button3_right, button4_right, button5_right, button8_right;
+
         // For example to map the left and right motors, you could define the
         // following variables to use with your drivetrain subsystem.
         // public static int leftMotor = 1;
@@ -105,6 +118,19 @@ public class RobotMap {
         public static void init() {
                 // LEnc = new Encoder(LEFT_ENC_CHANNEL_A, LEFT_ENC_CHANNEL_B);
                 // REnc = new Encoder(RIGHT_ENC_CHANNEL_A, RIGHT_ENC_CHANNEL_B);
+                // instantiating buttons
+                button2_left = new JoystickButton(leftJoystick, 2);
+                button3_left = new JoystickButton(leftJoystick, 3);
+                button4_left = new JoystickButton(leftJoystick, 4);
+                button5_left = new JoystickButton(leftJoystick, 5);
+                button8_left = new JoystickButton(leftJoystick, 8);
+                button9_left = new JoystickButton(leftJoystick, 9);
+
+                button2_right = new JoystickButton(rightJoystick, 2);
+                button3_right = new JoystickButton(rightJoystick, 3);
+                button4_right = new JoystickButton(rightJoystick, 4);
+                button5_right = new JoystickButton(rightJoystick, 5);
+                button8_right = new JoystickButton(rightJoystick, 8);
 
                 // lift variables instantiated and get functions called
                 liftEncoder = new Encoder(LIFT_ENC_CHANNEL_A, LIFT_ENC_CHANNEL_B);

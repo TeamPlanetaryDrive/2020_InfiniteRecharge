@@ -17,50 +17,24 @@ import frc.robot.commands.grip.*;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-  // joystick variables
-  public static int LEFT_JOYSTICK_PORT = 0, RIGHT_JOYSTICK_PORT = 1;
-
-  public static Joystick leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
-  public static Joystick rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
-
-  public static JoystickButton button2_left, button3_left, button4_left, button5_left, button8_left, button9_left;
-
-  public static JoystickButton button2_right, button3_right, button4_right, button5_right, button8_right;
-
   public OI() {
-    // instantiating buttons
-    button2_left = new JoystickButton(leftJoystick, 2);
-    button3_left = new JoystickButton(leftJoystick, 3);
-    button4_left = new JoystickButton(leftJoystick, 4);
-    button5_left = new JoystickButton(leftJoystick, 5);
-    button8_left = new JoystickButton(leftJoystick, 8);
-    button9_left = new JoystickButton(leftJoystick, 9);
-
-    button2_right = new JoystickButton(rightJoystick, 2);
-    button3_right = new JoystickButton(rightJoystick, 3);
-    button4_right = new JoystickButton(rightJoystick, 4);
-    button5_right = new JoystickButton(rightJoystick, 5);
-    button8_right = new JoystickButton(rightJoystick, 8);
-
     // This is where you put associate commands with all the buttons
-    button2_left.whenPressed(new MoveGripPiston(RobotMap.GRIPPER_EXTEND));
-    button2_right.whenPressed(new MoveGripPiston(RobotMap.GRIPPER_RETRACT));
-    
+    RobotMap.button2_left.whenPressed(new MoveGripPiston(RobotMap.GRIPPER_EXTEND));
+    RobotMap.button2_right.whenPressed(new MoveGripPiston(RobotMap.GRIPPER_RETRACT));
+
     // button2_left.whenPressed(new ExtendGripPiston());
     // button2_right.whenReleased(new RetractGripPiston());
-    
 
     // Lift controls
-    button8_right.whenPressed(new PartialPneumaticClose());
-    button9_left.whileHeld(new manualMotorLift());
-    button8_left.whenPressed(new LiftToLevel(0));
-    button4_left.whenPressed(new LiftToLevel(1));
-    button3_left.whenPressed(new LiftToLevel(2));
-    button5_left.whenPressed(new LiftToLevel(3));
-    button4_right.whenPressed(new LiftToLevel(4));
-    button3_right.whenPressed(new LiftToLevel(5));
-    button5_right.whenPressed(new LiftToLevel(6));
-
+    RobotMap.button8_right.whenPressed(new PartialPneumaticClose());
+    RobotMap.button9_left.whileHeld(new manualMotorLift());
+    RobotMap.button8_left.whenPressed(new LiftToLevel(0));
+    RobotMap.button4_left.whenPressed(new LiftToLevel(1));
+    RobotMap.button3_left.whenPressed(new LiftToLevel(2));
+    RobotMap.button5_left.whenPressed(new LiftToLevel(3));
+    RobotMap.button4_right.whenPressed(new LiftToLevel(4));
+    RobotMap.button3_right.whenPressed(new LiftToLevel(5));
+    RobotMap.button5_right.whenPressed(new LiftToLevel(6));
 
     // button4_left.whenPressed(new LiftLevelOne());
     // button3_left.whenPressed(new LiftLevelTwo());
@@ -69,13 +43,5 @@ public class OI {
     // button3_right.whenPressed(new LiftLevelFive());
     // button5_right.whenPressed(new LiftLevelSix());
 
-  }
-
-  public Joystick getRightJoyStick() {
-    return rightJoystick;
-  }
-
-  public Joystick getLeftJoystick() {
-    return leftJoystick;
   }
 }
