@@ -9,10 +9,8 @@ package frc.robot.subsystems;
 
 
 import edu.wpi.first.cameraserver.*;
-import edu.wpi.cscore.AxisCamera;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.RobotMap;
 
 //use for the guidence through the camera
 public class Vision extends Subsystem {

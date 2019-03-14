@@ -15,7 +15,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Gripper;
 import frc.robot.subsystems.Lift;
-import frc.robot.subsystems.Motion;
 import frc.robot.subsystems.Vision;
 import frc.robot.OI;
 
@@ -31,10 +30,8 @@ public class Robot extends TimedRobot {
   public static DriveTrain Drive;// could be redundent , if we delete drivetrain get rid of this
   public static Gripper Grip; // testing pnuematics, change name later
   public static Lift Elevator; // elevator for gripper
-  public static Motion D_Motion; // D_Motion as in drive motion
   public static Vision Cameras; // used for the vision class as needed
   public static OI m_oi;
-  public static RobotMap map = new RobotMap();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -42,7 +39,6 @@ public class Robot extends TimedRobot {
   SendableChooser<Command> Drive_Send = new SendableChooser<>();
   SendableChooser<Command> PneumaticsTest_Send = new SendableChooser<>();
   SendableChooser<Command> Elevator_Send = new SendableChooser<>();
-  SendableChooser<Command> d_Motion_Send = new SendableChooser<>();
   SendableChooser<Command> Cameras_Send = new SendableChooser<>();
   SendableChooser<Command> PID_Send = new SendableChooser<>();
   SendableChooser<Command> RobotM = new SendableChooser<>();
@@ -51,13 +47,12 @@ public class Robot extends TimedRobot {
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
    */
-
   public void robotInit() {
     RobotMap.init();
     Drive = new DriveTrain();
-    Grip = new Gripper(); // testing pnuematics, change name later
-    Elevator = new Lift(); // elevator for gripper
-    Cameras = new Vision(); // used for the vision class as needed
+    Grip = new Gripper();
+    Elevator = new Lift();
+    Cameras = new Vision();
     m_oi = new OI();
     Cameras.init();
     Grip.pistonOff();
@@ -133,16 +128,15 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    SmartDashboard.putData("Encoder", m_chooser);
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    SmartDashboard.putData("Encoder", m_chooser);
   }
 
   /**
    * This function is called periodically during operator control.
    */
-
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
   }

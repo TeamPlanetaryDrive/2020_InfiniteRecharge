@@ -23,7 +23,7 @@ public class ManualLiftMove extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    
+
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -33,7 +33,7 @@ public class ManualLiftMove extends Command {
     if (RobotMap.leftJoystick.getTrigger()) {
       Robot.Elevator.enable();
       System.out.println("leftTrigger reached");
-      setPoint += ((-RobotMap.rightJoystick.getZ())-1) / 200;
+      setPoint += ((-RobotMap.rightJoystick.getZ()) - 1) / 200;
       Robot.Elevator.setSetpoint(setPoint);
       System.out.println(setPoint);
     }
@@ -43,7 +43,7 @@ public class ManualLiftMove extends Command {
       setPoint += ((RobotMap.rightJoystick.getZ() + 1)) / 200;
       Robot.Elevator.setSetpoint(setPoint);
       System.out.println(setPoint);
-     
+
     }
   }
 

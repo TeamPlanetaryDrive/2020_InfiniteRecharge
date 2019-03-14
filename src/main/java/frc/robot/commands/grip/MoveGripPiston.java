@@ -12,6 +12,7 @@ import frc.robot.Robot;
 
 public class MoveGripPiston extends Command {
   private boolean state;
+
   public MoveGripPiston(boolean piston_state) {
     requires(Robot.Grip);
     state = piston_state;
