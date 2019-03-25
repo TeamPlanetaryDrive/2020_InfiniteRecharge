@@ -8,14 +8,13 @@
 package frc.robot.commands.lift;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class ManualLiftMove extends Command {
+public class PIDLift extends Command {
   public double setPoint;
 
-  public ManualLiftMove() {
+  public PIDLift() {
     requires(Robot.Elevator);
     setPoint = 0;
   }
@@ -30,20 +29,21 @@ public class ManualLiftMove extends Command {
   @Override
   protected void execute() {
     System.out.println(RobotMap.liftEncoder.getDistance() + "Encoder");
+    // descend
     if (RobotMap.leftJoystick.getTrigger()) {
       Robot.Elevator.enable();
-      System.out.println("leftTrigger reached");
+      System.out.println("LeftTrigger - descend");
       setPoint += ((-RobotMap.rightJoystick.getZ()) - 1) / 200;
       Robot.Elevator.setSetpoint(setPoint);
       System.out.println(setPoint);
     }
-    if (RobotMap.rightJoystick.getTrigger()) {
+    // ascend
+    else if (RobotMap.rightJoystick.getTrigger()) {
       Robot.Elevator.enable();
-      System.out.println("RightTrigger reached");
+      System.out.println("RightTrigger - ascend");
       setPoint += ((RobotMap.rightJoystick.getZ() + 1)) / 200;
       Robot.Elevator.setSetpoint(setPoint);
       System.out.println(setPoint);
-
     }
   }
 

@@ -11,8 +11,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class manualMotorLift extends Command {
-  public manualMotorLift() {
+// manual lift - uses input from button 9 (while held) and the z axis (actual speed, which is reduced by half)
+
+public class ManualLift extends Command {
+  public ManualLift() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.Elevator);

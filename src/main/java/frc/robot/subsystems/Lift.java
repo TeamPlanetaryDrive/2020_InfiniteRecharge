@@ -10,7 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.lift.ManualLiftMove;
+import frc.robot.commands.lift.PIDLift;
 
 //use to move the grippers up and down on the elevator
 public class Lift extends PIDSubsystem {
@@ -32,7 +32,7 @@ public class Lift extends PIDSubsystem {
   }
 
   public void initDefaultCommand() {
-    setDefaultCommand(new ManualLiftMove());
+    setDefaultCommand(new PIDLift());
   }
 
   // inherited methods

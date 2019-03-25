@@ -25,7 +25,7 @@ public class OI {
 
     // Lift controls
     RobotMap.button8_right.whenPressed(new PartialPneumaticClose());
-    RobotMap.button9_left.whileHeld(new manualMotorLift());
+    RobotMap.button9_left.whileHeld(new ManualLift());
     RobotMap.button8_left.whenPressed(new LiftToLevel(0));
     RobotMap.button4_left.whenPressed(new LiftToLevel(1));
     RobotMap.button3_left.whenPressed(new LiftToLevel(2));
