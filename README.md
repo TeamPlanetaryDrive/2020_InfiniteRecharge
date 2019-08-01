@@ -1,6 +1,6 @@
 # DeepSpace-2019
 
-Hi this is the readme for our teams effort to program for this competition. 
+Hi this is the readme for our team's effort to program for this competition. 
 
 This year we are working on getting a robo working with the Deep Space ruleset
 
