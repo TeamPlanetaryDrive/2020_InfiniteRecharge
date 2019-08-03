@@ -8,11 +8,10 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.XboxController;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -53,52 +52,18 @@ public class RobotMap {
         public static int LIFT_ENC_CHANNEL_A = 0, LIFT_ENC_CHANNEL_B = 1;
         public static double distancePerPulse = 0.003522;
 
-        // states for gripper
-        public static final boolean GRIPPER_EXTEND = true, GRIPPER_RETRACT = false;
-        public static boolean pneumaticsStart = false;
-
         // HARDWARE
         // motors
         public static Victor lMotor, rMotor;
-        public static SpeedController lift;
 
-        // state for lift motor
-        public static boolean liftStart = false;
-
-        // joystick variables
-        public static final int LEFT_JOYSTICK_PORT = 0, RIGHT_JOYSTICK_PORT = 1;
-        public static final Joystick leftJoystick = new Joystick(LEFT_JOYSTICK_PORT),
-                        rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
-        public static JoystickButton button2_left, button3_left, button4_left, button5_left, button8_left, button9_left;
-        public static JoystickButton button2_right, button3_right, button4_right, button5_right, button8_right;
+        // Controller variables
+        public static final int xBContPort = 0;
+        public static final XboxController xBController = new XboxController(xBContPort);
 
         // initializes variables and initiates functions
         public static void init() {
                 // initializing motors
                 lMotor = new Victor(LEFT_MOTOR_CHANNEL);
                 rMotor = new Victor(RIGHT_MOTOR_CHANNEL);
-
-                // initializing buttons on left joystick
-                button2_left = new JoystickButton(leftJoystick, 2);
-                button3_left = new JoystickButton(leftJoystick, 3);
-                button4_left = new JoystickButton(leftJoystick, 4);
-                button5_left = new JoystickButton(leftJoystick, 5);
-                button8_left = new JoystickButton(leftJoystick, 8);
-                button9_left = new JoystickButton(leftJoystick, 9);
-
-                // initializing buttons on right joystick
-                button2_right = new JoystickButton(rightJoystick, 2);
-                button3_right = new JoystickButton(rightJoystick, 3);
-                button4_right = new JoystickButton(rightJoystick, 4);
-                button5_right = new JoystickButton(rightJoystick, 5);
-                button8_right = new JoystickButton(rightJoystick, 8);
-
-                // lift encoder and motor setup
-                liftEncoder = new Encoder(LIFT_ENC_CHANNEL_A, LIFT_ENC_CHANNEL_B);
-                liftEncoder.setDistancePerPulse(distancePerPulse);
-                liftEncoder.reset();
-                liftEncoder.setReverseDirection(true);
-                lift = new Spark(LIFT_CHANNEL);
-                lift.setInverted(true);
         }
 }
