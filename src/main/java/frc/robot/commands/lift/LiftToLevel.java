@@ -8,49 +8,47 @@
 package frc.robot.commands.lift;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class ManualLiftMove extends Command {
-  public double setPoint;
+public class LiftToLevel extends Command {
+  // this array represents all the levels that we can lift to.
+  // quantified in "encoder values", not inches
+  private static final double[] LIFT_PRESETS = new double[]{
+    0,
+    5.05,
+    8.45,
+    16.25,
+    19.65,
+    27.05,
+    30.85
+  };
+  
+  private int level_preset;
 
-  public ManualLiftMove() {
+  public LiftToLevel(int level) {
+    // Will be 2 ft 3 and 1/2 in to get to the port for the balls
     requires(Robot.Elevator);
-    setPoint = 0;
+    level_preset = level;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    System.out.println(RobotMap.liftEncoder.getDistance() + "Encoder");
-    if (RobotMap.leftJoystick.getTrigger()) {
-      Robot.Elevator.enable();
-      System.out.println("leftTrigger reached");
-      setPoint += ((-RobotMap.rightJoystick.getZ())-1) / 200;
-      Robot.Elevator.setSetpoint(setPoint);
-      System.out.println(setPoint);
-    }
-    if (RobotMap.rightJoystick.getTrigger()) {
-      Robot.Elevator.enable();
-      System.out.println("RightTrigger reached");
-      setPoint += ((RobotMap.rightJoystick.getZ() + 1)) / 200;
-      Robot.Elevator.setSetpoint(setPoint);
-      System.out.println(setPoint);
-     
-    }
+    Robot.Elevator.enable();
+    Robot.Elevator.setSetpoint(LIFT_PRESETS[level_preset]);
+    System.out.print(RobotMap.liftEncoder.getDistance());
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return !RobotMap.leftJoystick.getTrigger() || !RobotMap.rightJoystick.getTrigger();
+    return Robot.Elevator.onTarget();
   }
 
   // Called once after isFinished returns true

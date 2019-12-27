@@ -8,6 +8,7 @@
 package frc.robot.commands.lift;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
@@ -27,8 +28,8 @@ public class manualMotorLift extends Command {
   @Override
   protected void execute() {
     Robot.Elevator.disable();
-    Robot.Elevator.liftMove(RobotMap.leftJoystick.getZ() / 2);
-    System.out.println(RobotMap.leftJoystick.getZ() / 2);
+    Robot.Elevator.liftMove(RobotMap.leftJoystick.getZ()/2);
+    System.out.println(RobotMap.leftJoystick.getZ()/2);
   }
 
   // Make this return true when this Command no longer needs to run execute()
