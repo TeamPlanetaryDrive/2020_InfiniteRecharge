@@ -25,11 +25,7 @@ public class RobotMovement extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-<<<<<<< HEAD
-    Robot.Drive.drive(-RobotMap.leftJoystick.getY(), -RobotMap.rightJoystick.getY());
-=======
     Robot.Drive.drive(-0.7*RobotMap.leftJoystick.getY(), -0.7*RobotMap.rightJoystick.getY());
->>>>>>> parent of b59becb... Changing to Showbot code, controlled by XBox Controller.
   }
 
   // Make this return true when this Command no longer needs to run execute()

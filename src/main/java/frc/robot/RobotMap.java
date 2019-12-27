@@ -105,10 +105,10 @@ public class RobotMap {
                 button8_right = new JoystickButton(rightJoystick, 8);
 
                 // lift encoder and motor setup
-                liftEncoder = new Encoder(LIFT_ENC_CHANNEL_A, LIFT_ENC_CHANNEL_B);
-                liftEncoder.setDistancePerPulse(distancePerPulse);
-                liftEncoder.reset();
-                liftEncoder.setReverseDirection(true);
+                // liftEncoder = new Encoder(LIFT_ENC_CHANNEL_A, LIFT_ENC_CHANNEL_B);
+                // liftEncoder.setDistancePerPulse(distancePerPulse);
+                // liftEncoder.reset();
+                // liftEncoder.setReverseDirection(true);
                 lift = new Spark(LIFT_CHANNEL);
                 lift.setInverted(true);
         }

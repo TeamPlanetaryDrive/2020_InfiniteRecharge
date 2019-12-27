@@ -34,7 +34,7 @@ public class LiftToLevel extends Command {
   protected void execute() {
     Robot.Elevator.enable();
     Robot.Elevator.setSetpoint(LIFT_PRESETS[level_preset]);
-    System.out.print(RobotMap.liftEncoder.getDistance());
+    // System.out.print(RobotMap.liftEncoder.getDistance());
   }
 
   // Make this return true when this Command no longer needs to run execute()

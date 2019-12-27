@@ -8,35 +8,49 @@
 package frc.robot.commands.lift;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-// manual lift - uses input from button 9 (while held) and the z axis (actual speed, which is reduced by half)
+public class ManualLiftMove extends Command {
+  public double setPoint;
 
-public class ManualLift extends Command {
-  public ManualLift() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+  public ManualLiftMove() {
     requires(Robot.Elevator);
+    setPoint = 0;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Elevator.disable();
-    Robot.Elevator.liftMove(RobotMap.leftJoystick.getZ() / 2);
-    System.out.println(RobotMap.leftJoystick.getZ() / 2);
+    System.out.println(RobotMap.liftEncoder.getDistance() + "Encoder");
+    if (RobotMap.leftJoystick.getTrigger()) {
+      Robot.Elevator.enable();
+      System.out.println("leftTrigger reached");
+      setPoint += ((-RobotMap.rightJoystick.getZ())-1) / 200;
+      Robot.Elevator.setSetpoint(setPoint);
+      System.out.println(setPoint);
+    }
+    if (RobotMap.rightJoystick.getTrigger()) {
+      Robot.Elevator.enable();
+      System.out.println("RightTrigger reached");
+      setPoint += ((RobotMap.rightJoystick.getZ() + 1)) / 200;
+      Robot.Elevator.setSetpoint(setPoint);
+      System.out.println(setPoint);
+     
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return !RobotMap.button9_left.get();
+    return !RobotMap.leftJoystick.getTrigger() || !RobotMap.rightJoystick.getTrigger();
   }
 
   // Called once after isFinished returns true
