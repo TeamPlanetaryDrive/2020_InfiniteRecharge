@@ -13,6 +13,30 @@ package frc.robot;
  */
 public class OI {
   public OI() {
+    // Gripper controls
+    RobotMap.button2_left.whenPressed(new MoveGripPiston(RobotMap.GRIPPER_EXTEND));
+    RobotMap.button2_right.whenPressed(new MoveGripPiston(RobotMap.GRIPPER_RETRACT));
+
+    // button2_left.whenPressed(new ExtendGripPiston());
+    // button2_right.whenReleased(new RetractGripPiston());
+
+    // Lift controls
+    RobotMap.button8_right.whenPressed(new PartialPneumaticClose());
+    RobotMap.button9_left.whileHeld(new manualMotorLift());
+    RobotMap.button8_left.whenPressed(new LiftToLevel(0));
+    RobotMap.button4_left.whenPressed(new LiftToLevel(1));
+    RobotMap.button3_left.whenPressed(new LiftToLevel(2));
+    RobotMap.button5_left.whenPressed(new LiftToLevel(3));
+    RobotMap.button4_right.whenPressed(new LiftToLevel(4));
+    RobotMap.button3_right.whenPressed(new LiftToLevel(5));
+    RobotMap.button5_right.whenPressed(new LiftToLevel(6));
+
+    // button4_left.whenPressed(new LiftLevelOne());
+    // button3_left.whenPressed(new LiftLevelTwo());
+    // button5_left.whenPressed(new LiftLevelThree());
+    // button4_right.whenPressed(new LiftLevelFour());
+    // button3_right.whenPressed(new LiftLevelFive());
+    // button5_right.whenPressed(new LiftLevelSix());
 
   }
 }
