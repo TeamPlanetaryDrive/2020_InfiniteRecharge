@@ -29,7 +29,7 @@ public class ManualLiftMove extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    System.out.println(RobotMap.liftEncoder.getDistance() + "Encoder");
+    // System.out.println(RobotMap.liftEncoder.getDistance() + "Encoder");
     if (RobotMap.leftJoystick.getTrigger()) {
       Robot.Elevator.enable();
       System.out.println("leftTrigger reached");
