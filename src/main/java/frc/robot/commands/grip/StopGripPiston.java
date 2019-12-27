@@ -5,35 +5,27 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.grip;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.OI;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class RobotMovement extends Command {
-
-  public RobotMovement() {
-    requires(Robot.Drive);
+public class StopGripPiston extends Command {
+  public StopGripPiston() {
+    requires(Robot.Grip);
   }
 
   // Called just before this Command runs the first time
+  @Override
   protected void initialize() {
   }
 
   // Called repeatedly when this Command is scheduled to run
-  @Override
   protected void execute() {
-<<<<<<< HEAD
-    Robot.Drive.drive(-RobotMap.leftJoystick.getY(), -RobotMap.rightJoystick.getY());
-=======
-    Robot.Drive.drive(-0.7*RobotMap.leftJoystick.getY(), -0.7*RobotMap.rightJoystick.getY());
->>>>>>> parent of b59becb... Changing to Showbot code, controlled by XBox Controller.
+    Robot.Grip.pistonOff();
   }
 
   // Make this return true when this Command no longer needs to run execute()
-  @Override
   protected boolean isFinished() {
     return false;
   }

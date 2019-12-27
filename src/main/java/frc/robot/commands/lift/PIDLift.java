@@ -5,37 +5,52 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.lift;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class RobotMovement extends Command {
+public class PIDLift extends Command {
+  public double setPoint;
 
-  public RobotMovement() {
-    requires(Robot.Drive);
+  public PIDLift() {
+    requires(Robot.Elevator);
+    setPoint = 0;
   }
 
   // Called just before this Command runs the first time
+  @Override
   protected void initialize() {
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-<<<<<<< HEAD
-    Robot.Drive.drive(-RobotMap.leftJoystick.getY(), -RobotMap.rightJoystick.getY());
-=======
-    Robot.Drive.drive(-0.7*RobotMap.leftJoystick.getY(), -0.7*RobotMap.rightJoystick.getY());
->>>>>>> parent of b59becb... Changing to Showbot code, controlled by XBox Controller.
+    System.out.println(RobotMap.liftEncoder.getDistance() + "Encoder");
+    // descend
+    if (RobotMap.leftJoystick.getTrigger()) {
+      Robot.Elevator.enable();
+      System.out.println("LeftTrigger - descend");
+      setPoint += ((-RobotMap.rightJoystick.getZ()) - 1) / 200;
+      Robot.Elevator.setSetpoint(setPoint);
+      System.out.println(setPoint);
+    }
+    // ascend
+    else if (RobotMap.rightJoystick.getTrigger()) {
+      Robot.Elevator.enable();
+      System.out.println("RightTrigger - ascend");
+      setPoint += ((RobotMap.rightJoystick.getZ() + 1)) / 200;
+      Robot.Elevator.setSetpoint(setPoint);
+      System.out.println(setPoint);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return !RobotMap.leftJoystick.getTrigger() || !RobotMap.rightJoystick.getTrigger();
   }
 
   // Called once after isFinished returns true

@@ -5,37 +5,38 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.lift;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class RobotMovement extends Command {
+// manual lift - uses input from button 9 (while held) and the z axis (actual speed, which is reduced by half)
 
-  public RobotMovement() {
-    requires(Robot.Drive);
+public class ManualLift extends Command {
+  public ManualLift() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
+    requires(Robot.Elevator);
   }
 
   // Called just before this Command runs the first time
+  @Override
   protected void initialize() {
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-<<<<<<< HEAD
-    Robot.Drive.drive(-RobotMap.leftJoystick.getY(), -RobotMap.rightJoystick.getY());
-=======
-    Robot.Drive.drive(-0.7*RobotMap.leftJoystick.getY(), -0.7*RobotMap.rightJoystick.getY());
->>>>>>> parent of b59becb... Changing to Showbot code, controlled by XBox Controller.
+    Robot.Elevator.disable();
+    Robot.Elevator.liftMove(RobotMap.leftJoystick.getZ() / 2);
+    System.out.println(RobotMap.leftJoystick.getZ() / 2);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return !RobotMap.button9_left.get();
   }
 
   // Called once after isFinished returns true

@@ -8,15 +8,12 @@
 package frc.robot.commands.grip;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.subsystems.Gripper;
 
 public class PartialPneumaticClose extends Command {
   public PartialPneumaticClose() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-   
   }
 
   // Called just before this Command runs the first time

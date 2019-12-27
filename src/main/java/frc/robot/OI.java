@@ -7,8 +7,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.lift.*;
 import frc.robot.commands.grip.*;
 
@@ -18,16 +16,12 @@ import frc.robot.commands.grip.*;
  */
 public class OI {
   public OI() {
-    // This is where you put associate commands with all the buttons
-    RobotMap.button2_left.whenPressed(new MoveGripPiston(RobotMap.GRIPPER_EXTEND));
-    RobotMap.button2_right.whenPressed(new MoveGripPiston(RobotMap.GRIPPER_RETRACT));
-
+    // Gripper controls
     // button2_left.whenPressed(new ExtendGripPiston());
-    // button2_right.whenReleased(new RetractGripPiston());
 
     // Lift controls
     RobotMap.button8_right.whenPressed(new PartialPneumaticClose());
-    RobotMap.button9_left.whileHeld(new manualMotorLift());
+    RobotMap.button9_left.whileHeld(new ManualLift());
     RobotMap.button8_left.whenPressed(new LiftToLevel(0));
     RobotMap.button4_left.whenPressed(new LiftToLevel(1));
     RobotMap.button3_left.whenPressed(new LiftToLevel(2));

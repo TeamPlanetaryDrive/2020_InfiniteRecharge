@@ -10,7 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.lift.ManualLiftMove;
+import frc.robot.commands.lift.PIDLift;
 
 //use to move the grippers up and down on the elevator
 public class Lift extends PIDSubsystem {
@@ -19,20 +19,20 @@ public class Lift extends PIDSubsystem {
     // super("Lift", 0.25, 0.01, 0);
     super("Lift", 5.75, 0.000001, 0);
 
-    setOutputRange(-0.2,0.5);
+    setOutputRange(-0.2, 0.5);
     setAbsoluteTolerance(0.01);
     getPIDController().setContinuous(false);
     RobotMap.liftEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
     setInputRange(0, 34);
   }
 
-  public double inchesToSetpoint(double inches){
+  public double inchesToSetpoint(double inches) {
     double setpoint = inches;
     return setpoint;
   }
 
   public void initDefaultCommand() {
-    setDefaultCommand(new ManualLiftMove());
+    setDefaultCommand(new PIDLift());
   }
 
   // inherited methods
@@ -41,8 +41,7 @@ public class Lift extends PIDSubsystem {
   }
 
   protected void usePIDOutput(double output) {
-    liftMove(output); // this is where the computed output value from the PIDController is applied to
-                      // the motor
+    liftMove(output); // this is where the computed output value from the PIDController is applied to the motor
   }
 
   public void liftMove(double speed) {
