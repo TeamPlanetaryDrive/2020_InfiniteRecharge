@@ -4,16 +4,13 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-
-// poop
-
 package frc.robot;
 
 import frc.robot.commands.lift.*;
 import frc.robot.commands.grip.*;
 
 /**
- * This class is the glue that binds the controls on the physical operator
+ * This class is what binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
