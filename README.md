@@ -1,4 +1,4 @@
-# DeepSpace-2019
+# InfiniteRecharge-2020
 
 Hi this is the readme for our teams effort to program for this competition. 
 
