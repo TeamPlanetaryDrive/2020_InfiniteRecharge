@@ -1,13 +1,8 @@
 # InfiniteRecharge-2020
 
-Hi this is the readme for our teams effort to program for this competition. 
+This is the readme for our team's effort to program for this competition. 
 
-This year we are working on getting a robo working with the Deep Space ruleset
+This year we are working on getting a robo working with the Infinite Recharge ruleset
 
 main goals:
- + get command based system started
- - get robot driving in commands
-  - robo needs driving subsystems and commands
- - lifting systems.
- - camera for auto phase and vision systems
- - and so on.
+ + TBD
