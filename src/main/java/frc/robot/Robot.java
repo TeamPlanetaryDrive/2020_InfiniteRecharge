@@ -16,6 +16,7 @@ import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Gripper;
 import frc.robot.subsystems.Lift;
 import frc.robot.subsystems.Vision;
+import frc.robot.subsystems.Multi;
 import frc.robot.OI;
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -30,6 +31,10 @@ public class Robot extends TimedRobot {
   public static Gripper Grip; // testing pnuematics, change name later
   public static Lift Elevator; // elevator for gripper
   public static Vision Cameras; // used for the vision class as needed
+
+  public static Multi MultiSystem; // contains shooter, intake, rotator
+
+
   public static OI m_oi;
   public static RobotMap map = new RobotMap();
 
