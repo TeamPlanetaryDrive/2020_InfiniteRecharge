@@ -21,7 +21,7 @@ public class intakeBalls extends SequentialCommandGroup {
   public intakeBalls() {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
-    super(new AimShooter(-0), new ParallelCommandGroup(new SpinWheels(-0), new ReleaseBall()));
+    super(new aimShooter(-0), new ParallelCommandGroup(new spinShooterWheels(-0), new releaseBall()));
     //change release ball to shoot ball
   }
 }
