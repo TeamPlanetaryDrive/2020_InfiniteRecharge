@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
-import frc.robot.commands.RobotMovement;
+import frc.robot.commands.robotMovement;
 
 //use this for anything on th drivetrain like guiding electricty or something (likely redundent so delete if un needed)
 public class DriveTrain extends Subsystem {
@@ -56,6 +56,6 @@ public class DriveTrain extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new RobotMovement());
+    setDefaultCommand(new robotMovement());
   }
 }
