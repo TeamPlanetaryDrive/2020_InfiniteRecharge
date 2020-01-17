@@ -12,6 +12,8 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class releaseBall extends CommandBase {
+  
+  double idealWheel = 0; //Constant for when wheels are spinning and ready to fire
   /**
    * Creates a new releaseBall.
    */
@@ -23,21 +25,26 @@ public class releaseBall extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    if (Robot.MultiSystem.getWheelSpeed() >= idealWheel) {
+      Robot.MultiSystem.barrierDown();
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    Robot.MultiSystem.barrierUp();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return false; //if button is not pressed
   }
 }
