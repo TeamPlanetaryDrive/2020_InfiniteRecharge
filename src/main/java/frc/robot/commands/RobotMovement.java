@@ -12,9 +12,9 @@ import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class RobotMovement extends Command {
+public class robotMovement extends Command {
 
-  public RobotMovement() {
+  public robotMovement() {
     requires(Robot.Drive);
   }
 

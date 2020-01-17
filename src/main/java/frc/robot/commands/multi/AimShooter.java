@@ -11,14 +11,14 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class AimShooter extends CommandBase {
+public class aimShooter extends CommandBase {
   double turnAmount;
   double targetAngle;
 
   /**
    * Creates a new aimShooter.
    */
-  public AimShooter(double target) {
+  public aimShooter(double target) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.MultiSystem);
     targetAngle = target;

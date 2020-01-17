@@ -10,8 +10,8 @@ package frc.robot.commands.lift;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class StopLift extends Command {
-  public StopLift() {
+public class stopLift extends Command {
+  public stopLift() {
     requires(Robot.Elevator);
   }
 

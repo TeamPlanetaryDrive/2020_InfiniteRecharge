@@ -11,11 +11,11 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class ReleaseBall extends CommandBase {
+public class releaseBall extends CommandBase {
   /**
    * Creates a new releaseBall.
    */
-  public ReleaseBall() {
+  public releaseBall() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.MultiSystem);
   }

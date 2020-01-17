@@ -10,9 +10,9 @@ package frc.robot.commands.grip;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class MoveGripPiston extends Command {
+public class moveGripPiston extends Command {
   private boolean state;
-  public MoveGripPiston(boolean piston_state) {
+  public moveGripPiston(boolean piston_state) {
     requires(Robot.Grip);
     state = piston_state;
   }

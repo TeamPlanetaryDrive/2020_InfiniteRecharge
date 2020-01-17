@@ -11,14 +11,14 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class LiftToLevel extends Command {
+public class liftToLevel extends Command {
   // this array represents all the levels that we can lift to.
   // quantified in "encoder values", not inches
   private static final double[] LIFT_PRESETS = new double[] { 0, 5.05, 8.45, 16.25, 19.65, 27.05, 30.85 };
 
   private int level_preset;
 
-  public LiftToLevel(int level) {
+  public liftToLevel(int level) {
     // Will be 2 ft 3 and 1/2 in to get to the port for the balls
     requires(Robot.Elevator);
     level_preset = level;

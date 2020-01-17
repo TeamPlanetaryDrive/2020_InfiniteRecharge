@@ -14,11 +14,11 @@ import frc.robot.RobotMap;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
-public class ShootBalls extends SequentialCommandGroup {
+public class shootBalls extends SequentialCommandGroup {
   /**
    * Creates a new shoot.
    */
-  public ShootBalls() {
+  public shootBalls() {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     super(new AimShooter(0), new ParallelCommandGroup(new SpinWheels(0), new ReleaseBall()));

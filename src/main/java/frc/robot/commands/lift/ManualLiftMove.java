@@ -12,10 +12,10 @@ import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class ManualLiftMove extends Command {
+public class manualLiftMove extends Command {
   public double setPoint;
 
-  public ManualLiftMove() {
+  public manualLiftMove() {
     requires(Robot.Elevator);
     setPoint = 0;
   }
