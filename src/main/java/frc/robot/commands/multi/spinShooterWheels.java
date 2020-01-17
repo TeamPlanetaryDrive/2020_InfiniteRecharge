@@ -11,12 +11,12 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class spinWheels extends CommandBase {
+public class spinShooterWheels extends CommandBase {
   double wheelSpeed;
   /**
    * Creates a new spinWheels.
    */
-  public spinWheels(double speed) {
+  public spinShooterWheels(double speed) {
     addRequirements(Robot.MultiSystem);
     wheelSpeed = speed;
   }

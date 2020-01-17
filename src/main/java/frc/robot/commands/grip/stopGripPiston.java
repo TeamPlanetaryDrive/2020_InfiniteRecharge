@@ -5,14 +5,14 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.lift;
+package frc.robot.commands.grip;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class StopLift extends Command {
-  public StopLift() {
-    requires(Robot.Elevator);
+public class stopGripPiston extends Command {
+  public stopGripPiston() {
+    requires(Robot.Grip);
   }
 
   // Called just before this Command runs the first time
@@ -21,13 +21,11 @@ public class StopLift extends Command {
   }
 
   // Called repeatedly when this Command is scheduled to run
-  @Override
   protected void execute() {
-    Robot.Elevator.setSetpoint(Robot.Elevator.getPosition());
+    Robot.Grip.pistonOff();
   }
 
   // Make this return true when this Command no longer needs to run execute()
-  @Override
   protected boolean isFinished() {
     return false;
   }

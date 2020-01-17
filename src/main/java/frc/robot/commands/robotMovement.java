@@ -5,28 +5,27 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.grip;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.OI;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
-public class MoveGripPiston extends Command {
-  private boolean state;
-  public MoveGripPiston(boolean piston_state) {
-    requires(Robot.Grip);
-    state = piston_state;
+public class robotMovement extends Command {
+
+  public robotMovement() {
+    requires(Robot.Drive);
   }
 
   // Called just before this Command runs the first time
-  @Override
   protected void initialize() {
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Grip.setState(state);
-    Robot.Grip.update();
+    Robot.Drive.drive(-0.7*RobotMap.leftJoystick.getY(), -0.7*RobotMap.rightJoystick.getY());
   }
 
   // Make this return true when this Command no longer needs to run execute()
