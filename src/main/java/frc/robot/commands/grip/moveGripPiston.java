@@ -7,13 +7,13 @@
 
 package frc.robot.commands.grip;
 
-import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
-public class moveGripPiston extends Command {
+public class moveGripPiston extends CommandBase {
   private boolean state;
   public moveGripPiston(boolean piston_state) {
-    requires(Robot.Grip);
+    addRequirements(Robot.Grip);
     state = piston_state;
   }
 
