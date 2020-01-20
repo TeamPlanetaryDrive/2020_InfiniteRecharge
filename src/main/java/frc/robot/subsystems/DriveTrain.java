@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
 import frc.robot.commands.robotMovement;
@@ -34,6 +35,7 @@ public class DriveTrain extends SubsystemBase {
     // calls the subsystem to let it know that it needs to be called as a subsystem
     super();
     robotDrive = new DifferentialDrive(leftMotor, rightMotor);
+    setDefaultCommand(new robotMovement());
   }
 
   
@@ -54,8 +56,5 @@ public class DriveTrain extends SubsystemBase {
     return RobotMap.lMotor;
   }
 
-  @Override
-  public void initDefaultCommand() {
-    setDefaultCommand(new robotMovement());
-  }
+
 }
