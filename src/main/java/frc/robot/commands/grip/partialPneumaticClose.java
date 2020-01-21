@@ -7,10 +7,10 @@
 
 package frc.robot.commands.grip;
 
-import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotMap;
 
-public class partialPneumaticClose extends Command {
+public class partialPneumaticClose extends CommandBase {
   public partialPneumaticClose() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);

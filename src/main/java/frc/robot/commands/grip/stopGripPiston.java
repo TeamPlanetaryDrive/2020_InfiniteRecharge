@@ -7,10 +7,10 @@
 
 package frc.robot.commands.grip;
 
-import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
-public class stopGripPiston extends Command {
+public class stopGripPiston extends CommandBase {
   public stopGripPiston() {
     requires(Robot.Grip);
   }

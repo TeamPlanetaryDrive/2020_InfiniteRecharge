@@ -7,10 +7,10 @@
 
 package frc.robot.commands.lift;
 
-import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
-public class stopLift extends Command {
+public class stopLift extends CommandBase {
   public stopLift() {
     requires(Robot.Elevator);
   }
