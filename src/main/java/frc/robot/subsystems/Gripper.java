@@ -7,7 +7,7 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.robot.RobotMap;
 import frc.robot.commands.grip.*;
@@ -16,7 +16,7 @@ import frc.robot.commands.grip.*;
 //use compressor
 
 //Use this for opening and closing the grippers onto the plate and the ball
-public class Gripper extends Subsystem {
+public class Gripper extends SubsystemBase {
   DoubleSolenoid testSolenoid = new DoubleSolenoid(RobotMap.GRIPPER_CHANNEL_A, RobotMap.GRIPPER_CHANNEL_B);
   private boolean state;
 

@@ -8,22 +8,23 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.PIDSourceType;
-import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj2.command.PIDSubsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 import frc.robot.commands.lift.manualLiftMove;
 
 //use to move the grippers up and down on the elevator
-public class Lift extends PIDSubsystem {
+public class Lift {
 
   public Lift() {
-    // super("Lift", 0.25, 0.01, 0);
-    super("Lift", 5.75, 0.000001, 0);
+    // // super("Lift", 0.25, 0.01, 0);
+    // super("Lift", 5.75, 0.000001, 0);
 
-    setOutputRange(-0.2, 0.5);
-    setAbsoluteTolerance(0.01);
-    getPIDController().setContinuous(false);
-    // RobotMap.liftEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
-    setInputRange(0, 34);
+    // setOutputRange(-0.2, 0.5);
+    // setAbsoluteTolerance(0.01);
+    // getPIDController().setContinuous(false);
+    // // RobotMap.liftEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
+    // setInputRange(0, 34);
   }
 
   public double inchesToSetpoint(double inches) {
@@ -32,7 +33,7 @@ public class Lift extends PIDSubsystem {
   }
 
   public void initDefaultCommand() {
-    setDefaultCommand(new manualLiftMove());
+    // setDefaultCommand(new manualLiftMove());
   }
 
   // inherited methods

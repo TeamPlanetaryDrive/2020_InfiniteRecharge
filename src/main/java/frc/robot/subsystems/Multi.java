@@ -7,7 +7,8 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.commands.multi.*;
 
 /**
  * Add your docs here.
@@ -15,15 +16,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 
-public class Multi extends Subsystem {
+public class Multi extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+  
+  public Multi(){
+    setDefaultCommand(new liftBarrier());
   }
+
   //makes piston go up
   public void barrierUp () {
 
