@@ -7,28 +7,28 @@
 
 package frc.robot.commands.lift;
 
-import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class manualLiftMove extends Command {
+public class manualLiftMove extends CommandBase {
   public double setPoint;
 
   public manualLiftMove() {
-    requires(Robot.Elevator);
+    addRequirements(Robot.Elevator);
     setPoint = 0;
   }
 
   // Called just before this Command runs the first time
   @Override
-  protected void initialize() {
+  public void initialize() {
     
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() {
+  public void execute() {
     // System.out.println(RobotMap.liftEncoder.getDistance() + "Encoder");
     if (RobotMap.leftJoystick.getTrigger()) {
       Robot.Elevator.enable();
@@ -49,18 +49,13 @@ public class manualLiftMove extends Command {
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
-  protected boolean isFinished() {
+  public boolean isFinished() {
     return !RobotMap.leftJoystick.getTrigger() || !RobotMap.rightJoystick.getTrigger();
   }
 
-  // Called once after isFinished returns true
+  // Called once after isFinished returns true or is interrupted
   @Override
-  protected void end() {
+  public void end(boolean interrupted) {
   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  @Override
-  protected void interrupted() {
-  }
-}
+

@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.commands.multi.*;
 
 /**
  * Add your docs here.
@@ -18,11 +19,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Multi extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-
-  @Override
-  public void initDefaultCommand() {
-    
+  
+  public Multi(){
+    setDefaultCommand(new liftBarrier());
   }
+
   //makes piston go up
   public void barrierUp () {
 

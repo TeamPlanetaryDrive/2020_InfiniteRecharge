@@ -9,11 +9,12 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj2.command.PIDSubsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 import frc.robot.commands.lift.manualLiftMove;
 
 //use to move the grippers up and down on the elevator
-public class Lift{
+public class Lift {
 
   public Lift() {
     // // super("Lift", 0.25, 0.01, 0);

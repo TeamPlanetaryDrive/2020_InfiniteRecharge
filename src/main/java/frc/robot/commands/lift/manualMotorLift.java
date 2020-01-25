@@ -7,26 +7,26 @@
 
 package frc.robot.commands.lift;
 
-import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class manualMotorLift extends Command {
+public class manualMotorLift extends CommandBase {
   public manualMotorLift() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.Elevator);
+    addRequirements(Robot.Elevator);
   }
 
   // Called just before this Command runs the first time
   @Override
-  protected void initialize() {
+  public void initialize() {
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() {
+  public void execute() {
     Robot.Elevator.disable();
     Robot.Elevator.liftMove(RobotMap.leftJoystick.getZ()/2);
     System.out.println(RobotMap.leftJoystick.getZ()/2);
@@ -34,18 +34,13 @@ public class manualMotorLift extends Command {
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
-  protected boolean isFinished() {
+  public boolean isFinished() {
     return !RobotMap.button9_left.get();
   }
 
-  // Called once after isFinished returns true
+  // Called once after isFinished returns true or is interrupted
   @Override
-  protected void end() {
+  public void end(boolean interrupted) {
   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  @Override
-  protected void interrupted() {
-  }
 }
