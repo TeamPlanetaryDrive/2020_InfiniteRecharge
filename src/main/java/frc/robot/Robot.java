@@ -4,7 +4,6 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-// test
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -13,7 +12,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.Gripper;
 import frc.robot.subsystems.Lift;
 import frc.robot.subsystems.Vision;
 import frc.robot.subsystems.Multi;
@@ -28,7 +26,6 @@ import frc.robot.OI;
 public class Robot extends TimedRobot {
 
   public static DriveTrain Drive;// could be redundent , if we delete drivetrain get rid of this
-  public static Gripper Grip; // testing pnuematics, change name later
   public static Lift Elevator; // elevator for gripper
   public static Vision Cameras; // used for the vision class as needed
 
@@ -56,12 +53,10 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     RobotMap.init();
     Drive = new DriveTrain();
-    Grip = new Gripper();
     Elevator = new Lift();
     Cameras = new Vision();
     m_oi = new OI();
     Cameras.init();
-    Grip.pistonOff();
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 

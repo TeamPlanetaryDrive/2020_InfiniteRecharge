@@ -9,16 +9,18 @@ package frc.robot.commands.lift;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class liftToLevel extends CommandBase {
+public class LiftToLevel extends CommandBase {
   // this array represents all the levels that we can lift to.
   // quantified in "encoder values", not inches
-  private static final double[] LIFT_PRESETS = new double[] { 0, 5.05, 8.45, 16.25, 19.65, 27.05, 30.85 };
-
+  // 2.134 in = 1 encoder value
+  // values from before: private static final double[] LIFT_PRESETS = new double[] { 1.05, 5.05, 8.45, 16.25, 19.65, 27.05, 30.85 };
+  // second attempt: private static final double[] LIFT_PRESETS = new double[] { 0, 8.903, 12.887, 22.024, 26.007, 35.145, 39.128 };
+  private static final double[] LIFT_PRESETS = new double[] { 0, 3.485, 7.468, 16.606, 20.589, 29.727, 33.71 };
+  
   private int level_preset;
 
-  public liftToLevel(int level) {
+  public LiftToLevel(int level) {
     // Will be 2 ft 3 and 1/2 in to get to the port for the balls
     addRequirements(Robot.Elevator);
     level_preset = level;
@@ -27,24 +29,30 @@ public class liftToLevel extends CommandBase {
   // Called just before this Command runs the first time
   @Override
   public void initialize() {
+    // Robot.Elevator.enable();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   public void execute() {
-    Robot.Elevator.enable();
-    Robot.Elevator.setSetpoint(LIFT_PRESETS[level_preset]);
-    // System.out.print(RobotMap.liftEncoder.getDistance());
+    // Robot.Elevator.setSetpoint(LIFT_PRESETS[level_preset]);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   public boolean isFinished() {
-    return Robot.Elevator.onTarget();
+    // return Robot.Elevator.onTarget();
+    return true;
   }
 
-  // Called once after isFinished returns true or is interrupted
-  @Override
-  public void end(boolean interrupted) {
+  // Called once after isFinished returns true
+  public void end() {
+    //Robot.Elevator.disable();
+    // System.out.println("target: " + Robot.Elevator.getSetpoint() + ", current: " + RobotMap.liftEncoder.getDistance());
   }
 
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
+  public void interrupted() {
+  }
+}

@@ -7,7 +7,6 @@
 package frc.robot;
 
 import frc.robot.commands.lift.*;
-import frc.robot.commands.grip.*;
 
 /**
  * This class is what binds the controls on the physical operator
@@ -15,26 +14,8 @@ import frc.robot.commands.grip.*;
  */
 public class OI {
   public OI() {
-    // Gripper controls
-    // button2_left.whenPressed(new ExtendGripPiston());
-
-    // Lift controls
-    RobotMap.button8_right.whenPressed(new partialPneumaticClose());
-    RobotMap.button9_left.whileHeld(new manualMotorLift());
-    RobotMap.button8_left.whenPressed(new liftToLevel(0));
-    RobotMap.button4_left.whenPressed(new liftToLevel(1));
-    RobotMap.button3_left.whenPressed(new liftToLevel(2));
-    RobotMap.button5_left.whenPressed(new liftToLevel(3));
-    RobotMap.button4_right.whenPressed(new liftToLevel(4));
-    RobotMap.button3_right.whenPressed(new liftToLevel(5));
-    RobotMap.button5_right.whenPressed(new liftToLevel(6));
-
-    // button4_left.whenPressed(new LiftLevelOne());
-    // button3_left.whenPressed(new LiftLevelTwo());
-    // button5_left.whenPressed(new LiftLevelThree());
-    // button4_right.whenPressed(new LiftLevelFour());
-    // button3_right.whenPressed(new LiftLevelFive());
-    // button5_right.whenPressed(new LiftLevelSix());
+    // teleop lift controls
+    RobotMap.button8_left.whileHeld(new ManualLift());
 
   }
 }
