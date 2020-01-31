@@ -6,6 +6,8 @@ import java.util.List;
 import org.opencv.core.*;
 import org.opencv.imgproc.*;
 
+import edu.wpi.first.vision.VisionPipeline;
+
 /**
 * GripPipeline class.
 *
@@ -13,7 +15,7 @@ import org.opencv.imgproc.*;
 *
 * @author GRIP
 */
-public class GripPipeline {
+public class GripPipeline implements VisionPipeline {
 
 	//Outputs
 	private Mat cvResizeOutput = new Mat();
