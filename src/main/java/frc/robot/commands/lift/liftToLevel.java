@@ -10,7 +10,7 @@ package frc.robot.commands.lift;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
-public class LiftToLevel extends CommandBase {
+public class liftToLevel extends CommandBase {
   // this array represents all the levels that we can lift to.
   // quantified in "encoder values", not inches
   // 2.134 in = 1 encoder value
@@ -20,7 +20,7 @@ public class LiftToLevel extends CommandBase {
   
   private int level_preset;
 
-  public LiftToLevel(int level) {
+  public liftToLevel(int level) {
     // Will be 2 ft 3 and 1/2 in to get to the port for the balls
     addRequirements(Robot.Elevator);
     level_preset = level;
