@@ -33,7 +33,7 @@ public class aimShooter extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.MultiSystem.rotateShooter(turnAmount);
+    Robot.MultiSystem.rotateShooter(true);
   }
 
   // Called once the command ends or is interrupted.
