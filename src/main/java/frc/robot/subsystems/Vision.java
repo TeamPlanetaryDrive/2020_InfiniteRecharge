@@ -11,11 +11,11 @@ package frc.robot.subsystems;
 import edu.wpi.first.cameraserver.*;
 import edu.wpi.cscore.AxisCamera;
 import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
 //use for the guidence through the camera
-public class Vision extends Subsystem {
+public class Vision extends SubsystemBase {
 
   public void init(){
     // // Axis camera (fixed IP)
@@ -29,8 +29,4 @@ public class Vision extends Subsystem {
 		uCamera.setResolution(320, 240);
   }
 
-  @Override
-  public void initDefaultCommand() {
-
-  }
 }
