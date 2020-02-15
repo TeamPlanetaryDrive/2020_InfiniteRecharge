@@ -14,7 +14,7 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 //import frc.robot.commands.grip.*;
 
-public class TurnToGoal extends CommandBase {
+public class turnToGoal extends CommandBase {
   NetworkTableInstance inst;
   NetworkTable table;
   NetworkTableEntry goalPosition;
@@ -26,7 +26,7 @@ public class TurnToGoal extends CommandBase {
 
   boolean close = false;
 
-  public TurnToGoal() {
+  public turnToGoal() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     addRequirements(Robot.Cameras, Robot.Drive);

@@ -14,6 +14,7 @@ public class breakStartLine extends CommandBase {
   /**
    * Creates a new TestCommand.
    */
+  int suckIt; //pavan's totally real choice
   public breakStartLine() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.Drive);
@@ -22,22 +23,25 @@ public class breakStartLine extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    Robot.Drive.drive(-.8, -.8);
+    suckIt = 0;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
+    suckIt++;
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    Robot.Drive.drive(0, 0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return suckIt >= 20;
   }
 }

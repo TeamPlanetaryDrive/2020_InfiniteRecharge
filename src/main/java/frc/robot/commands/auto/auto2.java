@@ -8,7 +8,7 @@
 package frc.robot.commands.auto;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.commands.TurnToGoal;
+import frc.robot.commands.turnToGoal;
 import frc.robot.commands.multi.*;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -21,7 +21,7 @@ public class auto2 extends SequentialCommandGroup {
   public auto2() {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
-    super(new breakStartLine(), new TurnToGoal(), new moveToGoal(), new aimShooter(0), new shootBalls());
+    super(new breakStartLine(), new findGoal(), new turnToGoal(), new moveToGoal(), new findGoal(), new turnToGoal(), new shootBalls());
 
   }
 }
