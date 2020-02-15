@@ -6,16 +6,20 @@
 /*----------------------------------------------------------------------------*/
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Lift;
 import frc.robot.subsystems.Vision;
 import frc.robot.subsystems.Multi;
 import frc.robot.OI;
+import frc.robot.commands.auto.breakStartLine;
+import frc.robot.commands.auto.auto2;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -30,20 +34,10 @@ public class Robot extends TimedRobot {
   public static Vision Cameras; // used for the vision class as needed
 
   public static Multi MultiSystem; // contains shooter, intake, rotator
-
-
   public static OI m_oi;
-  public static RobotMap map = new RobotMap();
 
-  Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
-  SendableChooser<Command> Hab_Climb_Send = new SendableChooser<>();
-  SendableChooser<Command> Drive_Send = new SendableChooser<>();
-  SendableChooser<Command> PneumaticsTest_Send = new SendableChooser<>();
-  SendableChooser<Command> Elevator_Send = new SendableChooser<>();
-  SendableChooser<Command> Cameras_Send = new SendableChooser<>();
-  SendableChooser<Command> PID_Send = new SendableChooser<>();
-  SendableChooser<Command> RobotM = new SendableChooser<>();
+  public Command m_autonomousCommand;
+  public SendableChooser<Command> m_chooser = new SendableChooser<Command>();
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -55,9 +49,12 @@ public class Robot extends TimedRobot {
     Drive = new DriveTrain();
     Elevator = new Lift();
     Cameras = new Vision();
+    MultiSystem = new Multi();
     m_oi = new OI();
     Cameras.init();
     SmartDashboard.putData("Auto mode", m_chooser);
+    m_chooser.addOption("breakStartLine", new breakStartLine());
+    m_chooser.addOption("auto2", new auto2());
   }
 
   /**
@@ -101,18 +98,25 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
+    //m_autonomousCommand = m_chooser.getSelected();
 
-    /*
-     * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
-     * switch(autoSelected) { case "My Auto": autonomousCommand = new
-     * MyAutoCommand(); break; case "Default Auto": default: autonomousCommand = new
-     * ExampleCommand(); break; }
-     */
+    //Command autoSelected
+    m_autonomousCommand = (Command)(((SendableChooser)SmartDashboard.getData("Auto mode")).getSelected());
+    //autoSelected.schedule();
+    
+    // switch(autoSelected) { 
+    //   case "auto2": 
+    //     m_autonomousCommand = new auto2(); 
+    //     break; 
+    //   case "Default Auto": 
+    //   default: 
+    //     autonomousCommand = new ExampleCommand(); 
+    //     break; 
+    //   }
 
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
-      m_autonomousCommand.start();
+      m_autonomousCommand.schedule();
     }
   }
 
@@ -125,6 +129,7 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
   }
 
+  @Override
   public void teleopInit() {
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
@@ -139,8 +144,9 @@ public class Robot extends TimedRobot {
   /**
    * This function is called periodically during operator control.
    */
-
+  @Override
   public void teleopPeriodic() {
+    Robot.Drive.drive(-0.7 * RobotMap.leftJoystick.getY(), -0.7 * RobotMap.rightJoystick.getY());
     Scheduler.getInstance().run();
   }
 

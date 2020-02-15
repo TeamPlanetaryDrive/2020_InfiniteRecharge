@@ -7,6 +7,7 @@
 package frc.robot;
 
 import frc.robot.commands.lift.*;
+import frc.robot.commands.auto.*;
 
 /**
  * This class is what binds the controls on the physical operator
@@ -16,6 +17,8 @@ public class OI {
   public OI() {
     // teleop lift controls
     RobotMap.button8_left.whileHeld(new ManualLift());
+    RobotMap.button3_right.whenPressed(new auto2Test());
+
 
   }
 }

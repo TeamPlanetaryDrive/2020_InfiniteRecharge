@@ -23,20 +23,21 @@ public class breakStartLine extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.Drive.drive(-.8, -.8);
+
     suckIt = 0;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    Robot.Drive.drive(-.8, -.8);
     suckIt++;
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.Drive.drive(0, 0);
+    
   }
 
   // Returns true when the command should end.

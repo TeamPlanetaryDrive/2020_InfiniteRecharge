@@ -35,7 +35,8 @@ public class DriveTrain extends SubsystemBase {
     // calls the subsystem to let it know that it needs to be called as a subsystem
     super();
     robotDrive = new DifferentialDrive(RobotMap.lMotor, RobotMap.rMotor);
-    setDefaultCommand(new robotMovement());
+    robotDrive.setSafetyEnabled(false);
+    // setDefaultCommand(new robotMovement());
   }
 
   

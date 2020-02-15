@@ -23,7 +23,7 @@ public class Multi extends SubsystemBase {
   // here. Call these from Commands.
   DoubleSolenoid testSolenoid = new DoubleSolenoid(RobotMap.GRIPPER_CHANNEL_A, RobotMap.GRIPPER_CHANNEL_B);//new
   public Multi(){
-    setDefaultCommand(new liftBarrier());
+    // setDefaultCommand(new liftBarrier());
   }
 
   //makes piston go up
