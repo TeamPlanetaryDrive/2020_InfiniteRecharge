@@ -5,16 +5,19 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems;
+package frc.robot.commands.lift;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Robot;
+import frc.robot.RobotMap;
 
-public class TestCommand extends CommandBase {
+public class ManualLift_orig extends CommandBase {
   /**
-   * Creates a new TestCommand.
+   * Creates a new ManualLift.
    */
-  public TestCommand() {
+  public ManualLift_orig() {
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(Robot.Elevator);
   }
 
   // Called when the command is initially scheduled.
@@ -25,10 +28,11 @@ public class TestCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    Robot.Elevator.liftMove(RobotMap.leftJoystick.getZ());
   }
 
   // Called once the command ends or is interrupted.
-  @Override
+  // @Override
   public void end(boolean interrupted) {
   }
 
@@ -37,4 +41,5 @@ public class TestCommand extends CommandBase {
   public boolean isFinished() {
     return false;
   }
+
 }

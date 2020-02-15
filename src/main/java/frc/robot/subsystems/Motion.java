@@ -7,13 +7,9 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 //use this to move the robot
 
-public class Motion extends Subsystem {
+public class Motion extends SubsystemBase {
 
-  @Override
-  public void initDefaultCommand() {
-
-  }
 }
