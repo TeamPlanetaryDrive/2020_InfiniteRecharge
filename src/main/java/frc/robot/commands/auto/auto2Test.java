@@ -22,6 +22,7 @@ public class auto2Test extends SequentialCommandGroup {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     super(new breakStartLine(), new findGoal(), new turnToGoal());
-
+    System.out.println("running");
+    
   }
 }
