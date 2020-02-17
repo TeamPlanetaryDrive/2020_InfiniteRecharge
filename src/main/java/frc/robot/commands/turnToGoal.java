@@ -57,7 +57,7 @@ public class turnToGoal extends CommandBase {
       System.out.println("goalX: " + goalX);
       int direction = (int) (goalX / Math.abs(goalX));
       System.out.println("direction: " + direction);
-      Robot.Drive.drive(.35 * direction, (-.35) * direction);
+      Robot.Drive.drive(.4 * direction, (-.4) * direction);
       System.out.println("rotated");
     }
   }

@@ -49,7 +49,7 @@ public class findGoal extends CommandBase {
       System.out.println("ran execute()");
       // int direction = (int) (goalX / Math.abs(goalX));
       // System.out.println("direction: " + direction);
-      Robot.Drive.drive(.35, (-.35));
+      Robot.Drive.drive(.45, (-.45));
       System.out.println("rotated");
     }
   }

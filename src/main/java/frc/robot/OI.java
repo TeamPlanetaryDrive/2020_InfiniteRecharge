@@ -16,14 +16,13 @@ import edu.wpi.first.wpilibj2.command.Command;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-  static Command buttonPlease = new ButtonPlease();
 
   public OI() {
     // teleop lift controls
     //RobotMap.button8_left.whileHeld(new ManualLift());
     RobotMap.button3_right.whenPressed(new auto2Test());
-    RobotMap.button2_right.whenPressed(buttonPlease);
-    System.out.println("oi");
+    RobotMap.button2_right.whenPressed(new ButtonPlease());
+    RobotMap.button4_right.whenPressed(new turnToGoal());
 
   }
 }

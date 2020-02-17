@@ -9,7 +9,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
+// import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -20,6 +21,7 @@ import frc.robot.subsystems.Multi;
 import frc.robot.OI;
 import frc.robot.commands.auto.breakStartLine;
 import frc.robot.commands.auto.auto2;
+import frc.robot.commands.auto.auto2Test;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -37,7 +39,7 @@ public class Robot extends TimedRobot {
   public static OI m_oi;
 
   public Command m_autonomousCommand;
-  public SendableChooser<Command> m_chooser = new SendableChooser<Command>();
+  public SendableChooser<Command> m_chooser;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -52,9 +54,11 @@ public class Robot extends TimedRobot {
     MultiSystem = new Multi();
     m_oi = new OI();
     Cameras.init();
-    SmartDashboard.putData("Auto mode", m_chooser);
+    m_chooser = new SendableChooser<Command>();
     m_chooser.addOption("breakStartLine", new breakStartLine());
-    m_chooser.addOption("auto2", new auto2());
+    // m_chooser.addOption("auto2", new auto2());
+    m_chooser.addOption("auto2Test", new auto2Test());
+    SmartDashboard.putData("Auto mode", m_chooser);
   }
 
   /**
@@ -68,6 +72,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    m_autonomousCommand = m_chooser.getSelected();
   }
 
   /**
@@ -81,7 +86,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledPeriodic() {
-    Scheduler.getInstance().run();
+    CommandScheduler.getInstance().run();
   }
 
   /**
@@ -101,7 +106,6 @@ public class Robot extends TimedRobot {
     //m_autonomousCommand = m_chooser.getSelected();
 
     //Command autoSelected
-    m_autonomousCommand = (Command)(((SendableChooser)SmartDashboard.getData("Auto mode")).getSelected());
     //autoSelected.schedule();
     
     // switch(autoSelected) { 
@@ -113,9 +117,9 @@ public class Robot extends TimedRobot {
     //     autonomousCommand = new ExampleCommand(); 
     //     break; 
     //   }
-
-    // schedule the autonomous command (example)
+    
     if (m_autonomousCommand != null) {
+      System.out.println(m_autonomousCommand.getName());
       m_autonomousCommand.schedule();
     }
   }
@@ -126,7 +130,7 @@ public class Robot extends TimedRobot {
   //comment
   @Override
   public void autonomousPeriodic() {
-    Scheduler.getInstance().run();
+    CommandScheduler.getInstance().run();
   }
 
   @Override
@@ -147,7 +151,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Robot.Drive.drive(-0.7 * RobotMap.leftJoystick.getY(), -0.7 * RobotMap.rightJoystick.getY());
-    Scheduler.getInstance().run();
+    CommandScheduler.getInstance().run();
   }
 
   /**
