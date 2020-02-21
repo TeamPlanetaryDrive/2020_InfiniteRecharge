@@ -50,15 +50,15 @@ public class turnToGoal extends CommandBase {
   @Override
   public void execute() {
     if (goalPosition.getDoubleArray(defaultArray).length > 0) {
-      System.out.println("ran execute()");
+      // System.out.println("ran execute()");
       goalX = goalPosition.getDoubleArray(defaultArray)[0] - IMAGEWIDTH / 2;
-      System.out.println("goal position: " + goalPosition.getDoubleArray(defaultArray)[0]);
-      System.out.println("image width: " + IMAGEWIDTH / 2);
-      System.out.println("goalX: " + goalX);
+      // System.out.println("goal position: " + goalPosition.getDoubleArray(defaultArray)[0]);
+      // System.out.println("image width: " + IMAGEWIDTH / 2);
+      // System.out.println("goalX: " + goalX);
       int direction = (int) (goalX / Math.abs(goalX));
-      System.out.println("direction: " + direction);
-      Robot.Drive.drive(.4 * direction, (-.4) * direction);
-      System.out.println("rotated");
+      // System.out.println("direction: " + direction);
+      Robot.Drive.drive(.35 * direction, (-.35) * direction);
+      // System.out.println("rotated");
     }
   }
 
@@ -68,9 +68,9 @@ public class turnToGoal extends CommandBase {
     if (goalPosition.getDoubleArray(defaultArray).length == 0)
       return true;
     goodRange = goalWidth.getDoubleArray(defaultArray)[0] / 3;
-    System.out.println("goodRange: " + goodRange);
-    System.out.println("goalX*2: " + goalX * 2);
-    System.out.println("END: " + (Math.abs(goalX) * 2 < goodRange));
+    // System.out.println("goodRange: " + goodRange);
+    // System.out.println("goalX*2: " + goalX * 2);
+    // System.out.println("END: " + (Math.abs(goalX) * 2 < goodRange));
     return Math.abs(goalX) * 2 < goodRange;
   }
 

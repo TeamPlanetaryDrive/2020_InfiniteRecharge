@@ -40,6 +40,7 @@ public class Robot extends TimedRobot {
 
   public Command m_autonomousCommand;
   public SendableChooser<Command> m_chooser;
+  
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -55,9 +56,9 @@ public class Robot extends TimedRobot {
     m_oi = new OI();
     Cameras.init();
     m_chooser = new SendableChooser<Command>();
+    m_chooser.setDefaultOption("auto2Test", new auto2Test());
     m_chooser.addOption("breakStartLine", new breakStartLine());
     // m_chooser.addOption("auto2", new auto2());
-    m_chooser.addOption("auto2Test", new auto2Test());
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 
@@ -72,7 +73,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    m_autonomousCommand = m_chooser.getSelected();
   }
 
   /**
@@ -86,6 +86,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledPeriodic() {
+    SmartDashboard.updateValues();
     CommandScheduler.getInstance().run();
   }
 
@@ -103,7 +104,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    //m_autonomousCommand = m_chooser.getSelected();
+    System.out.println(SmartDashboard.getKeys());
+    m_autonomousCommand = m_chooser.getSelected();
 
     //Command autoSelected
     //autoSelected.schedule();
@@ -118,10 +120,6 @@ public class Robot extends TimedRobot {
     //     break; 
     //   }
     
-    if (m_autonomousCommand != null) {
-      System.out.println(m_autonomousCommand.getName());
-      m_autonomousCommand.schedule();
-    }
   }
 
   /**
@@ -130,6 +128,9 @@ public class Robot extends TimedRobot {
   //comment
   @Override
   public void autonomousPeriodic() {
+    if (m_autonomousCommand != null) {
+      m_autonomousCommand.schedule();
+    }
     CommandScheduler.getInstance().run();
   }
 

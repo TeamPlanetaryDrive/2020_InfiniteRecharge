@@ -24,6 +24,7 @@ public class breakStartLine extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    System.out.println("initialized breakStartLine");
     System.out.println("bsl");
     suckIt = 0;
   }
@@ -34,7 +35,6 @@ public class breakStartLine extends CommandBase {
     
     Robot.Drive.drive(-.4, -.4);
     suckIt++;
-    System.out.println(suckIt);
   }
 
   // Called once the command ends or is interrupted.

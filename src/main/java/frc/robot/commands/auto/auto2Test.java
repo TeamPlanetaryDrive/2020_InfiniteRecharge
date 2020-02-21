@@ -15,13 +15,14 @@ import frc.robot.commands.multi.*;
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
 public class auto2Test extends SequentialCommandGroup {
-  /**
+  /*
+   *
    * Creates a new auto2.
    */
   public auto2Test() {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     super(new findGoal(), new turnToGoal());
-    System.out.println("auto2Test");
+    System.out.println("started auto2test");
   }
 }

@@ -34,6 +34,7 @@ public class findGoal extends CommandBase {
   // Called just before this Command runs the first time
   @Override
   public void initialize() {
+    System.out.println("initialized findGoal");
     inst = NetworkTableInstance.getDefault();
     table = inst.getTable("GRIP/goalContours");
     goalPosition = table.getEntry("centerX");
@@ -48,8 +49,8 @@ public class findGoal extends CommandBase {
     if (goalPosition.getDoubleArray(defaultArray).length == 0) {
       System.out.println("ran execute()");
       // int direction = (int) (goalX / Math.abs(goalX));
-      // System.out.println("direction: " + direction);
-      Robot.Drive.drive(.45, (-.45));
+      //System.out.println("direction: " + direction);
+      Robot.Drive.drive(.46, (-.46));
       System.out.println("rotated");
     }
   }
