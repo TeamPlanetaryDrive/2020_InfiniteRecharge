@@ -21,7 +21,7 @@ public class auto2 extends SequentialCommandGroup {
   public auto2() {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
-    super(new breakStartLine(), new findGoal(), new turnToGoal(), new moveToGoal(), new findGoal(), new turnToGoal(), new shootBalls());
+    //super(new breakStartLine(), new findGoal(), new turnToGoal(), new moveToGoal(), new findGoal(), new turnToGoal(), new shootBalls());
 
   }
 }

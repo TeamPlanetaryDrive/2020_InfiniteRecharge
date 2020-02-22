@@ -7,6 +7,10 @@
 
 package frc.robot.commands.auto;
 
+import java.util.ArrayList;
+
+import org.opencv.core.MatOfPoint;
+
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.turnToGoal;
 import frc.robot.commands.multi.*;
@@ -19,10 +23,10 @@ public class auto2Test extends SequentialCommandGroup {
    *
    * Creates a new auto2.
    */
-  public auto2Test() {
+  public auto2Test(ArrayList<MatOfPoint> input) {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
-    super(new findGoal(), new turnToGoal());
+    super(new findGoal(input), new turnToGoal(input));
     System.out.println("started auto2test");
   }
 }

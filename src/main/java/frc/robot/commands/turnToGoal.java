@@ -9,6 +9,13 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
+
+import java.util.ArrayList;
+
+import org.opencv.core.MatOfPoint;
+import org.opencv.core.Rect;
+import org.opencv.imgproc.Imgproc;
+
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -23,51 +30,49 @@ public class turnToGoal extends CommandBase {
   final int IMAGEWIDTH = 320;
   double goalX;
   double goodRange;
+  ArrayList<MatOfPoint> contourArray;
 
-  boolean close = false;
 
-  public turnToGoal() {
+  public turnToGoal(ArrayList<MatOfPoint> input) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     addRequirements(Robot.Drive);
+    contourArray = input;
   }
 
   // Called just before this Command runs the first time
   @Override
   public void initialize() {
-    inst = NetworkTableInstance.getDefault();
-    table = inst.getTable("GRIP/goalContours");
-    goalPosition = table.getEntry("centerX");
-    goalWidth = table.getEntry("width");
-    inst.startClientTeam(2856);
-    inst.startDSClient();
-
-    defaultArray = new double[1];
-    defaultArray[0] = Integer.MAX_VALUE;
+  
+  
+  
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   public void execute() {
-    if (goalPosition.getDoubleArray(defaultArray).length > 0) {
-      // System.out.println("ran execute()");
-      goalX = goalPosition.getDoubleArray(defaultArray)[0] - IMAGEWIDTH / 2;
+    if (contourArray.size() > 0) {
+      System.out.println("ran execute()");
+      Rect r = Imgproc.boundingRect(contourArray.get(0));
+      goalX = r.x + (r.width/2);
+      goalX -= IMAGEWIDTH/2;
       // System.out.println("goal position: " + goalPosition.getDoubleArray(defaultArray)[0]);
       // System.out.println("image width: " + IMAGEWIDTH / 2);
       // System.out.println("goalX: " + goalX);
       int direction = (int) (goalX / Math.abs(goalX));
-      // System.out.println("direction: " + direction);
+      System.out.println("direction: " + direction);
       Robot.Drive.drive(.35 * direction, (-.35) * direction);
-      // System.out.println("rotated");
+      System.out.println("rotated");
     }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   public boolean isFinished() {
-    if (goalPosition.getDoubleArray(defaultArray).length == 0)
+    if (contourArray.size() == 0)
       return true;
-    goodRange = goalWidth.getDoubleArray(defaultArray)[0] / 3;
+    Rect s = Imgproc.boundingRect(contourArray.get(0));
+    goodRange = s.width / 3;
     // System.out.println("goodRange: " + goodRange);
     // System.out.println("goalX*2: " + goalX * 2);
     // System.out.println("END: " + (Math.abs(goalX) * 2 < goodRange));

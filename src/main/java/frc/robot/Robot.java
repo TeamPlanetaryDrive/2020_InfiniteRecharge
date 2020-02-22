@@ -24,7 +24,10 @@ import frc.robot.commands.auto.breakStartLine;
 import frc.robot.commands.auto.auto2;
 import frc.robot.commands.auto.auto2Test;
 
+import java.util.ArrayList;
+
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfPoint;
 import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
 
@@ -47,13 +50,14 @@ public class Robot extends TimedRobot {
   // public static Vision Cameras; // used for the vision class as needed
   private VisionThread visionThread;
   private final Object imgLock = new Object();
-  private double centerX = 0;
 
   public static Multi MultiSystem; // contains shooter, intake, rotator
   public static OI m_oi;
 
   public Command m_autonomousCommand;
   public SendableChooser<Command> m_chooser;
+
+  private ArrayList<MatOfPoint> contourArray;
   
 
   /**
@@ -74,18 +78,15 @@ public class Robot extends TimedRobot {
     camera.setResolution(320, 240);
     
     visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
-      if (!pipeline.filterContoursOutput().isEmpty()) {
-          Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
           synchronized (imgLock) {
-              centerX = r.x + (r.width / 2);
+            contourArray = pipeline.filterContoursOutput();
           }
-      }
     });
     visionThread.start();
     
     m_chooser = new SendableChooser<Command>();
-    m_chooser.setDefaultOption("auto2Test", new auto2Test());
     m_chooser.addOption("breakStartLine", new breakStartLine());
+    m_chooser.addOption("auto2Test", new auto2Test(new ArrayList<MatOfPoint>()));
     // m_chooser.addOption("auto2", new auto2());
     SmartDashboard.putData("Auto mode", m_chooser);
   }
@@ -101,6 +102,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    // synchronized (imgLock) {
+    //   System.out.println(this.centerX);
+    // }
   }
 
   /**
@@ -115,6 +119,7 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     SmartDashboard.updateValues();
+    m_autonomousCommand = m_chooser.getSelected();
     CommandScheduler.getInstance().run();
   }
 
@@ -133,8 +138,9 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     System.out.println(SmartDashboard.getKeys());
-    // m_autonomousCommand = m_chooser.getSelected();
 
+    
+    
     //Command autoSelected
     //autoSelected.schedule();
     
@@ -156,12 +162,13 @@ public class Robot extends TimedRobot {
   //comment
   @Override
   public void autonomousPeriodic() {
-    synchronized (imgLock) {
-      System.out.println(this.centerX);
+    if (m_autonomousCommand != null) {
+      if(m_autonomousCommand.getName().equals("auto2Test"))
+        synchronized(imgLock){
+          m_autonomousCommand = new auto2Test(contourArray);
+        }
+      m_autonomousCommand.schedule();
     }
-    // if (m_autonomousCommand != null) {
-    //   m_autonomousCommand.schedule();
-    // }
     CommandScheduler.getInstance().run();
   }
 
