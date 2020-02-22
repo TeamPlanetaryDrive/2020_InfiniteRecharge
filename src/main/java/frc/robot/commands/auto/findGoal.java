@@ -28,7 +28,7 @@ public class findGoal extends CommandBase {
   public findGoal() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    addRequirements(Robot.Cameras, Robot.Drive);
+    addRequirements(Robot.Drive);
   }
 
   // Called just before this Command runs the first time

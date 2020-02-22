@@ -1,4 +1,4 @@
-package frc.robot.subsystems;
+package frc.robot;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -18,6 +18,7 @@ import org.opencv.objdetect.*;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.vision.VisionPipeline;
 
 /**
 * GripPipeline class.
@@ -26,7 +27,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 *
 * @author GRIP
 */
-public class GripPipeline {
+public class GripPipeline implements VisionPipeline {
 
 	//Constants
 	static final double DISTANCE_CONSTANT = 12841.93333;
@@ -35,7 +36,7 @@ public class GripPipeline {
   	static NetworkTableEntry goalWidth;
   	static double[] defaultArray;
 	static double distanceFromTarget;
-	static final double OFFSET_TO_FRONT = 23;  
+	static final double OFFSET_TO_FRONT = 10;  
 
 	//Outputs
 	private Mat cvResizeOutput = new Mat();

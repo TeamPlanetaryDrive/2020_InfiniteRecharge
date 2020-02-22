@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.vision.VisionThread;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Lift;
@@ -22,6 +23,13 @@ import frc.robot.OI;
 import frc.robot.commands.auto.breakStartLine;
 import frc.robot.commands.auto.auto2;
 import frc.robot.commands.auto.auto2Test;
+
+import org.opencv.core.Mat;
+import org.opencv.core.Rect;
+import org.opencv.imgproc.Imgproc;
+
+import edu.wpi.cscore.CvSink;
+import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.*;
 
@@ -36,7 +44,10 @@ public class Robot extends TimedRobot {
 
   public static DriveTrain Drive;// could be redundent , if we delete drivetrain get rid of this
   public static Lift Elevator; // elevator for gripper
-  public static Vision Cameras; // used for the vision class as needed
+  // public static Vision Cameras; // used for the vision class as needed
+  private VisionThread visionThread;
+  private final Object imgLock = new Object();
+  private double centerX = 0;
 
   public static Multi MultiSystem; // contains shooter, intake, rotator
   public static OI m_oi;
@@ -54,10 +65,24 @@ public class Robot extends TimedRobot {
     RobotMap.init();
     Drive = new DriveTrain();
     Elevator = new Lift();
-    Cameras = new Vision();
     MultiSystem = new Multi();
     m_oi = new OI();
-    Cameras.init();
+    // Cameras.init();
+    
+    UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+		camera.setFPS(15);
+    camera.setResolution(320, 240);
+    
+    visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
+      if (!pipeline.filterContoursOutput().isEmpty()) {
+          Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
+          synchronized (imgLock) {
+              centerX = r.x + (r.width / 2);
+          }
+      }
+    });
+    visionThread.start();
+    
     m_chooser = new SendableChooser<Command>();
     m_chooser.setDefaultOption("auto2Test", new auto2Test());
     m_chooser.addOption("breakStartLine", new breakStartLine());
@@ -108,7 +133,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     System.out.println(SmartDashboard.getKeys());
-    m_autonomousCommand = m_chooser.getSelected();
+    // m_autonomousCommand = m_chooser.getSelected();
 
     //Command autoSelected
     //autoSelected.schedule();
@@ -131,9 +156,12 @@ public class Robot extends TimedRobot {
   //comment
   @Override
   public void autonomousPeriodic() {
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.schedule();
+    synchronized (imgLock) {
+      System.out.println(this.centerX);
     }
+    // if (m_autonomousCommand != null) {
+    //   m_autonomousCommand.schedule();
+    // }
     CommandScheduler.getInstance().run();
   }
 
