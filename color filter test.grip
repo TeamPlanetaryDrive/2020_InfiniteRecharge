@@ -1,7 +1,7 @@
 <grip:Pipeline>
   <sources>
     <grip:Camera>
-      <property name="address" value="http://roboRIO-2856-FRC.local:1181/?action=stream"/>
+      <property name="address" value="http://10.28.56.2:1181/?action=stream"/>
     </grip:Camera>
   </sources>
   <steps>
