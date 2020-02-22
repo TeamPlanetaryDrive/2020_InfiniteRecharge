@@ -22,6 +22,9 @@ import frc.robot.OI;
 import frc.robot.commands.auto.breakStartLine;
 import frc.robot.commands.auto.auto2;
 import frc.robot.commands.auto.auto2Test;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.*;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot

@@ -1,12 +1,23 @@
 package frc.robot.subsystems;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.HashMap;
 
 import org.opencv.core.*;
+import org.opencv.core.Core.*;
+import org.opencv.features2d.FeatureDetector;
+import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.*;
-
-import edu.wpi.first.vision.VisionPipeline;
+import org.opencv.objdetect.*;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 
 /**
 * GripPipeline class.
@@ -15,7 +26,16 @@ import edu.wpi.first.vision.VisionPipeline;
 *
 * @author GRIP
 */
-public class GripPipeline implements VisionPipeline {
+public class GripPipeline {
+
+	//Constants
+	static final double DISTANCE_CONSTANT = 12841.93333;
+	static NetworkTableInstance inst;
+  	static NetworkTable table;
+  	static NetworkTableEntry goalWidth;
+  	static double[] defaultArray;
+	static double distanceFromTarget;
+	static final double OFFSET_TO_FRONT = 23;  
 
 	//Outputs
 	private Mat cvResizeOutput = new Mat();
@@ -37,16 +57,16 @@ public class GripPipeline implements VisionPipeline {
 		// Step CV_resize0:
 		Mat cvResizeSrc = source0;
 		Size cvResizeDsize = new Size(0, 0);
-		double cvResizeFx = 0.5;
-		double cvResizeFy = 0.5;
+		double cvResizeFx = 1.0;
+		double cvResizeFy = 1.0;
 		int cvResizeInterpolation = Imgproc.INTER_LINEAR;
 		cvResize(cvResizeSrc, cvResizeDsize, cvResizeFx, cvResizeFy, cvResizeInterpolation, cvResizeOutput);
 
 		// Step HSL_Threshold0:
 		Mat hslThresholdInput = cvResizeOutput;
-		double[] hslThresholdHue = {71.39072456504755, 90.75445156586326};
-		double[] hslThresholdSaturation = {208.89830508474577, 255.0};
-		double[] hslThresholdLuminance = {156.07344632768363, 255.0};
+		double[] hslThresholdHue = {37.28813559322034, 96.5775401069519};
+		double[] hslThresholdSaturation = {163.27683615819208, 255.0};
+		double[] hslThresholdLuminance = {170.87570621468925, 243.63636363636363};
 		hslThreshold(hslThresholdInput, hslThresholdHue, hslThresholdSaturation, hslThresholdLuminance, hslThresholdOutput);
 
 		// Step CV_dilate0:
@@ -83,19 +103,28 @@ public class GripPipeline implements VisionPipeline {
 
 		// Step Filter_Contours0:
 		ArrayList<MatOfPoint> filterContoursContours = findContoursOutput;
-		double filterContoursMinArea = 1100.0;
+		double filterContoursMinArea = 600.0;
 		double filterContoursMinPerimeter = 0.0;
-		double filterContoursMinWidth = 0;
-		double filterContoursMaxWidth = 1000;
-		double filterContoursMinHeight = 0;
-		double filterContoursMaxHeight = 1000;
+		double filterContoursMinWidth = 0.0;
+		double filterContoursMaxWidth = 1100.0;
+		double filterContoursMinHeight = 0.0;
+		double filterContoursMaxHeight = 1000.0;
 		double[] filterContoursSolidity = {0.0, 100.0};
-		double filterContoursMaxVertices = 1000000;
+		double filterContoursMaxVertices = 1000000.0;
 		double filterContoursMinVertices = 0.0;
 		double filterContoursMinRatio = 0.0;
-		double filterContoursMaxRatio = 1000;
+		double filterContoursMaxRatio = 1000.0;
 		filterContours(filterContoursContours, filterContoursMinArea, filterContoursMinPerimeter, filterContoursMinWidth, filterContoursMaxWidth, filterContoursMinHeight, filterContoursMaxHeight, filterContoursSolidity, filterContoursMaxVertices, filterContoursMinVertices, filterContoursMinRatio, filterContoursMaxRatio, filterContoursOutput);
 
+	}
+
+	public static double distanceFromGoal(){
+		inst = NetworkTableInstance.getDefault();
+    	table = inst.getTable("GRIP/goalContours");
+    	goalWidth = table.getEntry("width");
+		// distance costant divided by length between centers of contours
+		distanceFromTarget = DISTANCE_CONSTANT / goalWidth.getDoubleArray(defaultArray)[0];
+		return distanceFromTarget - OFFSET_TO_FRONT; 
 	}
 
 	/**
