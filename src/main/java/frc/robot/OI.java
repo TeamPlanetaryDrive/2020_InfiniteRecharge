@@ -23,6 +23,6 @@ public class OI {
     RobotMap.button3_right.whenPressed(new auto2Test());
     RobotMap.button2_right.whenPressed(new ButtonPlease());
     RobotMap.button4_right.whenPressed(new turnToGoal());
-
+    RobotMap.button5_right.whenPressed(new moveToGoal());
   }
 }
