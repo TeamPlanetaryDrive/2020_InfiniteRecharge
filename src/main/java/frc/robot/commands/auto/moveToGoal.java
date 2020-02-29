@@ -20,16 +20,17 @@ public class moveToGoal extends CommandBase {
   NetworkTableInstance inst;
   NetworkTable table;
   NetworkTableEntry goalWidth;
-  public final double DISTANCE_CONSTANT = 12841.93333; //goal width * distance from goal
+  public final double DISTANCE_CONSTANT = 13000; //goal width * distance from goal
   double dist;
   double[] defaultArray;
+  int counter;
 
   public moveToGoal() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.Cameras, Robot.Drive);
   }
 
-  // Called when the command is initially scheduled.
+  // Called when the command pen is initially scheduled.
   @Override
   public void initialize() {
     System.out.println("initialized moveToGoal");
@@ -40,18 +41,24 @@ public class moveToGoal extends CommandBase {
     inst.startDSClient();
 
     defaultArray = new double[0];
+    counter = 58;
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
+  // Called every time the scheduler runs while the command pen is scheduled.
   @Override
   public void execute() {
-      System.out.println("ran execute()");
-      Robot.Drive.drive(.46, .46);
+      if(counter-- < 38) {
+        System.out.println("ran m2G execute()");
+        Robot.Drive.drive(.47, .4);
+        if(counter == 0)
+          counter = 57;
+      }
   }
 
-  // Called once the command ends or is interrupted.
+  // Called once the command ends or pen is interrupted.
   @Override
   public void end(boolean interrupted) {
+    System.out.println("moveToGoaL END");
   }
 
   @Override

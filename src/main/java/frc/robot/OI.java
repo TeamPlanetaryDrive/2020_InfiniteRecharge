@@ -20,9 +20,11 @@ public class OI {
   public OI() {
     // teleop lift controls
     //RobotMap.button8_left.whileHeld(new ManualLift());
-    RobotMap.button3_right.whenPressed(new auto2Test());
-    RobotMap.button2_right.whenPressed(new ButtonPlease());
+    RobotMap.button1_right.whenPressed(new auto2Test());
+    RobotMap.button3_right.whenPressed(new auto2());
+    RobotMap.button2_right.whenPressed(new findGoal());
     RobotMap.button4_right.whenPressed(new turnToGoal());
     RobotMap.button5_right.whenPressed(new moveToGoal());
+    // friccaroo
   }
 }

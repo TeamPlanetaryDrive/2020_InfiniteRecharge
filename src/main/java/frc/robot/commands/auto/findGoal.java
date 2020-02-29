@@ -47,24 +47,27 @@ public class findGoal extends CommandBase {
   @Override
   public void execute() {
     if (goalPosition.getDoubleArray(defaultArray).length == 0) {
-      System.out.println("ran execute()");
+      System.out.println("ran fG execute()");
       // int direction = (int) (goalX / Math.abs(goalX));
       //System.out.println("direction: " + direction);
-      Robot.Drive.drive(.46, (-.46));
+      Robot.Drive.drive(.46, -.46);
       System.out.println("rotated");
-    }
+    } 
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   public boolean isFinished() {
     return goalPosition.getDoubleArray(defaultArray).length > 0;
-
   }
 
   // Called once after isFinished returns true
   @Override
   public void end(boolean interrupted) {
-    System.out.println("END");
+    System.out.println("findGoal end");
+    for(Double d : goalPosition.getDoubleArray(defaultArray))
+      System.out.println(d);
+    if(goalPosition.getDoubleArray(defaultArray).length == 0)
+      System.out.println("ERRORRRRRRRRRRRR");
   }
 }

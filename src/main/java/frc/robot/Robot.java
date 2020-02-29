@@ -59,7 +59,7 @@ public class Robot extends TimedRobot {
     m_oi = new OI();
     Cameras.init();
     m_chooser = new SendableChooser<Command>();
-    m_chooser.setDefaultOption("auto2Test", new auto2Test());
+    m_chooser.setDefaultOption("auto2", new auto2());
     m_chooser.addOption("breakStartLine", new breakStartLine());
     // m_chooser.addOption("auto2", new auto2());
     SmartDashboard.putData("Auto mode", m_chooser);
@@ -135,6 +135,7 @@ public class Robot extends TimedRobot {
       m_autonomousCommand.schedule();
     }
     CommandScheduler.getInstance().run();
+    m_autonomousCommand = null;
   }
 
   @Override

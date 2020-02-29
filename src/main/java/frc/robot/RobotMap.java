@@ -72,8 +72,8 @@ public class RobotMap {
         public static final int LEFT_JOYSTICK_PORT = 0, RIGHT_JOYSTICK_PORT = 1;
         public static final Joystick leftJoystick = new Joystick(LEFT_JOYSTICK_PORT),
                         rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
-        public static JoystickButton button2_left, button3_left, button4_left, button5_left, button8_left, button9_left;
-        public static JoystickButton button2_right, button3_right, button4_right, button5_right, button8_right;
+        public static JoystickButton button1_left, button2_left, button3_left, button4_left, button5_left, button8_left, button9_left;
+        public static JoystickButton button1_right, button2_right, button3_right, button4_right, button5_right, button8_right;
 
 
         // For example to map the left and right motors, you could define the
@@ -91,6 +91,7 @@ public class RobotMap {
                 rMotor = new Victor(RIGHT_MOTOR_CHANNEL);
 
                 // initializing buttons on left joystick
+                button1_left = new JoystickButton(leftJoystick, 1);
                 button2_left = new JoystickButton(leftJoystick, 2);
                 button3_left = new JoystickButton(leftJoystick, 3);
                 button4_left = new JoystickButton(leftJoystick, 4);
@@ -99,6 +100,7 @@ public class RobotMap {
                 button9_left = new JoystickButton(leftJoystick, 9);
 
                 // initializing buttons on right joystick
+                button1_right = new JoystickButton(rightJoystick, 1);
                 button2_right = new JoystickButton(rightJoystick, 2);
                 button3_right = new JoystickButton(rightJoystick, 3);
                 button4_right = new JoystickButton(rightJoystick, 4);
