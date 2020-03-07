@@ -23,6 +23,7 @@ public class turnToGoal extends CommandBase {
   final int IMAGEWIDTH = 320;
   double goalX;
   double goodRange;
+  int counter;
 
   boolean close = false;
 
@@ -44,6 +45,7 @@ public class turnToGoal extends CommandBase {
 
     defaultArray = new double[1];
     defaultArray[0] = Integer.MAX_VALUE;
+    counter = 40;
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -57,8 +59,13 @@ public class turnToGoal extends CommandBase {
       // System.out.println("goalX: " + goalX);
       int direction = (int) (goalX / Math.abs(goalX));
       // System.out.println("direction: " + direction);
-      Robot.Drive.drive(.3 * direction, (-.3) * direction);
+      if(counter-- < 15) {
+      Robot.Drive.drive(.4 * direction, (-.4) * direction);
       // System.out.println("rotated");
+      if(counter==0)counter=40;
+      }else{
+        Robot.Drive.drive(0,0);
+      }
     }
   }
 
@@ -79,5 +86,6 @@ public class turnToGoal extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     System.out.println("turnToGoAl END");
+    Robot.Drive.drive(0,0);
   }
 }

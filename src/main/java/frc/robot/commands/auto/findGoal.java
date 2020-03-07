@@ -24,6 +24,7 @@ public class findGoal extends CommandBase {
   double goodRange;
 
   boolean close = false;
+  int counter;
 
   public findGoal() {
     // Use requires() here to declare subsystem dependencies
@@ -34,10 +35,11 @@ public class findGoal extends CommandBase {
   // Called just before this Command runs the first time
   @Override
   public void initialize() {
+    counter = 57;
     System.out.println("initialized findGoal");
     inst = NetworkTableInstance.getDefault();
-    table = inst.getTable("GRIP/goalContours");
-    goalPosition = table.getEntry("centerX");
+    table = inst.getTable("GRIP/goalContours"); //myLinesReport
+    goalPosition = table.getEntry("centerX"); //length
     inst.startClientTeam(2856);
     inst.startDSClient();
 
@@ -50,8 +52,17 @@ public class findGoal extends CommandBase {
       System.out.println("ran fG execute()");
       // int direction = (int) (goalX / Math.abs(goalX));
       //System.out.println("direction: " + direction);
-      Robot.Drive.drive(.46, -.46);
-      System.out.println("rotated");
+      // Robot.Drive.drive(.46, -.46);
+      if(counter-- < 38) {
+        // System.out.println("ran m2G execute()");
+        Robot.Drive.drive(.47, -.46);
+        System.out.println("rotated");
+        if(counter == 0)
+          counter = 100;
+      }else{
+        Robot.Drive.drive(0, 0);
+      }
+
     } 
   }
 
@@ -69,5 +80,6 @@ public class findGoal extends CommandBase {
       System.out.println(d);
     if(goalPosition.getDoubleArray(defaultArray).length == 0)
       System.out.println("ERRORRRRRRRRRRRR");
+    Robot.Drive.drive(0,0);
   }
 }

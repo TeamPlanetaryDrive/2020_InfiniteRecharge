@@ -19,7 +19,7 @@ public class moveToGoal extends CommandBase {
    */
   NetworkTableInstance inst;
   NetworkTable table;
-  NetworkTableEntry goalWidth;
+  NetworkTableEntry goalHeight, goalWidth;
   public final double DISTANCE_CONSTANT = 13000; //goal width * distance from goal
   double dist;
   double[] defaultArray;
@@ -35,8 +35,9 @@ public class moveToGoal extends CommandBase {
   public void initialize() {
     System.out.println("initialized moveToGoal");
     inst = NetworkTableInstance.getDefault();
-    table = inst.getTable("GRIP/goalContours");
+    table = inst.getTable("GRIP/goalContours");//myLinesReport
     goalWidth = table.getEntry("width");
+    //goalHeight = table.getEntry("length");
     inst.startClientTeam(2856);
     inst.startDSClient();
 
@@ -65,7 +66,7 @@ public class moveToGoal extends CommandBase {
   public boolean isFinished(){
     if(goalWidth.getDoubleArray(defaultArray).length == 0)
       return true;
-    dist = DISTANCE_CONSTANT / goalWidth.getDoubleArray(defaultArray)[0];
-    return dist <= 120; //within 10ft of goal
+    dist = DISTANCE_CONSTANT / (goalWidth.getDoubleArray(defaultArray)[0] * Math.sqrt(3) / 2);
+    return dist <= 130; //within 10ft of goal
   }
 }

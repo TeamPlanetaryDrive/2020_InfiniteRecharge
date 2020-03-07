@@ -14,14 +14,9 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.Lift;
-import frc.robot.subsystems.Vision;
-import frc.robot.subsystems.Multi;
+import frc.robot.subsystems.*;
 import frc.robot.OI;
-import frc.robot.commands.auto.breakStartLine;
-import frc.robot.commands.auto.auto2;
-import frc.robot.commands.auto.auto2Test;
+import frc.robot.commands.auto.*;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.*;
 
@@ -38,7 +33,8 @@ public class Robot extends TimedRobot {
   public static Lift Elevator; // elevator for gripper
   public static Vision Cameras; // used for the vision class as needed
 
-  public static Multi MultiSystem; // contains shooter, intake, rotator
+  public static Multi MultiSystem;   // contains shooter, intake, rotator
+  public static Climb Climber;
   public static OI m_oi;
 
   public Command m_autonomousCommand;
@@ -52,6 +48,7 @@ public class Robot extends TimedRobot {
 
   public void robotInit() {
     RobotMap.init();
+    Climber = new Climb();
     Drive = new DriveTrain();
     Elevator = new Lift();
     Cameras = new Vision();

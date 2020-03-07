@@ -21,7 +21,7 @@ import frc.robot.RobotMap;//new
 public class Multi extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  DoubleSolenoid testSolenoid = new DoubleSolenoid(RobotMap.GRIPPER_CHANNEL_A, RobotMap.GRIPPER_CHANNEL_B);//new
+  //DoubleSolenoid testSolenoid = new DoubleSolenoid(RobotMap.GRIPPER_CHANNEL_A, RobotMap.GRIPPER_CHANNEL_B);//new
   public Multi(){
     // setDefaultCommand(new liftBarrier());
   }
@@ -40,12 +40,12 @@ public class Multi extends SubsystemBase {
   }
   //rotates shooter wheels by desired amount
   public void rotateShooter (boolean highGoalAim) {
-    if(highGoalAim) {
+    /*if(highGoalAim) {
       testSolenoid.set(DoubleSolenoid.Value.kReverse);
     }
     else {
       testSolenoid.set(DoubleSolenoid.Value.kForward);
-    }
+    }*/
   }
   //returns angle of shooter wheels
   public double getShooterAngle () {

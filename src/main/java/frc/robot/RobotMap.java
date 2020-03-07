@@ -76,6 +76,26 @@ public class RobotMap {
         public static JoystickButton button1_right, button2_right, button3_right, button4_right, button5_right, button8_right;
 
 
+
+        /* new stuff */
+        public static final int CLIMB_MOTOR_CHANNEL_1 = 2856;
+        public static final int CLIMB_MOTOR_CHANNEL_2 = 2857;
+        public static final int WINDOW_MOTOR_CHANNEL = 2856;
+        public static final int SHOOTER_PISTON_CHANNEL_1 = 2856;
+        public static final int SHOOTER_MOTOR_CHANNEL_1 = 2858;
+        public static final int SHOOTER_MOTOR_CHANNEL_2 = 2656;
+        public static final int SHOOTER_PISTON_CHANNEL_2 = 2758;
+        public static final int GATE_SERVO_CHANNEL_1 = 3457;
+        public static final int GATE_SERVO_CHANNEL_2 = 3446;
+
+        public static Victor climbL, climbR;
+        public static Encoder climbEncoder;
+        public static final int CLIMB_ENCODER_CHANNEL_A = 6969;
+        public static final int CLIMB_ENCODER_CHANNEL_B = 6969;
+
+
+
+
         // For example to map the left and right motors, you could define the
         // following variables to use with your drivetrain subsystem.
         // public static int leftMotor = 1;
@@ -114,5 +134,9 @@ public class RobotMap {
                 // liftEncoder.setReverseDirection(true);
                 lift = new Spark(LIFT_CHANNEL);
                 lift.setInverted(true);
+
+                climbL = new Victor(CLIMB_MOTOR_CHANNEL_1);
+                climbR = new Victor(CLIMB_MOTOR_CHANNEL_2);
+                climbEncoder = new Encoder(CLIMB_ENCODER_CHANNEL_A, CLIMB_ENCODER_CHANNEL_B);
         }
 }
