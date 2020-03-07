@@ -7,9 +7,9 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
@@ -93,6 +93,8 @@ public class RobotMap {
         public static final int CLIMB_ENCODER_CHANNEL_A = 6969;
         public static final int CLIMB_ENCODER_CHANNEL_B = 6969;
 
+        public static Servo barrierL, barrierR;
+
 
 
 
@@ -134,9 +136,13 @@ public class RobotMap {
                 // liftEncoder.setReverseDirection(true);
                 lift = new Spark(LIFT_CHANNEL);
                 lift.setInverted(true);
-
+                
+                //New stuff
                 climbL = new Victor(CLIMB_MOTOR_CHANNEL_1);
                 climbR = new Victor(CLIMB_MOTOR_CHANNEL_2);
                 climbEncoder = new Encoder(CLIMB_ENCODER_CHANNEL_A, CLIMB_ENCODER_CHANNEL_B);
+
+                barrierL = new Servo(GATE_SERVO_CHANNEL_1);
+                barrierR = new Servo(GATE_SERVO_CHANNEL_2);
         }
 }

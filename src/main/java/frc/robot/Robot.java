@@ -6,19 +6,14 @@
 /*----------------------------------------------------------------------------*/
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
-// import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.*;
 import frc.robot.OI;
 import frc.robot.commands.auto.*;
-import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.cameraserver.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -32,7 +27,7 @@ public class Robot extends TimedRobot {
   public static DriveTrain Drive;// could be redundent , if we delete drivetrain get rid of this
   public static Lift Elevator; // elevator for gripper
   public static Vision Cameras; // used for the vision class as needed
-
+  public static Barriers Gates;
   public static Multi MultiSystem;   // contains shooter, intake, rotator
   public static Climb Climber;
   public static OI m_oi;
@@ -52,6 +47,7 @@ public class Robot extends TimedRobot {
     Drive = new DriveTrain();
     Elevator = new Lift();
     Cameras = new Vision();
+    Gates = new Barriers();
     MultiSystem = new Multi();
     m_oi = new OI();
     Cameras.init();

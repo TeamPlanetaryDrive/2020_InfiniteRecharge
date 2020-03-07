@@ -5,24 +5,25 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.barrier;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotMap;
+import frc.robot.Robot;
 
-public class ButtonPlease extends CommandBase {
+public class resetBarriers extends CommandBase {  
   /**
-   * Creates a new ButtonPlease.
+   * Creates a new resetBarriers.
    */
-  public ButtonPlease() {
+  public resetBarriers() {
     // Use addRequirements() here to declare subsystem dependencies.
-    // System.out.println("no more");
+    addRequirements(Robot.Gates);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    System.out.println("AAAAAAAAAAAAAAAAAAAAAA");
+    Robot.Gates.setAngleLeft(Robot.Gates.UP_ANGLE);
+    Robot.Gates.setAngleRight(Robot.Gates.UP_ANGLE);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -33,7 +34,6 @@ public class ButtonPlease extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    System.out.println("end");
   }
 
   // Returns true when the command should end.

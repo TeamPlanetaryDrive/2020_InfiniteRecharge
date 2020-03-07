@@ -6,10 +6,8 @@
 /*----------------------------------------------------------------------------*/
 package frc.robot;
 
-import frc.robot.commands.lift.*;
 import frc.robot.commands.auto.*;
 import frc.robot.commands.*;
-import edu.wpi.first.wpilibj2.command.Command;
 
 /**
  * This class is what binds the controls on the physical operator

@@ -10,11 +10,14 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
-public class Climb extends SubsystemBase {
+public class Barriers extends SubsystemBase {
+  
+  public final double DOWN_ANGLE = 0, UP_ANGLE = 170;
+  
   /**
-   * Creates a new Climb.
+   * Creates a new Barriers.
    */
-  public Climb() {
+  public Barriers() {
 
   }
 
@@ -23,12 +26,11 @@ public class Climb extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void setSpeed(double speed){
-    RobotMap.climbL.set(speed);
-    RobotMap.climbR.set(speed);
+  public void setAngleLeft(double angle) {
+    RobotMap.barrierL.setAngle(angle);
   }
 
-  public double getHeight(){
-    return RobotMap.climbEncoder.getDistance();
+  public void setAngleRight(double angle) {
+    RobotMap.barrierR.setAngle(angle);
   }
 }

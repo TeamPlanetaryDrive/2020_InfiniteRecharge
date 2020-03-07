@@ -5,41 +5,44 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.lift;
+package frc.robot.commands.barrier;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class ManualLift_orig extends CommandBase {
+public class releaseBallLeft extends CommandBase {
+  
+  private final double RELEASE_TIME = 2; //seconds
+  private int timer;
   /**
-   * Creates a new ManualLift.
+   * Creates a new releaseBallLeft.
    */
-  public ManualLift_orig() {
+  public releaseBallLeft() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(Robot.Elevator);
+    addRequirements(Robot.Gates);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    Robot.Gates.setAngleLeft(Robot.Gates.DOWN_ANGLE);
+    timer = 0;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.Elevator.liftMove(RobotMap.leftJoystick.getZ());
   }
 
   // Called once the command ends or is interrupted.
-  // @Override
+  @Override
   public void end(boolean interrupted) {
+    Robot.Gates.setAngleLeft(Robot.Gates.UP_ANGLE);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return (timer++) >= RELEASE_TIME / .02;
   }
-
 }
