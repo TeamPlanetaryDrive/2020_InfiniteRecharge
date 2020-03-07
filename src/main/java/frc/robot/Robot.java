@@ -28,7 +28,8 @@ public class Robot extends TimedRobot {
   public static Lift Elevator; // elevator for gripper
   public static Vision Cameras; // used for the vision class as needed
   public static Barriers Gates;
-  public static Multi MultiSystem;   // contains shooter, intake, rotator
+  // public static Multi MultiSystem;   // contains shooter, intake, rotator
+  public static Shooter Launcher;
   public static Climb Climber;
   public static OI m_oi;
 
@@ -48,7 +49,8 @@ public class Robot extends TimedRobot {
     Elevator = new Lift();
     Cameras = new Vision();
     Gates = new Barriers();
-    MultiSystem = new Multi();
+    // MultiSystem = new Multi();
+    Launcher = new Shooter();
     m_oi = new OI();
     Cameras.init();
     m_chooser = new SendableChooser<Command>();

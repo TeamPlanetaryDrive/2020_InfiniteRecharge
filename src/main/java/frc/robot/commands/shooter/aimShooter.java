@@ -12,15 +12,13 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class aimShooter extends CommandBase {
-  double turnAmount;
-  double targetAngle;
 
   /**
    * Creates a new aimShooter.
    */
   public aimShooter(double target) {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(Robot.MultiSystem);
+    addRequirements(Robot.Launcher);
     targetAngle = target;
   }
 
@@ -28,12 +26,14 @@ public class aimShooter extends CommandBase {
   @Override
   public void initialize() {
     //must choose direction and speed of turning
+    double offset = RobotMap.windowEncoder.getDistance() - targetAngle;
+    int direction = Math.abs(offset)/offset;
+    RobotMap.windowMotor.set(direction*0.7);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.MultiSystem.rotateShooter(true);
   }
 
   // Called once the command ends or is interrupted.
@@ -45,6 +45,7 @@ public class aimShooter extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return Robot.MultiSystem.getShooterAngle() == targetAngle;
+    // bound may need to change
+    return Math.abs(RobotMap.windowEncoder.getDistance()-targetAngle) < 1;
   }
 }
