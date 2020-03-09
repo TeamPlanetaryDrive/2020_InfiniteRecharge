@@ -5,10 +5,11 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.multi;
+package frc.robot.commands.shooter;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import frc.robot.commands.barrier.*;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
@@ -22,6 +23,6 @@ public class shootBalls extends SequentialCommandGroup {
   public shootBalls() {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
-    super(new aimShooter(0), new spinShooterWheels(0), new releaseBall());
+    super(new aimShooter(0), new spinShooterWheels(0), new releaseBallRight()); //figure out how to release correct barrier
   }
 }

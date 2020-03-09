@@ -5,14 +5,14 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.multi;
+package frc.robot.commands.shooter;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class aimShooter extends CommandBase {
-
+  double targetAngle;
   /**
    * Creates a new aimShooter.
    */
@@ -27,7 +27,7 @@ public class aimShooter extends CommandBase {
   public void initialize() {
     //must choose direction and speed of turning
     double offset = RobotMap.windowEncoder.getDistance() - targetAngle;
-    int direction = Math.abs(offset)/offset;
+    int direction = (int)(Math.abs(offset)/offset);
     RobotMap.windowMotor.set(direction*0.7);
   }
 
