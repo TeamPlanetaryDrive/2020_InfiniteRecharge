@@ -10,28 +10,21 @@ package frc.robot.commands.shooter;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
-public class aimShooter extends CommandBase {
-  boolean highGoal;
+public class prepareForIntake extends CommandBase {
   double targetAngle;
   /**
-   * Creates a new aimShooter.
+   * Creates a new prepareForIntake.
    */
-  public aimShooter(boolean aimForHighGoal) {
+  public prepareForIntake() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.Launcher);
-    highGoal = aimForHighGoal;
-  
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.Launcher.setPistonState(false);
-    if(highGoal){ //where to aim
-      targetAngle = 1; //based on vision
-    }else{
-      targetAngle = 0;
-    }
+    Robot.Launcher.setPistonState(true);
+    targetAngle = 74;
     //must choose direction and speed of turning
     double offset = Robot.Launcher.getPosition() - targetAngle;
     int direction = (int)(Math.abs(offset)/offset);

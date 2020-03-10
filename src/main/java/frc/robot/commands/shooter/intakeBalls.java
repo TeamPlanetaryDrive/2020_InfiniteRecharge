@@ -22,7 +22,7 @@ public class intakeBalls extends SequentialCommandGroup {
   public intakeBalls() {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
-    super(new aimShooter(-0), new spinShooterWheels(-0));
+    super(new prepareForIntake(), new spinShooterWheels(-0));
     //May add "liftBarrier" command
   }
 }

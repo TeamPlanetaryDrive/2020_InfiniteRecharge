@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 // import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -78,25 +79,19 @@ public class RobotMap {
 
 
         /* new stuff */
-        public static final int CLIMB_MOTOR_CHANNEL_1 = 2856;
-        public static final int CLIMB_MOTOR_CHANNEL_2 = 2857;
+        public static final int CLIMB_MOTOR_CHANNEL_1 = 2856, CLIMB_MOTOR_CHANNEL_2 = 2857;
         public static final int WINDOW_MOTOR_CHANNEL = 2856;
-        public static final int SHOOTER_PISTON_CHANNEL_1 = 2856;
-        public static final int SHOOTER_PISTON_CHANNEL_2 = 2758;
-        public static final int SHOOTER_MOTOR_CHANNEL_1 = 2858;
-        public static final int SHOOTER_MOTOR_CHANNEL_2 = 2656;
-        public static final int GATE_SERVO_CHANNEL_1 = 3457;
-        public static final int GATE_SERVO_CHANNEL_2 = 3446;
+        public static final int SHOOTER_PISTON_CHANNEL_FORWARD = 2856, SHOOTER_PISTON_CHANNEL_REVERSE = 2758;
+        public static final int SHOOTER_MOTOR_CHANNEL_1 = 2858, SHOOTER_MOTOR_CHANNEL_2 = 2656;
+        public static final int GATE_SERVO_CHANNEL_1 = 3457, GATE_SERVO_CHANNEL_2 = 3446;
+        
+        public static final int CLIMB_ENCODER_CHANNEL_A = 6969, CLIMB_ENCODER_CHANNEL_B = 6969;
+        public static final int FRAME_ENCODER_CHANNEL_A = 2432, FRAME_ENCODER_CHANNEL_B = 3423;
 
         public static Victor climbL, climbR, shootL, shootR, windowMotor;
-        public static Encoder climbEncoder, windowEncoder;
-        public static final int CLIMB_ENCODER_CHANNEL_A = 6969;
-        public static final int CLIMB_ENCODER_CHANNEL_B = 6969;
-        public static final int WINDOW_ENCODER_CHANNEL_A = 2432;
-        public static final int WINDOW_ENCODER_CHANNEL_B = 3423;
-
+        public static Encoder climbEncoder, frameEncoder;
         public static Servo barrierL, barrierR;
-
+        public static DoubleSolenoid framePiston;
 
 
 
@@ -146,9 +141,12 @@ public class RobotMap {
                 shootR = new Victor(SHOOTER_MOTOR_CHANNEL_2);
                 windowMotor = new Victor(WINDOW_MOTOR_CHANNEL);
                 climbEncoder = new Encoder(CLIMB_ENCODER_CHANNEL_A, CLIMB_ENCODER_CHANNEL_B);
-                windowEncoder = new Encoder(WINDOW_ENCODER_CHANNEL_A, WINDOW_ENCODER_CHANNEL_B);
+                // climbEncoder.setDistancePerPulse(0);
+                frameEncoder = new Encoder(FRAME_ENCODER_CHANNEL_A, FRAME_ENCODER_CHANNEL_B);
 
                 barrierL = new Servo(GATE_SERVO_CHANNEL_1);
                 barrierR = new Servo(GATE_SERVO_CHANNEL_2);
+
+                framePiston = new DoubleSolenoid(SHOOTER_PISTON_CHANNEL_FORWARD, SHOOTER_PISTON_CHANNEL_REVERSE);
         }
 }

@@ -20,9 +20,9 @@ public class shootBalls extends SequentialCommandGroup {
   /**
    * Creates a new shoot.
    */
-  public shootBalls() {
+  public shootBalls(boolean aimForHighGoal) {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
-    super(new aimShooter(0), new spinShooterWheels(0), new releaseBallRight()); //figure out how to release correct barrier
+    super(new aimShooter(aimForHighGoal), new ParallelCommandGroup(new spinShooterWheels(0), new releaseBallRight())); //figure out how to release correct barrier
   }
 }

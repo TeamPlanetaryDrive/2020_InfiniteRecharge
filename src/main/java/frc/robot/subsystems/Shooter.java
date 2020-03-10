@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.robot.RobotMap;
 
 public class Shooter extends SubsystemBase {
-  DoubleSolenoid testSolenoid = new DoubleSolenoid(RobotMap.SHOOTER_PISTON_CHANNEL_1, RobotMap.SHOOTER_PISTON_CHANNEL_2);
+  //DoubleSolenoid testSolenoid = new DoubleSolenoid(RobotMap.SHOOTER_PISTON_CHANNEL_1, RobotMap.SHOOTER_PISTON_CHANNEL_2);
   /**
    * Creates a new Shooter.
    */
@@ -28,9 +28,17 @@ public class Shooter extends SubsystemBase {
 
   public void setPistonState(boolean up){
     if(up)
-      testSolenoid.set(DoubleSolenoid.Value.kReverse);
+      RobotMap.framePiston.set(DoubleSolenoid.Value.kReverse);
     else
-      testSolenoid.set(DoubleSolenoid.Value.kForward);
+      RobotMap.framePiston.set(DoubleSolenoid.Value.kForward);
+  }
+
+  public double getPosition(){
+    return RobotMap.frameEncoder.getDistance();
+  }
+  
+  public void setWindowMotorSpeed(double speed) {
+    RobotMap.windowMotor.set(speed);
   }
 
   @Override
